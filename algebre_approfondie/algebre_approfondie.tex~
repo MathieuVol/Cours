@@ -196,16 +196,20 @@
 \tableofcontents
 
 \pagebreak
-\include{partie_01_groupes}
+\include{partieGroupes}
 
 \pagebreak
-\include{partie_02_anneaux}
+\include{partieAnneaux}
 
 \pagebreak
-\include{partie_03_modules}
+\include{partieModules}
+
 
 \pagebreak
 \printindex
+
+\pagebreak
+\include{coursResume}
 
 
 %% FIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
