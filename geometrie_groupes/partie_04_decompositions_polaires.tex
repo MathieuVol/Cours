@@ -1,0 +1,396 @@
+
+\section{Décomposition polaire et applications}
+\vspace{0.5em}
+
+\begin{defi}[Matrice hermitienne]
+\index{matrice!hermitienne}
+\index{matrice!positive}
+\index{matrice!positive!définie positive}
+
+Soit $M\in \M_n{\C}$. On dit que $M$ est hermitienne si $M\*=M$ et on note
+$\H_n$ leur ensemble.
+
+On dit que $M\in\H_n$ est positive (resp. définie positive) si pour tout
+vecteur colonne $X$ on a $X\*MX \geq 0$ (resp. $X\*MX > 0$) et on note $\Hp$
+(resp. $\Hpp$) leur ensemble.
+\end{defi}
+
+\begin{example}[Remarque]
+ Cette définition a bien un sens car $M\in\H_n \Rightarrow X\*MX \in \R$.
+En effet :
+\begin{align*}
+ & \overline{X\*MX} & &= \t X\overline{M}\overline{X} & & =
+\t (\t X\overline{M}\overline{X}) & & \text{(car de taille }(1,1) \text{)} \\
+ &                & & = X\*MX & & =X\*M\*X & & \text{(car } M\* = M \text{)}\\
+\end{align*}
+\end{example}
+
+\begin{defi}[Matrice symétrique]
+\index{matrice!symétrique}
+ 
+On note $\S_n$ l'ensemble des matrices symétriques (réelles). On a :
+\begin{align*}
+\S_n &= \H_n \cap \M_n(\R) \\
+\Sp_n &= \Hp_n \cap \M_n(\R) \\
+\Spp_n &= \Hpp_n \cap \M_n(\R) 
+\end{align*}
+\end{defi}
+
+\begin{theo}[Décomposition polaire 1]
+\label{theo_decomposition_polaire_1}
+\index{décomposition polaire!premier théorème}
+\begin{enumerate}
+ \item Pour toute matrice $A\in \GL_n(\C)$, il existe une unique matrice
+unitaire $U\in\U(n)$ et une unique matrice hermitienne définie positive
+$P\in\Hpp_n$ telles que : $A = UP$.
+ \item Pour toute matrice $A\in\GL_n(\R)$, il existe une unique matrice
+orthogonale $U\in\O(n)$ et une unique matrice symétrique définie positive
+$P\in\Spp(n)$ telles que : $A=UP$.
+\end{enumerate}
+\end{theo}
+
+\begin{lemm}[Racine carrée]
+\label{lemm_racine_carree}
+\index{racine carrée}
+
+Soit $M\in\Hp(n)$. Il existe une unique matrice $N\in\Hp(n)$ telle que
+$N^2=M$.\\ De plus $M\in\Hpp(n) \Longleftrightarrow \N\in\Hpp(n)$.
+
+On a un énoncé équivalent avec les matrices symétriques.
+\end{lemm}
+
+\begin{proof}[du lemme \ref{lemm_racine_carree}]\ 
+
+\begin{description}
+ \item [(existence)]
+Soit $M\in\Hp(n)$, il existe $(d_1,\cdots,d_n)\in(\R^+)^n$ et $P\in\U(n)$
+telles que $M=P^{-1}\Diag(d_1,\cdots,d_n)P$. Les $d_i$ sont bien des réels
+positifs car si $X\neq 0$ tel que $MX=d_iX$ alors $X\*MX=d_iX\*X=d_i\|X\|^2\geq
+0$ car $M\in\Hp(n)$.
+
+\item [(unicité)]
+Si $N^2=M$ alors $NM=MN=N^3$, or si deux matrices commutent, elles sont
+diagonalisables dans une même base.
+\begin{displaymath}
+ N = P^{-1}\begin{pmatrix}
+    \lambda_1 & & 0 \\  &\ddots& \\  0 & & \lambda_n
+           \end{pmatrix} P \quad \text{ et } \quad 
+ M = P^{-1}\begin{pmatrix}
+    d_1 & & 0 \\  &\ddots& \\  0 & & d_n\\
+           \end{pmatrix} P \quad 
+\end{displaymath}
+
+Donc $N^2=M\Longleftrightarrow \forall i,\lambda_i^2=d_i$. Comme $N\in\Hp(n)$
+les $\lambda_i$ sont positifs donc $d_i = \sqrt{\lambda_i}$ d'où l'unicité.
+
+\item [(cas réel)] La preuve est la même
+\end{description}
+\end{proof}
+
+\begin{proof}[du théorème \ref{theo_decomposition_polaire_1}]\
+
+\begin{enumerate}
+ \item \begin{description}
+        \item[(existence)] Soit $A\in\GL_n(\C)$. On remarque que
+$(A\*A)\*=A\*A$,
+ie $A\*A\in \H_n$. De plus pour tout vecteur colonne $X$ non nul, on a $X\*A\*AX
+= (AX)\*(AX) = \|AX\|^2 > 0$ (car $A$ invesible). Ainsi $A\*A\in\Hpp(n)$.
+D'après le lemme, il existe $P\in\Hpp(n)$ telle que $P^2=A\*A$. Il reste à
+vérifier que $U := AP^{-1} \in\U(n)$.
+
+En remarquant que $(AP^{-1})\*(AP^{-1}) = (P^{-1})\*A\*AP^{-1} =
+(P\*)^{-1}A\*AP^{-1}$.\\ On a $U\*U = P^{-1}A\*AP = P^{-1}P^2P^{-1} = \Id$ donc
+$U\in\U(n)$.
+\item[(unicité)] Si $A=UP$ avec $U\in\U(n)$ et $P\in \Hpp(n)$ alors :\\
+$A\*A=(UP)\*(UP) = P\*U\*UP = P\*P = P^2$. L'unicité de la racine de $A\*A$
+implique l'unicité de $P$ qui implique celle de $U$.
+       \end{description}
+\item \begin{description}
+       \item [(cas réel)] La preuve est la même
+      \end{description}
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Exemple]
+ En dimension 1, cette décomposition est exactement la forme dite polaire d'un
+nombre complexe.
+\end{example}
+
+\begin{defi}[Exponentielle]
+\index{exponentielle}
+\begin{displaymath}
+\begin{array}{rrcl} \Exp : &          \M_n(\R\text{ (resp. }\C\text{)})
+&\longrightarrow& \M_n(\R\text{ (resp. }\C\text{)}) \\
+   & A &\longmapsto& \displaystyle\sum_{k=0}^{\infty} \dfrac{A^k}{k!}   
+\end{array}
+\end{displaymath}
+\end{defi}
+
+\begin{prop}[Continuité de l'exponentielle]
+ 
+$\Exp : \M_n(\C) \longrightarrow \M_n(\C)$ est une application continue (en
+particulier, elle est bien définie).
+\end{prop}
+
+\begin{proof} \
+ 
+$\M_n(\C)$ est une algèbre de Banach (un espace vectoriel normé complet, et une
+algèbre telle que $\|AB\| \leq \|A\|.\|B\|$ ce qui est le cas par exemple avec
+la norme de Frobénius).
+
+La série de fonctions $\sum \frac{A^n}{n!}$ est normalement convergente sur
+toute boule de $\M_n(\C)$. En effet :
+\begin{displaymath}
+\forall r > 0,\ \forall A \in \Boule(0,r)
+\subset \M_n(\C),\ \sum \dfrac{\|A^k\|}{k!} \leq  \sum\dfrac{\|A\|^k}{k!} =
+\exp({\|A\|}) \leq \exp({r}) 
+\end{displaymath}
+
+En particulier, sur chaque boule, la série $\sum \dfrac{A^k}{k!}$ est
+uniformément convergente, ainsi $\forall A \in\M_n(\C),\ \Exp(A)$ est bien
+définie, et $\Exp$ est limite uniforme de fonctions continues donc $\Exp$ est
+continue.
+\end{proof} 
+
+\begin{prop}
+\begin{enumerate}
+ \item $\Exp(0) = \Id$.
+ \item Si $A,B\in\M_n(\C)$ commutent, alors $\Exp(A+B) = \Exp(A)\Exp(B)$.
+ \item Si $A\in\M_n(\C)$, alors $\Exp(A) \in\GL_n(\C)$ et $\Exp(A)^{-1} =
+\Exp(-A)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}\
+
+\begin{enumerate}
+ \item $\Exp(0) = O^0 + \frac{1}{2}O^1 + \cdots = \Id$ par convention.
+ \item Comme
+$\displaystyle\sum_{m,p\in\N}\dfrac{\|A^mB^p\|}{m!p!}$ converge, la
+famille $\left( \dfrac{A^m}{m!}\times\dfrac{B^p}{p!} \right)_{m,p\in \N}$ est
+absolument sommable : \\
+\begin{align}
+ \sum_{m,p\in\N}\dfrac{A^mB^p}{m!p!} & & &= \sum_{m\in\N}\dfrac{A^m}{m!} \times
+\sum_{p\in\N}\dfrac{B^p}{p!} & & = \Exp(A)\Exp(B)\\
+ \sum_{m,p\in\N}\dfrac{A^mB^p}{m!p!} & & &=
+\sum_{k\in\N} \sum_{p+q=k}\dfrac{A^p}{p!}\dfrac{B^q}{q!}
+= \sum_{k\in\N} \left( \dfrac{1}{k!} \right) \underbrace{
+\sum_{p+q=k}\dfrac{(p+q)!}{p!q!}A^pB^q}_{=(A+B)^k \text{ (Newton)}}
+& &= \Exp(A+B)
+\end{align}
+\item $A$ et $(-A)$ commutent dont $\Exp(A)\Exp(-A) = \Exp(A-A) = \Exp(0) =
+\Id$.
+\end{enumerate}
+
+\end{proof}
+
+\begin{prop}
+\index{matrice!anti-symétrique}
+\index{matrice!anti-hermitienne}
+\index{matrice!nilpotente}
+\index{matrice!unipotente}
+ \begin{enumerate}
+  \item $\Exp(A\*) = \Exp(A)\*$ et $\Exp(\t A) = \t \Exp(A)$.
+  \item $\forall P\in\GL_n(\C),\ \Exp(PAP^{-1}) = P\Exp(A)P^{-1}$.
+  \item Si $A$ est symétrique (resp. hermitienne), alors $\Exp(A)$ est
+symétrique (resp. hermitienne) définie positive.
+  \item Si $A$ est anti-symétrique (resp. anti-hermitienne), alors $\Exp(A)$ est
+orthogonale (resp. unitaire).
+  \item Si $A$ est diagonale (resp. triangulaire), alors $\Exp(A)$ est
+diagonale (resp. triangulaire).
+  \item Si $A$ est nilpotente alors $\Exp(A)$ est unipotente.
+  \item $\lambda\in\C\*$ est valeur propre de $A$ si et seulement si
+$\e^\lambda$ est valeur propre de $\exp(A)$. De plus les multiplicités sont les
+mêmes.
+ \end{enumerate}
+\end{prop}
+
+\begin{example}[Rappels] \
+
+$A$ est anti-symétrique (resp. anti-hermitienne) si $\t A = -A$ (resp. $A\* =
+-A$).
+
+$A$ est nilpotente (resp. unipotente) si il existe $m\in\N$ tel que $A^m = 0$
+(resp. $(A-\Id)^m =0$).
+\end{example}
+
+\begin{proof}\
+
+ \begin{enumerate}
+  \item (exo)
+  \item (exo)
+  \item Si $\t A = A$ alors $A$ est diagonalisable. Donc il exsite $P\in\GL_n$
+tel que $A = P\Diag(\lambda_1, \cdots, \lambda_n) P^{-1}$. Ainsi $\Exp(A) =
+P\Diag(\exp(\lambda_1), \cdots, \exp(\lambda_n))P^{-1}$ qui est définie
+positive.
+\item Si $\t A = A$ alors $\Exp(\t A)\Exp(A) = \Exp(-A +A) = \Id$. Le
+raisonnement est identique sur $\C$ pour la conjugaison.
+ \item $A$ triangulaire $\Rightarrow \forall m\in\N,\ A^m$ triangulaire
+$\Rightarrow \Exp(A)$ triangulaire.
+ \item Si $A^m = 0$, $\Exp(A) = \sum_{p=0}^{m-1}\frac{A^p}{p!} = \Id +
+A\sum_{p=1}^{m-1}\frac{A^p}{p!}$ donc $(\Exp(A)-\Id)^m =
+A^m(\sum_{p=1}^{m-1}\frac{A^p}{p!})^m = 0$.
+ \item[...] Remarque : les matrices strictement triangulaires supérieures sont
+nilpotentes.
+ \item Si $AX = \lambda $ alors $\Exp(A)X = \sum_{m\in\N}\frac{A^mX}{m!}
+ = \sum_{m\in\N}\frac{\lambda^m X}{m!} = \exp(\lambda) X$. Il reste à montrer
+que les multiplicités sont conservées.\\
+On peut se ramener à l'étude des blocs de Jordan car $\Exp(PMP^{-1}) =
+P\Exp(M)P^{-1}$. Soit alors $J_\lambda = \lambda \Id + K_n$ un bloc de Jordan.
+on va montrer que la seule valeur propre de $\Exp(J_\lambda)$ est
+$\exp(\lambda)$.
+\begin{displaymath}
+K_n^m = \begin{pmatrix}
+ 0      & \cdots  & 0      & 1      & 0      & \cdots &  0       \\
+ \vdots & \ddots  &        & \ddots & \ddots & \ddots &  \vdots  \\
+ \vdots &         & \ddots &        & \ddots & \ddots &  0       \\
+ \vdots &         &        & \ddots &        & \ddots &  1       \\
+ \vdots &         &        &        & \ddots &        &  0       \\
+ \vdots &         &        &        &        & \ddots &  \vdots  \\
+ 0      & \cdots  & \cdots & \cdots & \cdots & \cdots &  0       \\
+ \end{pmatrix}
+   \Exp(K_n) =  \begin{pmatrix}
+ 1      & 1       & 1/2    & 1/6    & \cdots & 1/(n-1)! \\
+ 0      & \ddots  & \ddots & \ddots & \ddots & \vdots\hfill \\
+ \vdots &         & \ddots & \ddots & \ddots & 1/6 \hfill  \\
+ \vdots &         &        & \ddots & \ddots & 1/2 \hfill \\
+ \vdots &         &        &        & \ddots & 1 \hfill \\
+ 0      & \cdots  & \cdots & \cdots & 0      & 1 \hfill \\
+
+ \end{pmatrix}
+\end{displaymath}
+Comme $\Id$ et $K_n$ commutent, on a $\Exp(J_\lambda) =
+\exp(\lambda)\Id\Exp(K_n)$.
+ \end{enumerate}
+\end{proof}
+
+\begin{prop}\index{exponentielle}\index{logarithme}
+ 
+$\Exp : \H_n \rightarrow \Hpp_n$ est un homémorphisme (de même pour  
+$\Exp : \S_n \rightarrow \Spp_n$).
+\end{prop}
+
+\begin{proof}
+ On a déjà vu que $\Exp(\H_n) \subset \Hpp_n$.
+ 
+ \begin{description}
+  \item [(injectivité)] On a déjà vu que $\lambda_i$ est une valeur propre de
+$M$ de multiplicité $n_i$ si et seulement si $\exp(\lambda_i)$ est valeur propre
+de $\Exp(M)$ de même multiplicité $n_i$. De plus $x$ est vecteur propre de $M$
+si et seulement s'il est vecteur propre de $\Exp(M)$.\\
+Dans notre cas $M\in\H_n$ est diagonalisable et $\Exp(M)\in\Hpp_n$ l'est aussi
+dans une même base. Soit alors $\Exp(M) = \Diag(\mu_1,\cdots,\mu_n)$, tous
+les $\mu_i$ étant positifs on peut écrire $\mu_i = \exp{\lambda_i}$ de manière
+unique (car $\exp : \R \rightarrow \R\*_+$ est bijective). Ce qui prouve
+l'unicité de $M = \Diag(\lambda_1,\cdots,\lambda_n)$.
+
+\item [(surjectivité)] Soit $M \in\Hpp_n$. Il existe $U\in\U(n)$ telle que
+$U\*MU=\Diag(\lambda_1,\cdots,\lambda_n)$. Comme $\lambda_i > 0$ on peut
+considérer $\ln(\lambda_i)$. On pose $N = \Diag(\ln(\lambda_n),
+\cdots, \ln(\lambda_1))$.\\
+Donc $M = U\Diag(\exp(\ln(\lambda_n)), \cdots, \exp(\ln(\lambda_1)))U\*
+ = U\Exp(N)U\* = \Exp(UNU\*) \in\Ima(\Exp)$.
+
+\item [(bicontinuité)] $\Exp$ étant bijective (et continue) on peut
+définir sa réciproque $\Log : \Hpp_n \rightarrow \H_n$. Il reste donc à montrer
+que $\Log$ est continue.
+\begin{itemize}
+ \item[(choix de la norme)] On considère la norme suivante sur $\M_n(\C)$ :
+$\|M\|
+= \Sup_{\|x\| = 1} \|Mx\|$ avec $\|x\|^2=\sum(x_i^2)$.\\
+En particulier, si $M\in\H_n$, $M$ est diagonalisable dans une base
+orthonormale de vecteurs propres $(e_1,\cdots,e_n)$ donc :
+\begin{displaymath}
+ \|Mx\|^2 \leq \sum|\lambda_i|^2 |x_i|^2 \leq \sum (\Sup|\lambda_i|^2)x_i^2 \leq
+(\Sup |\lambda_i|^2) \|x\|^2 \Longrightarrow \|M\|\leq
+\Sup_{\lambda_i\in\Spectre(M)}|\lambda_i|
+\end{displaymath}
+En considérant $\lambda_j$ la valeur propre maximale et $e_j$ le vecteur propre
+associé, on a :
+\begin{displaymath}
+ \|Me_j\| = |\lambda_j| \Longrightarrow \|M\|\geq
+\Sup_{\lambda_i\in\Spectre(M)}|\lambda_i| \text { et donc : } \|M\| =
+\Sup_{\lambda_i\in\Spectre(M)}|\lambda_i|
+\end{displaymath}
+\item[(définition d'une suite)] On considère une
+suite $(H_p)_p \subset \Hpp_n$ convergente vers $H \in \Hpp_n$. Cette suite est
+donc bornée et il existe $\rho_+$ tel que toutes les valeurs propres de
+$H_p$ sont majorées par $\rho_+$. Comme l'inversion d'une matrice invesible est
+un homéomorphisme, on applique le même raisonnement à la suite convergente
+$(H_p^{-1})_p$ et on construit $\rho_-$ qui majore toutes les valeurs propres
+de $H_p^{-1}$.\\ En remarquant que $\Spectre(H_p^{-1})=\{\lambda^{-1} \t q
+\lambda\in\Spectre(H_p)$ on déduit que toute valeur propre de $H_p$ appartient
+à l'intervalle $[1/\rho_-;\rho_+]$.
+\item [(suite image)] On définit la suite des images $(\Log(H_p))_p$. Comme
+$\Spectre(\Log(H_p)) = \ln \Spectre(H_p)$ on déduit $\|\Log(H_p)\|\leq \Max
+\{\ln(1/\rho_-) , \ln(\rho_+)\}$.\\
+En particulier la suite des images est bornée et admet une valeur d'adhérence
+$M=\lim H_{p_k}$. On conclut en montrant l'unicité de cette valeur d'adhérence
+:
+\begin{displaymath}
+ \Exp(M) = \Exp (\lim \Log(H_{p_k})) = \lim \Exp(\Log(H_{p_k}))
+ = \lim H_{p_k} = \lim H_p = H
+\end{displaymath}
+\item [(remarque)] La valeur d'adhérence $M$ est bien dans $\H_n$ car c'est un
+fermé de $\M_n(\C)$.
+\end{itemize}
+ \end{description}
+\end{proof}
+
+\begin{theo}[Décomposition polaire 2]
+\index{décomposition polaire!second théorème}
+
+Les applications suivantes sont des homéomorphismes :
+\begin{align*}
+ \H_n\times\U(n) & \longrightarrow \GL_n(\C) &
+ \S_n\times\O(n) & \longrightarrow \GL_n(\R) \\
+ (H,U)          & \longmapsto \Exp(H)U      & 
+ (S,O)          & \longmapsto \Exp(S)O      \\
+\end{align*}
+\end{theo}
+
+\begin{example}[Application]\
+
+$\H_n$ est un sous espace vectoriel de $\M_n(\C)\simeq\R^{2n^2}$. De plus
+en considérant les choix de coefficients sa dimension est $n^2$, on obtient
+le résultat suivant (même raisonnement pour $\S_n$) :
+\begin{displaymath}
+ \GL_n(\C)\simeq\U(n)\times\R^{n^2} \quad \text{ et } \quad
+ \GL_n(\R)\simeq\O(n)\times\R^{\frac{n(n+1)}{2}}
+\end{displaymath}
+
+En particulier comme $\O(n) = \O^+(n) \sqcup \O^-(n)$ est la décomposition en
+composantes connexes, on obtient que :
+$\GL_n(\R) = \GL^+_n(\R) \sqcup \GL_n^-(\R)$ est aussi la décomposition en
+composantes connexes.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

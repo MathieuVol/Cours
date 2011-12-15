@@ -1,0 +1,435 @@
+\section{Actions de groupes, groupes topologiques}
+\vspace{0.5em}
+
+\subsection{Actions de groupes}
+\vspace{0.5em}
+
+
+\begin{defi}[Action d'un groupe $G$ sur un ensemble $X$]
+\index{action de groupe}
+
+ On dit que $G$ agit sur $X$ s'il existe une fonction
+\begin{displaymath}
+ \begin{array}{rrcl}
+          \cdotp :& G\times X& \longrightarrow & X \\
+           & (g,x)    & \longmapsto     & g\cdotp x
+          \end{array}
+\end{displaymath}
+
+telle que :
+\begin{enumerate}
+ \item $\forall g,h \in G,\ \forall x \in X,\ g\cdotp(h\cdotp x) = (gh)\cdotp x$
+ \item $\forall x \in X,\ e\cdotp x = x$
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Remarque]
+ Il existe toujours une action triviale telle que $\forall g\in G,\ \forall x
+\in X,\ g\cdotp x = x$.
+\end{example}
+
+\begin{prop}[Autre point de vue]
+
+$G$ agit sur $X$ si et seulement si il existe un homomorphisme :
+\begin{displaymath}
+ \varphi : G \longrightarrow \S_X
+\end{displaymath}
+
+Un unique action $\cdotp$ est associé à un tel homomorphisme $\varphi$ :
+\begin{displaymath}
+\begin{array}{rrcl}
+          \cdotp :& G\times X& \longrightarrow & X \\
+           & (g,x)    & \longmapsto     & g\cdotp x = \varphi(g)(x)
+          \end{array}
+\end{displaymath}
+
+Et réciproquement, un unique homomorphisme $\varphi$ est associé à une action
+$\cdotp$ :
+\begin{displaymath}
+\begin{array}{rrcl}
+          \varphi :& G & \longrightarrow & \S_X \\
+                   & g & \longmapsto     & f : x\longmapsto f(x) = g\cdotp x
+          \end{array}
+\end{displaymath}
+\end{prop}
+
+\begin{defi}[Orbite]\index{orbite}
+
+Soit $x\in X$. On définit l'orbite de $x$ sous l'action de $G$ par :
+$G.x := \{g\cdotp x\tq g\in G\}$
+\end{defi}
+
+\begin{example}[Remarque]
+ L'appartenance à une même orbite définit une relation d'équivalence sur $X$.
+En particulier les orbites constituent une partition de $X$.
+\end{example}
+
+\begin{defi}[Stabilisateur]\index{stabilisateur}
+ 
+Soit $x\in X$. Le stabilisateur de $x$ dans $G$ est le sous-groupe $\Stab_G(x)
+= G_x = \{g\in G \tq g\cdotp x = x\}$.
+
+Si $Y\subset X$, $\Stab_G(Y)= \{g\in G \tq g\cdotp Y \subset Y$ et
+$g^{-1}\cdotp Y \subset Y \}
+= \Stab_G(Y)= \{g\in G \tq g\cdotp Y = Y\}$
+\end{defi}
+
+\begin{defi}[Action transitive]\index{action de groupe!transitive}
+
+ On dit que $G$ agit transitivement sur $X$ s'il n'y a qu'une seule orbite :
+\[\forall x,y \in X,\ \exists g\in
+G,\ g\cdotp x = y\]
+\end{defi}
+
+\begin{defi}[Action fidèle]\index{action de groupe!fidèle}
+
+ On dit que $G$ agit fidèlement sur $X$ si :
+\[\forall g\in G,\ \left[ (\forall x \in X,\ g\cdotp x = x) \Longrightarrow (g =
+e) \right] \]
+\end{defi}
+
+
+\begin{example}[Remarques] \
+ \begin{itemize}
+  \item Avec le second point de vue, une action est fidèle si et seulement si
+$\Ker\varphi = \{e\}$, ie : $\varphi$ injective.
+ \item Si $G$ n'agit pas fidèlement, on peut quotienter par $\Ker\varphi$
+pour obtenir une action fidèle.
+ \end{itemize}
+\end{example}
+
+\begin{example}[Exemples]\ 
+\begin{enumerate}
+  \item $\GL_n(\R)$ agit transitivement sur $\R^n\-\{0\}$. En
+particulier, il n'y a qu'une seule orbite qui est $\R^n\-\{0\}$.
+  \item On rappelle que $\O(n) := \{M\in \GL_n (\R) \tq \t MM = \Id_n\}$. Les
+orbites de $\O(n)$ sont les sphères centrées en l'origine.
+ \end{enumerate}
+\end{example}
+
+\begin{prop}[Stabilisateur - Orbite]
+
+ L'application suivante est une bijection :
+\[  \begin{array}{rrcl} \varphi :&
+              G/(\Stab_G(x)) &\longrightarrow& \omega (x) \\
+              & \overline{g}   &\longmapsto    &g\cdotp x
+             \end{array} \]
+\end{prop}
+
+\begin{proof}\ 
+
+ On commence par montrer que $\varphi$ est bien définie.
+Soient $g,g' \in G$ tels que $g^{-1}g' \in \Stab_G (x)$. Alors $g\Stab_G(x) =
+g'\Stab_G(x)$ donc $(g^{-1}g')\cdotp x = x $ et $ g' \cdotp x = g
+\cdotp x$. Ainsi les éléments d'une même classe modulo le stabilisateur
+agissent de la même manière sur $X$.
+
+La surjectivité étant évidente, il reste à montrer l'injectivité. Soient $g,g'
+\in G$ tels que $g\cdotp x = g' \cdotp x$. Alors $x = (g^{-1}g')\cdotp x$ et
+$(g^{-1}g') \in \Stab_G(x)$. Ainsi si deux éléments agissent de la même manière
+sur $X$, alors ils sont dans la même classe d'équivalence.
+\end{proof}
+
+\subsection{Groupes topologiques}
+\vspace{0.5em}
+
+\begin{defi}[Groupe topologique]\index{groupe topologique}
+
+Un groupe $G$ est dit topologique, s'il est muni d'une topologie pour laquelle
+la multiplication et l'inversion continues.
+\end{defi}
+
+\begin{example}[Exemple]
+ $(\Z,+)$ pour la topologie discrète (ie : les fermés sont les ensembles finis
+de points) est un groupe topologique.
+\end{example}
+
+\begin{prop}
+\index{groupe topologique!sous-groupe}
+\index{groupe topologique!produit}
+ \begin{enumerate}
+  \item Un sous-groupe d'un groupe topologique est un groupe topologique pour
+la topologie induite.
+  \item Un produit de groupes topologiques est un groupe topologique pour la
+topologie produit.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof}\ 
+ 
+\begin{enumerate}
+ \item Soit $H < G$. Un ouvert $\Omega$ de $H$ est de la forme $\Omega'\cap H$
+avec $\Omega'$ ouvert de $G$. Ainsi :
+\[\mu_H^{-1}(\Omega) = \mu_H^{-1}(\Omega'\cap H) = \mu_H^{-1}(\Omega')\cap
+\mu_H^{-1}(H) = \underbrace{\underbrace{\mu^{-1}(\Omega')}_{\text{ouvert de
+}G \times G}\cap(H\times H)}_{\text{ est un ouvert de } H\times H}\]
+Et de même :
+\[\iota_H^{-1}(\Omega) = \iota_H^{-1}(\Omega'\cap H) =
+\iota_H^{-1}(\Omega')\cap \iota_H^{-1}(H) = \underbrace{
+\underbrace{\iota^{-1}(\Omega')}_{\text{ouvert de } G}\cap H}_{\text{ouvert de
+}H}\]
+\item Par définition de la topologie produit.
+\end{enumerate}
+\end{proof}
+
+\begin{defi}[morphisme de groupes topologiques]
+\index{morphisme!de groupe topologique}
+\index{morphisme!de groupe topologique!isomorphisme}
+\index{morphisme!de groupe topologique!automorphisme}
+
+Un morphisme de groupes topologiques est un morphisme de groupes qui est
+continu.
+
+On définit de même un isomorphisme de groupes topologiques s'il est
+bicontinu, et un automorphisme de groupe topologique si c'est un isomorphisme
+bicontinu d'un groupe topologique dans lui même.
+\end{defi}
+
+\begin{prop}
+
+Soit $G$ un groupe topologique.
+\begin{enumerate}
+ \item Pour $x\in G$ la multiplication à gauche (resp. à droite) par $x$ notée
+$l_x : g\mapsto xg$ (resp. $r_x : g\mapsto gx$) est un homéomorphisme mais pas
+un morphisme de groupe.
+ \item De même l'inversion $\iota : g\mapsto g^{-1}$ est un homéomorphisme mais
+pas un morphisme de groupe.
+ \item Pour $x\in X$ la conjugaison par $x$ noté $\gamma_x : g\mapsto xgx^{-1}$
+est un isomorphisme de groupe topologique.
+
+Pour avoir une action à gauche il
+faut $xgx^{-1}$ et pour avoir une action à droite il faut $x^{-1}gx$.
+\end{enumerate}
+\end{prop}
+
+\begin{defi}[Composante du neutre]
+\index{composante connexe!du neutre}
+\index{composante connexe}
+
+Soit $G$ un groue topologique. On définit la composante du neutre $G_e$ comme
+la composante connexe de $G$ contenant $e$.
+\end{defi}
+
+\begin{prop}
+ \begin{enumerate}
+  \item $G_e$ est un sous-groupe fermé et distingué de $G$,
+  \item $\forall x \in G$ la composante connexe de $G$ contenant $x$ est $G_ex =
+xG_e$,
+  \item Tout sous-groupe $H < G$ qui est ouvert, est également fermé. En
+particulier, $H$ est la réunion de composantes connexes de $G$ et $H \supset
+G_e$.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof} \
+ \begin{enumerate}
+  \item \begin{itemize}
+    \item [(fermé)] Toute composante connexe est fermée et ouverte.
+    \item [(sous-groupe)] La continuité de la multiplication nous assure
+ que $\mu(G_e\times G_e)$ est connexe, de plus
+$\mu(G_e\times G_e) \owns e = \mu(e,e)$ et $G_e = \mu(\{e\}\times G_e)\subset
+\mu(G_e\times G_e)$ donc $\mu(G_e\times
+G_e) = G_e$.\\
+La continuité de l'inversion assure de même que
+$\iota(G_e) = G_e$.
+    \item [(distingué)] Soit $x\in G$ alors $xG_ex^{-1} =
+\gamma_x(G_e)\owns 1$. 
+\end{itemize}
+\item $G_e = l_{x^{-1}}(xG_e) \subset l_{x^{-1}}(\Cen_x) \subset G_e$.
+\item TODO
+ \end{enumerate}
+\end{proof}
+
+\begin{lemm}
+ 
+Si $Y\subset X$ est fermé et ouvert, alors c'est une union de composantes
+connexes de $X$.
+\end{lemm}
+
+\begin{prop}
+ 
+Soit $G$ un groupe topologique connexe et $V$ un voisinage ouvert de $\{e\}$
+dans $G$. Alors $V$ engendre $G$ :
+\begin{displaymath}
+ G = \bigcup_n \left(V\cup \iota(V)\right)^n
+\end{displaymath}
+\end{prop}
+
+\begin{theo}[Connexité de $\GL_n$]
+\index{groupe classique!$\GL_n(\C)$}
+ 
+$\GL_n(\C)$ est un groupe topologique connexe.
+\end{theo}
+
+\begin{proof}\
+\index{norme de Frobénius}
+ 
+$\M_n(\C)$ est muni de la topologie issue de la norme de Frobénius :
+\begin{displaymath}
+ \|A\f = \left(\sum_{j,j} |a_{i,j}|^2 \right)^{\frac{1}{2}} =
+\left(\Tr\left(AA\*\right)\right)^{\frac{1}{2}}
+\end{displaymath}
+
+On montre ensuite la connexité par arcs en considérant la connexité par arc du
+complémentaire des zéros du déterminant de $zA + (1-z)\Id$.
+\end{proof}
+
+\begin{prop}
+\index{norme de Frobénius}
+
+La norme de Frobénius est une norme d'algèbre : $\|AB\f \leq \|A\f \|B\f$.
+\end{prop}
+
+\begin{defi}[Produit semi-direct]
+\index{groupe topologique!produit!semi-direct}
+\index{groupe topologique!produit!direct}
+ 
+Soient $N,H$ des groupes et $\theta : H \rightarrow \Aut N$ un morphisme de
+groupe. On définit :
+
+\begin{displaymath}
+ N\rtimes_\theta H \text{ avec la loi : }
+(n,h)(n',h') \mapsto (n\theta(h)(n'), hh')
+\end{displaymath}
+
+Si $\theta = \Id$ on dit que le produit est direct.
+\end{defi}
+
+\begin{prop}
+\index{groupe classique!$\GL_n(\R)$}
+
+$\GL_n(\R)$ n'est pas connexe.
+\end{prop}
+
+\begin{proof}
+ 
+En effet $\R^*$ est l'image non connexe de $\det : \GL_n(\R) \rightarrow \R$ qui
+est continu.
+\end{proof}
+
+\begin{example}[Remarque]
+On verra plus loin que $\GL_n(\R)$ possède exactement deux composantes connexes
+: $\GL_n^+(\R)$ qui est aussi un sous-groupe distingué et $\GL^-_n(\R)$.
+\end{example}
+
+\subsection{Action de groupes topologiques}
+\vspace{0.5em}
+
+\begin{defi}[Action de groupes topologiques]\index{action de groupe topologique}
+
+Soient $G$ un groupe topologique et $X$ un espace topologique.
+
+On dit que $G$ agit topologiquement sur $X$ si l'action : $G\times X\rightarrow
+X$ est continue.
+\end{defi}
+
+\begin{prop}
+\index{orbite!connexe}
+\index{orbite!compacte}
+ 
+Si $G$ agit topologiquement sur $X$ alors :
+\begin{enumerate}
+ \item Si $G$ est connexe alors les orbites sont connexes.
+ \item Si $G$ est compact alors les orbites sont compactes.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Une orbite est une image par une application continue.
+\end{proof}
+
+\begin{prop}
+ 
+Si $G$ agit topologiquement sur $X$ et $x \in X$ alors $\adh (G\cdotp x)$ est
+une union d'orbites (ie : $\adh (G\cdotp x)$ est stable sous l'action de $G$).
+\end{prop}
+
+\begin{proof}
+ On prend une suite $(x_n)_n$ de $G\cdotp x$ qui converge vers $y\in
+\adh(G\cdotp x)$. Alors par continuité de l'action, la suite des images est
+aussi une suite de $G\cdotp x$ qui converge vers $g\cdotp y \in \adh (G\cdotp
+x)$.
+\end{proof}
+
+\begin{coro}
+ 
+On peut construire une relation d'ordre partiel $\preccurlyeq$ sur les orbites
+de $G$ dans $X$.
+\begin{displaymath}
+ \Omega \preccurlyeq \Omega' \Longleftrightarrow \Omega \subset \adh(\Omega')
+\end{displaymath}
+\end{coro}
+
+\begin{defi}\index{orbite}
+ 
+En considérant la relation d'équivalence $\sim$ d'appartenance à la même
+orbite, on définit l'espace quotient $X/G$ des orbites.
+\end{defi}
+
+\begin{prop}
+ 
+L'ensemble $X/G$ peut être muni d'une topologie naturelle rendant l'application
+$\pi$ continue et ouverte.
+\begin{displaymath} \begin{array}{rrcl}
+ \pi :&X &\longrightarrow& X/G \\
+      &x &\longmapsto    & G\cdotp x
+\end{array} \end{displaymath}
+\end{prop}
+
+\begin{proof}
+ On construit la topologie sur $X/G$ en posant que $U\subset X/G$ est ouvert si
+$\pi^{-1}(U)$ est ouvert pour la topologie sur $X$. On vérifie ensuite qu'on a
+bien une topologie rendant $\pi$kjii ouverte (elle est continue par
+construction).
+\end{proof}
+
+\begin{prop}
+ $f : X/G \rightarrow Y$ est continue si et suelement si $f\circ
+\pi:X\rightarrow Y$ est continue.
+\end{prop}
+
+\begin{proof}
+ C'est une conséquence de la définition de la topologie définie sur $X/G$.
+\end{proof}
+
+\begin{defi}[Espace homogène]\index{espace homogène}
+ 
+Un espace homogène est un espace topologique sur lequel un groupe topologique
+agit topologiquement et transitivement.
+
+En particulier il n'y a qu'une seule orbite et les stabilisateurs sont tous
+conjugués.
+\end{defi}
+
+\begin{theo}
+ Si $X$ est un espace topologique localement compact à base dénombrable, alors
+pour tout $x \in X$ :
+\begin{displaymath}
+ X \text{ est isomorphe à } G/\Stab_G (x)
+\end{displaymath}
+
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

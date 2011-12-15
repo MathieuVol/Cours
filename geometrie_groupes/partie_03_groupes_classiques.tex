@@ -1,0 +1,331 @@
+\section{Etude des sous-groupes classiques}
+\vspace{0.5em}
+
+On applle groupe classique tout sous-groupe de $\GL_n$ fermé et défini en
+famille.
+
+\subsection[$\mathbf{\SL_n(\K)}$]{$\mathbf{\SL_n(\K)}$ avec $\mathbf{\K = \R
+\text{ ou }\C}$}
+\vspace{0.5em}
+
+\begin{defi}[$\SL_n(\K)$]
+ \begin{displaymath} \SL_n(\K) := \{M\in \GL_n(\K) \tq \det M = 1\}
+\end{displaymath}
+
+En particulier on a $\SL_n(\R) \subset \GL_n^+(\R)$.
+\end{defi}
+
+On définit l'homéomorphisme suivant :
+\begin{displaymath}  \begin{array}{rrcl}
+    \sigma :&\GL_n(\K) &\longrightarrow&\SL_n(\K) \times \K\* \\
+       &     g &\longmapsto    & \left(g \begin{pmatrix}
+                                 (\det g)^{-1} &    &        &  \\
+                                               & 1  &        &  \\
+                                              &    & \ddots &  \\
+                                               &    &        & 1
+                                \end{pmatrix},\ \det g\right)
+   \end{array}\end{displaymath}
+
+
+\begin{prop}
+ \begin{enumerate}
+  \item $\SL_n(\C)$ est connexe par arc.
+  \item Si $\GL_n^+(\R)$ est connexe par arc, alors $\SL_n(\R)$ l'est aussi.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof}
+On définit la projection : $p : \SL_n(\C)\times \C\* \owns (A,t) \longmapsto A
+\in \SL_n(\C)$.
+
+Ainsi on a $p\circ\sigma(\GL_n(\C)) = \SL_n(\C)$.
+
+De même la restriction $\sigma' := \sigma\big|_{\GL_n^+(\R)}$ est aussi un
+homéomorphisme et $p\circ \sigma'(\GL_n^+(\R)) = \SL_n(\R)$.
+\end{proof}
+
+\subsection{Groupes associés à une forme sesquilinéaire}
+\vspace{0.5em}
+
+\begin{defi}[Forme sesquilinéaire]
+
+Soit $E$ un $\C$-espace vectoriel de dimension finie $n$.
+Un application $<\cdotp,\cdotp>\ : E\times E \longrightarrow E$ est une forme
+sesquilinéaire si :
+\begin{enumerate}
+ \item $<x,\cdotp>\ : E \longrightarrow E$ est linéaire,
+  \item $\forall x,y,z \in E,\ <x+y, z>\ =\ <x,z>\ +\ <y,z>$,
+   \item $\forall \lambda \in \C,\ \forall x,y\in E, \ <\lambda x,y>\ =
+\overline{\lambda} \ <x,y>$
+\end{enumerate}
+\end{defi}
+
+\begin{defiprop}[Groupe des invariants $\mathcal{U}(E)$]
+ 
+\begin{displaymath} \mathcal{U}(E) := \{f : E \longrightarrow E\text{ linéaire
+bijective } \tq
+<f(x),f(y)> \ = \ <x,y>\ \} \end{displaymath}
+
+$\mathcal{U}(E)$ est le sous-groupe des invariants de $<\cdotp,\cdotp>$ dans
+$\GL(E)$. C'est un sous-groupe fermé de $\GL(E)$ isomorphe à un sous-groupe de
+$\GL_n(\C)$.
+
+\end{defiprop}
+
+\begin{proof}
+Si $f,g \in \mathcal{U}(E)$ on vérifie facilement que $f\circ g$, $f^{-1}$, et
+$\Id_E$ sont également dans $\mathcal{U}(E)$.
+
+En fixant une base $\mathcal{B} = (e_1, \cdots, e_n)$ on peut identifier
+$\GL(E)$ à $\GL_n(\C)$ par $\Mat_{\mathcal{B}} : \GL(E)\longrightarrow
+\GL_n(\C)$. Soit alors $\Omega = (<e_i,e_j>) \in \M_n(\C)$, on a $<x,y>\ =
+X\*\Omega Y$. Si $M = \Mat_\mathcal{B}(f)$ alors :
+\begin{displaymath}\begin{array}{rl}
+                    & f\in \mathcal{U}(E) \\
+\Longleftrightarrow & X\*\Omega Y = (MX)\*\Omega(MY) \\
+\Longleftrightarrow & X\*\Omega Y = X\*M\* \Omega MY \\
+\Longleftrightarrow & \Omega = M\*\Omega M \\
+  \end{array}
+\end{displaymath}
+
+La dernière implication est bien vérifiée car si $A=(a_{kl}), X=e_i, Y=e_j$
+alors $X\*AY = a_{ij}$. Ainsi :
+\begin{displaymath}\mathcal{U}(E) \simeq \{M\in \GL_n(\C) \tq M\*\Omega M -
+\Omega = 0\} \end{displaymath}
+
+C'est en particulier l'image réciproque du fermé $\{0\}$ par un application
+continue, c'est donc un sous-groupe fermé.
+\end{proof}
+
+\begin{defiprop}[Groupe unitaire $\U(n)$]
+
+Si la forme $<\cdotp,\cdotp>$ est hermitienne (ie : $\forall x,y \in E,\
+<y,x>\ =\ \overline{<x,y>}$), on note alors $\U(n,\C)$ ou $\U(n)$.
+\begin{displaymath} \U(n) = \{ M \in \GL_n(\C) \tq M\*M = \Id\}
+\end{displaymath}
+\end{defiprop}
+
+\begin{prop}
+ 
+$\U(n)$ est compact et connexe par arcs.
+\end{prop}
+
+\begin{proof}\ 
+
+On a vu que $\U(n)$ est fermé. De plus $\forall M\in\U(n), \|M\f^2 = \Tr
+(M\*M) = n$. Ainsi $\U(n)$ est fermé borné, donc compact.
+
+On montre la connexité par arcs en utilisant la théorie de la réduction des
+endomorphismes. Pour $M\in\U(n)$, il existe une base orthonormée telle que $M$
+est diagonale. On peut alors construire le chemin continu.
+\begin{displaymath}\exists P\in\U(n), P\*MP =
+\begin{pmatrix}         \lambda_1 & &0\\
+                          & \ddots & \\
+                      0 & &\lambda_n \end{pmatrix}\end{displaymath}
+\end{proof}
+
+\begin{defi}[Groupe spécial unitaire]
+ 
+\begin{displaymath} \SU(n) := \U(n) \cap \SL_n(\C) \end{displaymath} 
+\end{defi}
+
+
+\begin{example}[Remarque]
+ En remarquant que $(M\*M=\Id) \Longrightarrow (|\det M| = 1)$, on peut définir
+l'homéomorphisme :
+\begin{displaymath} \sigma\big|_{\U(n)} : \U(n) \longrightarrow \SU(n)\times
+\S^1 \end{displaymath}
+
+Ainsi $\SU(n)$ est également compact et connexe par arcs.
+\end{example}
+
+
+\vspace{0.5em}
+\subsection{Groupes associés à une forme bilinéaire symétrique}
+\vspace{0.5em}
+
+\begin{defi}[Forme bilinéaire symétrique - antisymétrique]
+ 
+Si $E$ est un $\K$-espace vectoriel de dimension fini, et $<\cdotp,\cdotp>$ un
+forme bilinéaire, elle est dite :
+\begin{itemize}
+ \item Symétrique si : $\forall x,y \in E,\ <y,x>\ =\ <x,y>$
+ \item Antisymétrique si : $\forall x,y \in E,\ <y,x>\ = -<x,y>$
+\end{itemize}
+\end{defi}
+
+Comme dans le paragraphe précédant, en remplaçant $M\*$ par $^tM$ on montre
+que $\O(E)$, le sous-groupe de $\GL(E)$ qui laisse une forme bilinéaire
+invariante, est isomorphe à un sous-groupe fermé de $\GL_n(\K)$.
+
+On pose $\Omega = (<e_i,e_j>) \in \M_n(\K)$. En particulier si la forme est
+symétrique, $\Omega$ est symétrique.
+
+\begin{prop}[$\O(n)$]
+\begin{displaymath}\O(n) \simeq \{ M \in \GL_n(\K) \tq \ ^tM\Omega M - \Omega =
+0 \} \end{displaymath}
+\end{prop}
+
+\begin{defi}[Groupe orthogonal et groupe spécial orthogonal complexe]
+ 
+Si $\K = \C$ et que la forme n'est pas dégénérée, on peut supposer $\Omega =
+\Id$. On définit le groupe orthogonal complexe :
+\begin{displaymath}\O(n,\C) = \{ M \in \M_n(\C) \tq \ ^tM M = \Id
+\}\end{displaymath}
+
+En remarquant que $(^tMM=\Id) \Longrightarrow (|\det M| = 1)$, on définit
+également le groupe spécial orthogonal complexe :
+
+\begin{displaymath}\SO(n,\C) = \O(n,\C) \cap \SL(n,\C) \end{displaymath}
+\end{defi}
+
+\begin{defi}[Groupe orthogonal et groupe spécial orthogonal réel]
+ 
+Si $\K = \R$ on ne peut plus supposer que $\Omega = \Id$. On définit le groupe
+orthogonal réel :
+\begin{displaymath}\O(n) := \O(n,\R) = \{ M \in \M_n(\R) \tq \ ^tM M = \Id
+\}\end{displaymath}
+
+On définit de même le groupe spécial orthogonal réel :
+
+\begin{displaymath}\SO(n) := \SO(n,\R) = \O^+(\R) = \O(n) \cap \SL(n,\R)
+\end{displaymath}
+\end{defi}
+
+\begin{example}[Remarque]
+ $\O(n) = \O^+(\R) \sqcup \O^-(\R)$ (union disjointe de fermés de $\O(n)$).
+\end{example}
+
+\begin{prop}
+ \begin{enumerate}
+  \item $\O(n)$ est compact,
+  \item $\SO(n)$ est connexe par arcs,
+  \item $\O^+(\R) \sqcup \O^-(\R)$ est la décomposition en composantes connexes.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof}\
+
+\begin{enumerate}
+ \item $\O(n) = \U(n) \cap \M_n(\R)$, en particulier, c'est un sous-groupe
+fermé du compact $\U(n)$, c'est donc un compact.
+ \item \begin{displaymath} \ ^tPMP = \begin{pmatrix}
+                     I_p &      &             &        & \\
+                         & -I_q &             &     0   & \\
+                         &      & R_{\theta_1}&        & \\
+                         &    0 &             & \ddots & \\
+                         &      &             &        & R_{\theta_i} \\
+                    \end{pmatrix} = \begin{pmatrix}
+                     I_p &             &        & \\
+                         &             &     0   & \\
+                         & R_{\theta_1}&        & \\
+                         &         0    & \ddots & \\
+                         &             &        & R_{\theta_r} \\
+                    \end{pmatrix} \end{displaymath}
+ $M \in \SO(n)$ donc $M$ est diagonalisable par blocs de taille au plus $2$.
+De plus $(\det M = 1) \Rightarrow (q\text{ est pair})$, et on peut remplacer
+$I_2$ par $R_{\theta_\pi}$.
+
+On peut construire un chemin continu $\tilde{\gamma} : [0,1] \owns t
+\longmapsto R_{t\theta}$ tel que $\tilde{\gamma}(0) = \Id$ et
+$\tilde{\gamma}(1) = R_\theta$. On en déduit un chemin continu $\gamma$ de $\Id$
+à $M$.
+
+\end{enumerate}
+\end{proof}
+
+
+\vspace{0.5em}
+\subsection{Groupes associés à une forme bilinéaire antisymétrique}
+\vspace{0.5em}
+
+On suppose que la forme est non-dégénérée, ce qui implique que $\dim E = 2n$.
+Alors dans une certaine base on a :
+\begin{displaymath}\Omega = \begin{pmatrix}
+            0 & \Id_n \\ -\Id_n & 0
+           \end{pmatrix}
+ \quad \text{ ou bien } \quad \begin{pmatrix}
+                               &     &  &  &     & -1 \\
+                               &    0 &  &  & \cdotp   &    \\
+                               &     &  &-1&     &     \\
+                               &     &1  &  &     &  \\
+                               &\cdotp&  &  &  0  &    \\
+                              1&     &  &&     &     \\
+                              \end{pmatrix} \end{displaymath}
+
+
+\begin{defi}[Groupe symplectique]
+ 
+On appelle groupe symplectique :
+\begin{displaymath} \Spl_{2n} := \{ M\in \M_n(\K) \tq ^tM\Omega M - \Omega = 0\}
+\end{displaymath}
+On a toujours $(\M \in \Spl_{2n}) \Rightarrow (|\det M| = 1)$, on définit ainsi
+le
+groupe spécial symplectique :
+\begin{displaymath} \USp_{2n} := \Spl_{2n} \cap
+\mathcal{U}(2n)\end{displaymath} 
+\end{defi}
+
+\begin{prop}
+\begin{enumerate}
+ \item $\USp_{2n}$ est compact,
+ \item $\USp_{2n} = \left\lbrace z \in \mathcal{U}(2n)\ \Big|\ \exists
+A,B\in\M_n{\C}, z = \begin{pmatrix}A&-B\\B&A\end{pmatrix}\right\rbrace.$
+
+\end{enumerate}
+\end{prop}
+
+\begin{proof}\ 
+
+\begin{enumerate}
+ \item C'est un fermé de $\U(n)$, donc un compact.
+ \item
+\begin{displaymath}\begin{array}{ccccc} \begin{array}{rl}
+                    & z\in \mathcal{U}(2n) \\
+\Leftrightarrow & z\*z = \Id \\
+\Leftrightarrow & z\* = z^{-1} \\
+\Leftrightarrow & ^tz = \overline{z^{-1}}
+   \end{array} &  \text{ et }  & 
+\begin{array}{rl}
+                    & z \in \Spl(2n) \\
+\Leftrightarrow & ^tz\Omega z = \Omega \\
+                    & z \in \USp(2n) \\
+\Leftrightarrow & \overline{z^{-1}}\Omega z = \Omega \\
+\Leftrightarrow & z^{-1}\Omega \overline{z} = \Omega \\
+\Leftrightarrow & \Omega \overline{z} = z \Omega \\
+\end{array}&  \text{ donc }  & 
+\end{array} \end{displaymath}
+\begin{displaymath}
+\begin{array}{rl}
+                    & z=\begin{pmatrix}   A&B\\
+C&D\end{pmatrix}\in \USp(2n) \\
+\Leftrightarrow & \begin{pmatrix}0&I_n\\-I_n&0 \end{pmatrix}
+\begin{pmatrix}\overline{A}&\overline{B}\\ \overline{C}&\overline{D}
+\end{pmatrix} = \begin{pmatrix}A&B\\C&D \end{pmatrix}
+\begin{pmatrix}0&I_n\\-I_n&0 \end{pmatrix}  \\
+\Leftrightarrow & \begin{pmatrix}\overline{C}&\overline{D}\\
+-\overline{A}&-\overline{B}
+\end{pmatrix} = \begin{pmatrix}A&B\\C&D \end{pmatrix} \\
+\Leftrightarrow& C = -\overline{B} \text{ et } D = \overline{A} \\
+\end{array} \end{displaymath}
+\end{enumerate}
+
+\end{proof}
+
+
+\vspace{0.5em}
+\subsection{Exemples en petites dimensions}
+\vspace{0.5em}
+
+\begin{itemize}
+ \item $\O(1) = \{\pm 1\}$ et $\O^+(1) = \{1\}$,
+ \item $\U(1) = \S^1$ et $\S\U(1) = \{1\}$,
+ \item $\SO(2) \simeq \U(1)$
+\end{itemize}
+
+
+
+
+
+
+

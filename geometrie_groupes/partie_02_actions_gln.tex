@@ -1,0 +1,211 @@
+\section{Actions de $\mathbf{\GL(n,\K)}$ sur $\mathbf{\M(n,\K)}$}
+\vspace{0.5em}
+
+\subsection[Action par multiplication]{Action par multiplication à gauche et à
+droite}
+\vspace{0.5em}
+
+\subsubsection{Action par multiplication à gauche}
+\vspace{0.5em}
+
+\index{pivot de Gauss}\index{groupe classique!$\GL_n(\K)$}
+\index{groupe classique!$\M_n(\K)$}
+On va montrer qu'étudier l'orbite de l'action par multiplication à gauche
+revient à effectuer le pivot de Gauss.
+\begin{displaymath}
+ \begin{array}{rrcl}
+     f :&   \GL_n(\K) \times \M_n(\K) & \longrightarrow & \M_n \\
+        &(g,M)& \longmapsto & gM
+       \end{array}
+\end{displaymath}
+
+On définit l'ensemble $\{E_{ij}\}$ des matrices élémentaires de $\M_n(\K)$ par
+$(E_{ij})_{kl} = \delta_{ik} \delta_{jl} $.
+
+\begin{defi}[Matrices de transvection et de dilatation]
+\index{matrice!de transvection}\index{matrice!de dilatation}
+\index{transvection|see{matrice de transvection}}
+\index{dilatation|see{matrice de dilatation}}
+
+ Soient $i\neq j$ et $\lambda \in \K$.
+\begin{itemize}
+ \item $T_{ij}(\lambda) = I_n + \lambda E_{ij}$ est une matrice de transvection,
+ \item $D_i(\lambda) = I_n + (\lambda -1)E_{ii}$ est une matrice de dilatation
+($\lambda \neq 0$).
+\end{itemize}
+
+Ce sont en particulier des matrices inversibles.
+\end{defi}
+
+\begin{example}[Remarque]\ 
+\begin{itemize}
+ \item L'action de la transvection $T_{ij}$ sur une matrice $M$ revient à
+ajouter $\lambda$ fois la $j^{\text{ème}}$ ligne à la $i^{\text{ème}}$,
+ \item L'action de la dilatation $D_i$ sur une matrice $M$ revient à multiplier
+la $i^{\text{ème}}$ par $\lambda \neq 0$,
+ \item $D_j(-1) \circ T_{ij}(1) \circ T_{ji}(-1) \circ T_{ij}(-1)$ permet
+d'inverser les lignes $i$ et $j$. 
+\end{itemize}
+\end{example}
+
+
+\begin{defi}[Forme echelonnée réduite]
+
+Un matrice est dite sous forme échelonnée réduite si elle est de la forme
+suivante :
+ \begin{displaymath}\begin{pmatrix}
+0\ \cdots\              0  &1      &*\cdots *&0&*\cdots *&0&*\cdots *\\
+\ \vdots\ \cdots\ \vdots   &0      &0\cdots 0&1&*\cdots *&0&*\cdots *\\
+\ \vdots\ \cdots\ \vdots   &\vdots &\vdots\ \cdots\ \vdots&0&0\cdots 0&1&*\cdots
+*\\
+\ \vdots\ \cdots\ \vdots   &\vdots &\vdots\ \cdots\ \vdots&\vdots&\vdots\
+\cdots\  \vdots&0&0\cdots 0\\
+   \end{pmatrix} \end{displaymath}
+\end{defi}
+
+\begin{lemm}
+ 
+D'après les résultats sur le pivot de Gauss, dans chaque orbite de $\M_n(\K)$
+sous l'action de $\GL_n(\K)$ il y a une matrice sous forme échelonnée réduite.
+
+De plus cette matrice est unique dans chaque orbite.
+\end{lemm}
+
+\begin{proof}
+ 
+On commence par remarquer que les matrices d'une même orbite ont les mêmes
+noyaux.
+En effet, si $M\in \M_n(\K)$ et $g\in \GL_n(\K)$ alors :
+\begin{displaymath} x \in \Ker(gM) \Longleftrightarrow gM(x) = 0
+\Longleftrightarrow M(x) = 0
+\Longleftrightarrow x\in \Ker M\end{displaymath}
+
+On motre ensuite qu'il n'existe qu'une forme échelonnée réduite pour un certain
+noyau.
+\end{proof}
+
+\begin{coro}
+ 
+$M,M' \in \M_n(\K)$ sont dans la même orbite si et seulement si $\Ker M = \Ker
+M'$.
+\end{coro}
+
+\begin{coro}
+ 
+L'ensemble des orbites et en bijection avec l'ensemble des sous-espaces
+vectoriels de $\K^n$.
+\end{coro}
+
+
+\vspace{0.5em}
+\subsubsection{Action de $\mathbf{\GL_n(\K)\times\GL_n(\K)}$ sur
+$\mathbf{\M_n(\K)}$}
+\vspace{0.5em}
+
+\begin{displaymath}  \begin{array}{rrcl}
+     f :&   (\GL_n(\K)\times\GL_n(\K))\times\M_n(\K)&\longrightarrow&\M_n(\K) \\
+        &((g,h),M) &\longmapsto&gMh^{-1} \\
+       \end{array}\end{displaymath}
+
+On a vu que pour $M\in \M_n(\K)$, il existe $g\in \GL_n(\K)$ tel que $gM$ soit
+echelonnée réduite.
+
+On remarque que $T_{ij}^{-1}(\lambda) = T_{ij}(-\lambda)$ et que
+$D_i^{-1}(\lambda) = D_i(1/\lambda)$. De plus l'action par transvection et
+dilatation à droite revient à effectuer les opérations élémentaires sur les
+colonnes.
+
+Ainsi, par multiplication à droite, à partir d'une matrice échelonnée réduite,
+on obtient une matrice de la forme suivante :
+\begin{displaymath}\begin{pmatrix} I_r & 0 \\ 0 & 0
+\end{pmatrix}\end{displaymath}
+
+\begin{theo}
+
+Les orbites de $\M_n(\K)$ sous l'action de $\GL_n(\K)\times\GL_n(\K)$ est en
+bijection avec $\{1,\cdots,n\}$
+\end{theo}
+
+\begin{example}[Remarque]
+ Tout ceci est un exemple d'une théorie plus générale sur les groupes de Lie.
+\end{example}
+
+
+\subsection{Action par conjugaison}
+\vspace{0.5em}
+
+On considère l'action liée au changement de base :
+\begin{displaymath} \begin{array}{rrcl}
+   f:&   \GL_n(\K)\times \M_n(\K)&\longrightarrow&\M_n(\K) \\
+      &     (g,M)&\longmapsto&gMg^{-1} \\
+       \end{array}\end{displaymath}
+
+On peut voir cette action comme la restriction à la diagonale de l'action de
+$\GL_n(\K)\times\GL_n(\K)$. En particulier, le rang est encore un invariant.
+\begin{displaymath} \GL_n(\K) \simeq \{(g,g) \tq g \in \GL_n(\K)\}
+\hookrightarrow\GL_n(\K)\times\GL_n(\K)\end{displaymath}
+
+\begin{lemm}
+ 
+Le polynôme caractéristique est un invariant de l'action par conjugaison.
+\end{lemm}
+\begin{proof} Si $M \in \M_n(\K)$ son polynôme caractéristique est $\chi_M(X) =
+\det M-XI_n$. Si $g\in\GL_n(\K)$ alors :
+\begin{displaymath}\chi_{gMg^{-1}}(X) = \det (gMg^{-1} - XI_n) = \det
+\left(g\left(M-XI_n\right)g^{-1}\right) = \det g \cdotp \chi_M(X) \cdotp \det
+g^{-1} = \chi_M(X)\end{displaymath}
+\end{proof}
+
+\begin{lemm}
+ 
+Le polynôme minimal est un invariant de l'action par conjugaison.
+\end{lemm}
+
+\begin{proof}
+On rappelle que le  polynôme minimal $P_M$ de $M\in \M_n(\K)$ est le polynôme
+unitaire de degré minimal tel que $P_M(M)=0$.
+
+On remarque que pour $(g,M) \in \GL_n(\K) \times \M_n(\K)$ on a :
+\begin{displaymath}(gMg^{-1})^2 = gMg^{-1}gMg^{-1} = gM^2g^{-1} \quad \text{
+d'où }\quad \forall
+k \in \N, (gMg^{-1})^k = gM^kg^{-1} \end{displaymath}
+
+Ainsi pour tout polynôme $P$ on a $P(gMg^{-1}) = gP(M)g^{-1}$ et en particulier
+$P_M = P_{gMg^{-1}}$.
+\end{proof}
+
+
+\begin{example}[Remarque]
+Sur $\C$ tout polynôme est scindé, donc via le lemme des noyaux, toute matrice
+est trigonalisable.
+\end{example}
+
+\begin{theo}[Réduction de Jordan]
+
+L'ensemble des orbites de $\M_n(\C) / \GL_n(\C)$ est en bijection avec
+l'ensemble des matrices de la forme suivante (modulo permutation des blocs) :
+\begin{displaymath}\begin{pmatrix} J_{\lambda_1} & & 0 \\ & \ddots & \\ 0 & &
+J_{\lambda_k} 
+\end{pmatrix} \quad \text{ avec } \quad J_{\lambda_i} =\begin{pmatrix}
+\lambda_i & 1      &        & 0    \\
+          & \ddots & \ddots &      \\
+          &        & \ddots & 1    \\
+       0   &        &        & \lambda_i\\  \end{pmatrix}\end{displaymath}
+\end{theo}
+
+\begin{prop}
+ Les orbites de $\GL_2(\R)$ agissant sur $\M_2(\R)$ par conjugaison sont
+représentés par les matrices :
+\begin{align}
+&   \{\lambda \Id \tq \lambda \in \R\} \\
+& \left\lbrace\begin{pmatrix} \lambda & 0 \\ 0&  \mu \end{pmatrix} \Btq
+\lambda,\mu \in \R, \lambda \neq\mu \right\rbrace \\
+& \left\lbrace\begin{pmatrix} \lambda & 1 \\ 0&  \lambda \end{pmatrix} \Btq
+\lambda\in \R \right\rbrace \\
+& \left\lbrace\lambda R_\theta\tq \lambda\in \R, \theta \in \R \- \pi\Z
+\right\rbrace \text{ où } R_\theta = \begin{pmatrix}
+\cos \theta & \sin \theta \\ -\sin\theta & \cos\theta \end{pmatrix}
+\end{align}
+
+\end{prop}
+
