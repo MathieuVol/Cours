@@ -1,0 +1,866 @@
+
+\section{Groupes}
+\vspace{0.5em}
+
+\subsection{Groupes}
+\vspace{0.5em}
+
+\begin{defi}[Groupe]\index{groupe}\index{groupe!abélien}
+
+Un groupe est un ensemble $G$ muni d'une opération interne $\cdotp$ vérifiant :
+\begin{description}
+ \item [G1] $\cdotp$ est associative,
+ \item [G2] Il existe un élément neutre (notation : $1$ ou $e$),
+ \item [G3] Tout élément est inversible (notation : $x^{-1}$).
+\end{description}
+
+Si de plus la loi est commutative, on dit que le groupe est abélien, et on note
+la loi $+$, le neutre $0$, et l'inverse $-x$.
+\end{defi}
+
+\begin{defi}[Produit direct]\index{groupe!produit direct}
+
+Si $(G,\cdotp)$ et $(G',*)$ sont des groupes, on définit le groupe produit
+direct $(G\times G', \square)$ par : 
+\begin{displaymath}\begin{array}{rrcl}
+ \square : & (G\times G')\times(G\times G') & \longrightarrow & G\times G' \\
+& ((g,g') , (\gamma,\gamma')) &\longmapsto & (g\cdotp \gamma, g'*\gamma')
+ \end{array}\end{displaymath}
+
+\end{defi}
+
+\begin{prop}
+
+Soit $G$ un groupe, et $g\in G$.
+ \begin{itemize}
+  \item L'élément neutre est unique,
+  \item L'inverse de $g$ est unique.
+ \end{itemize}
+\end{prop}
+
+\subsection{Morphisme de groupes}
+\vspace{0.5em}
+
+\begin{defi}[Morphisme de groupe]\index{morphisme!de groupe}
+
+ Soient $(G,\cdotp)$ et $(G',*)$ deux groupes, et $\varphi : G \longrightarrow
+G'$. On dit que $\varphi$ est un morphisme de groupe, ou un homomorphisme si :
+\begin{displaymath} \forall g, \gamma \in G,\ \varphi(g\cdotp \gamma) =
+\varphi(g) *
+\varphi(\gamma)\end{displaymath}
+\end{defi}
+
+\begin{prop}
+ 
+L'image du neutre de $G$ est le neutre de $G'$.
+
+L'image de l'inverse d'un élément $g \in G$ est l'inverse de l'image de $g$.
+\end{prop}
+
+\begin{defi}
+\index{morphisme!de groupe!isomorphisme}
+\index{morphisme!de groupe!endomorphisme}
+\index{morphisme!de groupe!automorphisme}
+\begin{itemize}
+ \item Un isomorphisme est un morphisme bijectif.
+ \item Un endomorphisme est un morphisme d'un groupe dans lui-même.
+ \item Un automorphisme est un endomorphisme bijectif.
+\end{itemize}
+\end{defi}
+
+\begin{defi}[Ordre d'un groupe fini]\index{ordre!groupe fini}
+ 
+Si $G$ est un groupe fini, on appelle ordre du groupe et on note $\#G = |G| =
+\textnormal{o}(G)$ le nombre de ses éléments.
+\end{defi}
+
+\pagebreak
+
+\begin{defi}[Puissances]\index{puissance!élément d'un groupe}
+
+ Si $G$ est un groupe, et $x\in G$, on définit les puissances de $x$ pour $n
+\in \mathbb{N}^*$.
+\begin{align*}
+x^n &:=  \underbrace{x \cdots x}_{n\text{ fois}} &
+x^0 &:=  e_G &
+x^{-n} &:=  \underbrace{x^{-1} \cdots x^{-1}}_{n\text{ fois}}
+\end{align*}
+\end{defi}
+
+\begin{defi}[Ordre d'un élément]\index{ordre!élément}
+
+ Soit $x$ un élément d'un groupe $G$. S'il existe $k \in \mathbb{N}^*$ tel que
+$x^k = e$, on appelle ordre de $x$ et on note $|x| = \textnormal{o}(x)$, le plus
+petit des tels $k$.
+\end{defi}
+
+
+\subsection{Sous-groupes}
+\vspace{0.5em}
+
+\begin{defiprop}[Sous-groupe]\index{groupe!sous-groupe}
+
+ Soient $(G,\cdotp)$ un groupe, et $H$ un sous-ensemble non vide $G$.
+
+ Si $\forall x,y \in H,\ x^{-1}y\in H$, alors on dit que $H$ est un sous-groupe
+de $G$. On montre facilement que dans ce cas c'est un groupe pour la loi induite
+par celle de $G$. On note alors $H < G$.
+\end{defiprop}
+
+\begin{example}[Remarque]
+ On peut remplacer les conditions précédantes sur $H$ par :
+\begin{enumerate}
+ \item $e\in H$,
+ \item $\forall x,y\in H,\ xy \in H$,
+ \item $\forall x \in H,\ x^{-1} \in H$.
+\end{enumerate}
+\end{example}
+
+\begin{prop}[Intersection de sous-groupes]
+ 
+Un intersection quelconque de sous-groupes est encore un sous-groupe.
+\end{prop}
+
+\begin{defitheo}[Sous-groupe engendré]\index{groupe!sous-groupe!engendré}
+
+ Si $X$ est un sous-ensemble d'un groupe $G$, alors il existe un plus petit
+sous-groupe de $G$ qui contient $X$. On l'appelle sous-groupe engendré par $X$
+et on le note $<X>$.
+
+Si $X = \{g_1,\cdots,g_n\}$ est fini, on note $<X>\ =\ <g_1,\cdots,g_n>$.
+\end{defitheo}
+
+\begin{defi}[Mot sur $X$]\index{mot sur un sous-ensemble}
+ 
+Si $X$ est un sous-ensemble d'un groupe $G$, on définit l'ensemble des mots sur
+$X$ :
+\begin{displaymath} \{e\} \cup \Big\lbrace\omega = x_1^{e_1}\cdots x_n^{e_n} \in
+G \tq x_i \in
+X, e_i \in \lbrace-1,1\rbrace\Big\rbrace  \end{displaymath}
+\end{defi}
+
+\begin{theo}
+ 
+Si $X$ est un sous-ensemble d'un groupe $G$, alors :
+\begin{itemize}
+ \item Si $X = \emptyset$, alors $<X>\ =\ \{e\}$,
+ \item Sinon $<X>$ est l'ensemble des mots sur $X$.
+\end{itemize}
+\end{theo}
+
+\begin{example}[Cas particulier]\index{groupe!cylcique}
+ Si $X = \{a\} \subset G$ avec $a\in G$, alors $<X>\ =\ <a>$ est l'ensemble des
+puissances
+de $a$. On l'appelle le sous-groupe cyclique engendré par $a$.
+\end{example}
+
+\begin{defi}[Classes d'un sous-groupe]\index{groupe!sous-groupe!classe}
+
+ Soient $H < G$. Pour $g \in G$ on définit :
+\begin{itemize}
+ \item $gH = \{g h \tq h \in H\}$ la classe à gauche de $g$ modulo $H$,
+ \item $Hg = \{h g \tq h \in H\}$ la classe à droite de $g$ modulo $H$.
+\end{itemize}
+\end{defi}
+
+\begin{example}[Remarque]
+ En général un classe ne contient pas le neutre et n'est donc pas un
+sous-groupe.
+\end{example}
+
+\begin{lemm}
+
+ Soient $H < G$ et $a,b \in G$.
+\begin{itemize}
+ \item $aH = bH \Leftrightarrow a^{-1}b\in H$,
+ \item $Ha = Hb \Leftrightarrow ab^{-1}\in H$,
+ \item $aH = bH$ ou bien $aH \cap bH = \emptyset$.
+\end{itemize}
+\end{lemm}
+
+% BUG ?
+%\pagebreak
+
+\begin{theo}[Lagrange]\index{Lagrange, théorème de}
+
+ Si $H < G$ avec $G$ fini, alors l'ordre de $H$ divise celui de $G$ :
+ $ |H| \ \Big|\ |G| $
+\end{theo}
+
+
+\begin{coro}
+
+ Le nombre de classes à gauche est égal au nombre de classes à droite.
+\end{coro}
+
+\begin{defi}[Indice d'un sous-groupe]\index{groupe!sous-groupe!indice}
+
+ L'indice $[G:H]$ d'un sous-groupe $H$ est le nombre de classes modulo $H$ :
+\begin{displaymath} |G| = [G:H]\,\cdotp |H| \end{displaymath}
+et si $G$ est fini :
+\begin{displaymath} [G:H] = \dfrac{|G|}{|H|} \end{displaymath}
+\end{defi}
+
+\begin{coro}
+\begin{itemize}
+ \item Si $G$ est un groupe fini d'ordre premier, ses seuls sous-groupes sont
+le groupe trivial et lui même.
+ \item Si $G$ est un groupe fini, l'ordre de tout élément divise l'ordre du
+groupe.
+\end{itemize}
+\end{coro}
+
+\begin{example}[Remarque]
+Tout groupe fini d'ordre premier est cyclique et
+abélien (car engendré par chacun des éléments différents du neutre).
+\end{example}
+
+\begin{prop}[Sous-groupes noyau et image]
+\index{morphisme!de groupe!noyau et image}
+ 
+Si $\varphi$ est un homomorphisme entre les groupes $G$ et $G'$, alors :
+\begin{itemize}
+ \item $\Ker \varphi$ est un sous-groupe de $G$,
+ \item $\Ima \varphi$ est un sous-groupe de $G'$.
+\end{itemize}
+\end{prop}
+
+
+\begin{prop}[Caractérisation de l'injectivité d'un morphisme]
+ 
+Si $\varphi$ est un homomorphisme entre les groupes $G$ et $G'$, alors
+$\varphi$ est injective si et seulement si $\Ker \varphi = \{e_G\}$.
+\end{prop}
+
+\begin{proof}\ 
+
+ Si $\varphi$ est injective, assez clairement $\Ker \varphi = \{e_G\}$.
+
+ Réciproquement on suppose que $\Ker \varphi = \{e_G\}$ et on considère $x,y\in
+G, \varphi(x) = \varphi(y)$. Alors $\varphi(x) \varphi(y)^{-1}= \varphi(x)
+\varphi(y^{-1})= \varphi(xy^{-1}) = e_{G'}$ donc $xy^{-1} = e_{G'}$ d'où $x=y$.
+\end{proof}
+
+
+\subsection[Le groupe symétrique]{Le groupe symétrique $\S_X$}
+\vspace{0.5em}
+
+\begin{defi}[Groupe symétrique de $X$]
+\index{groupe!groupe symétrique}
+\index{permutation}
+ 
+Soit $X$ un ensemble non vide. L'ensemble $\mathcal{S}_X$ des permutations de
+$X$ (ie : des bijections de $X$ dans lui même) est appelé le groupe symétrique
+de $X$.
+
+Si $\#X = n \in \mathbb{N}^*$, on identifie $\mathcal{S}_X$ avec $\mathcal{S}_n
+:= \mathcal{S}_{[1\cdots n]}$.
+\end{defi}
+
+\begin{defi}[Fixer - déplacer] 
+
+Si $x\in X$ et $\alpha \in \mathcal{S}_X$, on dit que $\alpha$ fixe, ou
+stabilise, $x$ si $x = \alpha(x)$. Sinon on dit que $\alpha$ déplace $x$.
+\end{defi}
+
+\begin{defi}[Cycle - Transposition]
+\index{permutation!transposition}
+\index{permutation!cycle}
+
+On dit que $\alpha \in \mathcal{S}_X$ est un $r$-cycle si il existe
+$\{i_1,\cdots,i_r\} \subset X$ tels que $\alpha$ fixe $X\-
+\{i_1,\cdots,i_r\}$ et $\forall j \in [1,r-1],\ \alpha (i_j) = i_{j+1}$ et
+$\alpha(i_r) = i_1$.
+
+Un $2$-cycle est appelé une transposition.
+\end{defi}
+
+\begin{defi}[Permutations disjointes]
+ 
+Deux permutations sont dites disjointes si leurs supports sont disjoints.
+\end{defi}
+
+\begin{lemm}
+ 
+Deux cycles disjoints commutent.
+\end{lemm}
+
+\begin{theo}[Décomposition en produits de cycles disjoints]
+\index{permutation!décomposition en cycles disjoints}
+ 
+Toute permutation se décompose en produit de cycles disjoints. Une telle
+factorisation est unique à permutation des cycles près.
+\end{theo}
+
+\begin{coro}
+ 
+Toute permutation se décompose en produit de transpositions. Cette
+décomposition n'est en général pas unique.
+\end{coro}
+
+\begin{defitheo}\index{permutation!signature}
+ 
+Il existe une application $\varepsilon : \mathcal{S}_n \longrightarrow
+\{-1,1\}$,
+appelée signature telle que :
+\begin{enumerate}
+ \item Si $\tau$ est une transposition, $\varepsilon(\tau) = -1$,
+ \item $\forall s,\ \sigma \in \mathcal{S}_n,
+\varepsilon(\tau \circ \sigma) = \varepsilon(s)\varepsilon(\sigma)$.
+\end{enumerate}
+
+On dit qu'une permutation est paire si sa signature est $1$, et qu'elle est
+impaire sinon.
+\end{defitheo}
+
+
+\subsection{Conjugaison}
+\vspace{0.5em}
+
+\begin{defi}[Conjugué de $x$]\index{conjugaison}
+
+ Soient $x,y \in G$. On dit que $y$ est un conjugué de $x$ s'il existe $a \in
+G$ tel que $y = axa^{-1}$.
+\end{defi}
+
+\begin{prop}
+
+ La relation d'être conjugué à un élément fixé est une relation d'equivalence.
+\end{prop}
+
+\begin{example}[Remarque]
+Si $x$ est seul dans sa classe de conjugaison, alors $\forall a \in G, axa^{-1}
+= x$ donc $ax = xa$, ie : $x$ commute avec tous les éléments de $G$.
+\end{example}
+
+\begin{defi}[Centre d'un groupe]
+\index{groupe!centre}
+ 
+Le centre d'un groupe $G$, noté $\Zen(G)$, est l'ensemble des éléments qui
+commutent avec tous les autres :
+\begin{displaymath} \Zen(G) := \{g\in G \tq \forall \gamma \in G,\ g\gamma =
+\gamma g\} \end{displaymath}
+\end{defi}
+
+\begin{defi}[Centralisateur d'un élément]
+\index{groupe!centralisateur}
+ 
+Le centralisateur de $x \in G$, noté $\Cen_G(x)$, est l'ensemble des éléments
+qui commutent avec $x$.
+\begin{displaymath} \Cen_G(x) := \{\gamma \in G \tq \gamma x = x \gamma \}
+\end{displaymath}
+\end{defi}
+
+\begin{prop}
+ 
+$\Cen_G(x)$ est un sous-groupe de $G$.
+\end{prop}
+
+\begin{theo}
+
+ Le nombre des éléments conjugués à $x\in G$ est $[G:\Cen_G(x)]$.
+
+En particulier si $G$ est fini, ce nombre divise $|G|$.
+\end{theo}
+
+\begin{proof}
+Soit $x$ fixé. Soient $a,b \in G$, alors :
+\begin{displaymath}
+ (axa^{-1} = bxb^{-1})
+\Leftrightarrow (b^{-1}axa^{-1}b = x) \Leftrightarrow (b^{-1}a \in
+\Cen_G(x)) \Leftrightarrow (a\Cen_G(x) = b\Cen_G(x))
+\end{displaymath}
+Il y a donc une
+bijection entre les classes à gauche modulo $\Cen_G(x)$ et les conjugués de $x$.
+\end{proof}
+
+\begin{defi}[Equation aux classes]\index{equation aux classe@équation aux
+classe}
+ 
+Si $G$ est un groupe fini, son équation aux classes est :
+\begin{displaymath} |G| = |\Zen(G)| + \sum_{x_i} [G : \Cen_G(x_i)]
+\end{displaymath}
+où l'on choisit un représentant $x_i$ par classe d'équivalence.
+\end{defi}
+
+\begin{defi}[Sous-groupe distingué]\index{groupe!sous-groupe!distingué}
+ 
+On dit qu'un sous-groupe $H$ de $G$ est distingué (ou normal) dans $G$, et on
+note $H \< G$, s'il est stable par conjugaison :
+\begin{displaymath} \forall g\in G,\ gHg^{-1} \subset H \end{displaymath}
+\end{defi}
+
+\begin{prop}
+ 
+Si $H$ est un sous-groupe distingué de $G$, les classes à droite coïncident
+avec les classes à gauche, ie : $\forall g\in G,\ gH = Hg$. De plus on a
+l'égalité $\forall g\in G,\ gHg^{-1} = H$.
+\end{prop}
+
+\begin{prop}[Intersection de sous-groupes distingués]
+ 
+L'intersection de sous-groupes distingués de $G$ est un groupe distingué de $G$.
+\end{prop}
+
+\begin{defitheo}[Normalisateur]\index{groupe!normalisateur}
+ 
+Si $H$ est un sous-ensemble d'un groupe $G$, on définit $\Nor_H$ le
+normalisateur de $H$ :
+\begin{displaymath}\Nor_H := \{x\in G \tq xHx^{-1} = H\} \end{displaymath}
+
+Alors $\Nor_H$ est un sous-groupe de $G$. Si de plus $H$ est un groupe, alors
+$\Nor_H$ est distingué.
+
+Le normalisateur est le plus grand sous-groupe tel que $H \< \Nor_H$.
+\end{defitheo}
+
+\begin{prop}
+ 
+Si $K < \Nor_H$, alors $H \< KH < G$.
+\end{prop}
+
+
+\subsection[Théorèmes d'isomorphisme]{Les trois théorèmes d'isomorphisme}
+\vspace{0.5em}
+
+
+\begin{defi}[Groupe quotient]
+\index{groupe!quotient}
+ 
+Si $H\<G$, on note $G/H$ l'ensemble des classes modulo $H$. Alors $G/H$ hérite
+d'une structure de groupe.
+\end{defi}
+
+\begin{proof}
+ On définit le produit suivant : $(xH)\cdotp (yH) := (x y)H$. On vérifie
+alors facilement que les axiomes sont vérifiés.
+\end{proof}
+
+\begin{theo}[Noyau et groupe distingué]
+\index{groupe!sous-groupe!distingué}
+ 
+$H$ est un sous-groupe distingué de $G$ si et seulement si $H$ est le noyau
+d'un morphisme de groupe.
+\end{theo}
+
+\begin{proof}
+On a déjà vu qu'un noyau est distingué. Et réciproquement, on
+construit :\\ $\varphi : G \owns x \mapsto xH \in G/H$.
+\end{proof}
+
+\begin{theo}[Premier théorème d'isomorphisme]
+\index{isomorphisme, théorème!premier théorème}
+
+ Si $\varphi : G \longrightarrow G'$ est un homomorphisme entre les groupes $G$
+et $G'$, alors :
+\begin{displaymath} G/\Ker\varphi \simeq \Ima \varphi \end{displaymath}
+\end{theo}
+
+\begin{proof}\ 
+
+\setlength{\unitlength}{1em}
+\begin{picture}(15,7)
+\put(3.5,5.5){$G$}
+\put(5,6){\vector(1,0){3}}
+\put(6,6.5){$\varphi$}
+\put(8.5,5.5){$G'$}
+
+\put(0,0.5){$G/\Ker\varphi$}
+\put(5,0.5){\vector(1,0){3}}
+\put(6,1){$\tilde{\varphi}$}
+\put(8.5,0.5){$\Ima\varphi$}
+
+\put(4,5){\vector(0,-1){3}}
+\put(3,3){$\pi$}
+
+\put(9,2){\vector(0,1){3}}
+\put(9.5,3){$i$}
+
+\put(12,5){$\pi$ est la projection canonique}
+\put(12,3.5){$i$ est l'injection canonique}
+\put(12,2){$\tilde{\varphi} : G/\Ker\varphi \owns x\Ker\varphi
+\longmapsto \varphi(x) \in \Ima\varphi$}
+\end{picture}
+
+On montre que $\tilde{\varphi}$ est un isomorphisme :
+\begin{itemize}
+ \item $\tilde{\varphi}((x\Ker\varphi)(y\Ker\varphi)) =
+\tilde{\varphi}((xy)\Ker\varphi) = \varphi(x)\varphi(y) =
+\tilde{\varphi}(x\Ker\varphi)\tilde{\varphi}(y\Ker\varphi)$
+\item $\Ker\tilde{\varphi} = \Ker\varphi = e_{G/\Ker\varphi}$
+\end{itemize}
+\end{proof}
+
+\begin{theo}[Troisième théorème d'isomorphisme]
+\index{isomorphisme, théorème!troisième théorème}
+
+ Soient $G$ un groupe et $K\<H\<G$. Alors :
+\begin{equation*}
+ H/K \< G/K \quad \text{ et } \quad 
+(G/K) \big/ (H/K) \simeq G/H
+\end{equation*}
+\end{theo}
+
+\begin{theo}[Deuxième théorème d'isomorphisme]
+\index{isomorphisme, théorème!deuxième théorème}
+
+Soient $G$ un groupe, $H<G$, et $K < G$. On suppose $H\subset \Nor_K$ (ce qui
+est en particulier le cas si $H\<G$). Alors :
+\begin{enumerate}
+ \item \begin{displaymath}H\cap K \< H\quad \text{ et } \quad HK = KH <
+G\end{displaymath}
+ \item \begin{displaymath}H\big/(H\cap K) \simeq (KH)\big/K\end{displaymath}
+\end{enumerate}
+\end{theo}
+
+\begin{defi}[Suite exacte]\index{groupe!sous-groupe!suite exacte}
+ 
+Soient $(G_1,\cdots,G_n)$ des groupes et $(f_1,\cdots,f_{n-1})$ des morphismes
+tels que $f_i : G_i \longrightarrow G_{i+1}$. On dit que cette suite est exacte
+si pour chaque $i$ : 
+\begin{displaymath} \Ima f_i = \Ker f_{i+1} \end{displaymath}
+\end{defi}
+
+
+\begin{defi}[Groupe résoluble]
+\index{groupe!résoluble}
+
+Un groupe $G$ est dit résoluble s'il existe une suite finie :
+\begin{displaymath}G = G_0 \> G_1 \> \cdots \> G_n = \{e\}\end{displaymath}
+telle que pour chaque $i$, $G_{i-1}/G_i$ soit abélien.
+Dans ce cas une telle suite est appelée suite de résolubilité. 
+\end{defi}
+
+
+\begin{theo}[Théorème de correspondance]
+\index{correspondance, théorème de}
+ 
+Soient $K \< G$ et $\pi : G \longrightarrow G/K$. Alors $\pi$ définit une
+correspondance entre les sous-groupes de $G$ qui contiennent $K$ et les
+sous-groupes de $G/K$. En notant $S^*$ le sous-groupe de $G/K$ correspondant au
+sous-groupe $S$ de $G$, on a :
+\begin{enumerate}
+ \item $S^* \simeq S/K \simeq \pi(S)$,
+ \item $T \subset S \subset K \Leftrightarrow T^* \subset S^*$,
+ \item $T \< S \Leftrightarrow T^* \< S^*$, et $S/T \simeq S^*/T^*$.
+\end{enumerate}
+
+\end{theo}
+\begin{center}
+\setlength{\unitlength}{1em}
+\begin{picture}(10,6)
+\put(0.5,0.5){$K$}
+\put(2,2.5){$S$}
+\put(3.5,4.5){$G$}
+
+\put(7.5,0.5){$\{e\}$}
+\put(9,2.5){$S^*\simeq S/K$}
+\put(10.5,4.5){$G/K$}
+
+\put(2.5,1){\vector(1,0){4}}
+\put(4,3){\vector(1,0){4}}
+\put(5.5,5){\vector(1,0){4}}
+
+\put(2.5,1){\line(3,4){3}}
+\put(6.5,1){\line(3,4){3}}
+\end{picture}
+\end{center}
+
+\begin{theo}[Caractérisation d'un groupe résoluble]
+
+Si $H\<G$, alors $G$ est résoluble si et seulement si $H$ et $G/H$ le sont.
+\end{theo}
+
+
+\begin{defi}[Groupe simple]
+\index{groupe!simple}
+ 
+Un groupe est dit simple s'il n'est pas trivial, et qu'il ne contient aucun
+sous-groupe distingué propre (ie : différent de $G$).
+\end{defi}
+
+
+\begin{theo}
+ 
+Soit $G$ contenant deux sous-groupes distingués $H$ et $K$ avec $H\cap K =
+\emptyset$ et $HK = G$. Alors $G \simeq H\times K$.
+\end{theo}
+
+
+\begin{theo}
+
+ Soit $G = H\times K$ avec $H,K < G$. Soient $H_1 < H$ et $K_1 < K$. Alors :
+\begin{enumerate}
+ \item $H_1\times K_1 \< H/K$
+ \item $G / (H_1 \times K_1) \simeq (H/H_1) \times (K/K_1)$
+\end{enumerate}
+\end{theo}
+
+\begin{proof}\ 
+
+On définit les projections :
+\begin{equation*}
+\pi_1 : 
+\begin{array}{rcl}
+G     & \longrightarrow & H/H_1 \\
+(h,k) & \longmapsto     & hH_1 =: \overline{h}
+\end{array}
+\text{ , } \pi_2 : 
+\begin{array}{rcl}
+G     & \longrightarrow & K/K_1 \\
+(h,k) & \longmapsto     & kK_1 =: \overline{k}
+\end{array}
+\end{equation*}
+
+Et on considère :
+\begin{equation*}
+\varphi : 
+\begin{array}{rcl}
+G     & \longrightarrow & (H/H_1) \times (K/K_1) \\
+(h,k) & \longmapsto     & (\pi_1(h,k), \pi_2(h,k)) =:
+(\overline{h},\overline{k})
+\end{array}
+\end{equation*}
+
+Comme $\pi_1$ et $\pi_2$ sont des homomorphismes, $\varphi$ est aussi un
+homomorphisme. De plus :
+\begin{equation*}
+\begin{array}{rl}
+ \Ima\varphi =& (H/H_1) \times (K/K_1) \\
+ \Ker\varphi=& H_1 \times K_1
+\end{array}
+\end{equation*}
+
+On peut ainsi conclure par le premier théorème d'isomorphisme.
+
+Le premier point du théorème se démontre facilement.
+\end{proof}
+
+\begin{example}[Application]
+ Si $G = H\times K$, on a $G/(H\times \{e\}) \simeq K$.
+\end{example}
+
+\subsection{Actions de groupes}
+\vspace{0.5em}
+
+\begin{defi}[Action d'un groupe $G$ sur un ensemble $X$]
+\index{action d'un groupe}
+
+ On dit que $G$ agit sur $X$ s'il existe une fonction $\cdotp$ telle que :
+
+\begin{enumerate}
+ \item $  \begin{array}{rrcl}
+         \cdotp \: :&  G\times X& \longrightarrow & X \\
+      &     (g,x)    & \longmapsto     & g\cdotp x
+          \end{array}       $
+ \item $\forall g,h \in G,\ \forall x \in X,\ g\cdotp(h\cdotp x) = (gh)\cdotp x$
+ \item $\forall x \in X,\ e\cdotp x = x$
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Remarque]
+ Il existe toujours une action triviale telle que $\forall g\in G,\ \forall x
+\in X,\ g\cdotp x = x$.
+\end{example}
+\begin{example}[Autre point de vue]
+Une action peut également être vue comme un homomorphisme entre $G$ et
+$\mathcal{S}_X$.
+\begin{displaymath}
+ \begin{array}{rrclrcl}
+             \varphi :&G &\longrightarrow&\mathcal{S}_X & & & \\
+ &  g &\longmapsto & \varphi(g) : & X &\longrightarrow& X \\
+ &    &            &              & x &\longmapsto    & \varphi(g)(x) = g\cdotp
+x
+ \end{array}
+\end{displaymath}
+
+\end{example}
+
+\begin{defi}[Action transitive]\index{action!transitive}
+
+ On dit que $G$ agit transitivement sur $X$ si :
+\begin{displaymath}\forall x,y \in X,\ \exists g\in
+G,\ g\cdotp x = y\end{displaymath}
+\end{defi}
+
+\begin{defi}[Action fidèle]\index{action fidèle}
+
+ On dit que $G$ agit fidèlement sur $X$ si :
+\begin{displaymath}\forall g\in G, \left[ (\forall x \in X, g\cdotp x = x)
+\Rightarrow (g =
+e) \right] \end{displaymath}
+\end{defi}
+
+\begin{example}[Remarques] \ 
+ \begin{itemize}
+  \item Avec le second point de vue, une action est fidèle si et seulement si
+$\Ker\varphi = \{e\}$, ie : $\varphi$ injective.
+ \item Si $G$ n'agit pas fidèlement, on peut quotienter par $\Ker(\varphi)$
+pour obtenir une action fidèle.
+ \item Si $G$ n'agit pas transitivement, on peut introduire la relation
+d'équivalence suivante :
+\begin{displaymath} x\mathcal{R}y \Longleftrightarrow \exists g \in G, g\cdotp x
+= y \end{displaymath}
+Les classes d'équivalences sont appellée les orbites. Pour $x \in X$ on note
+$\omega (x) := \{g\cdotp x \tq g\in G\}$ son orbite.\index{orbite}
+ \end{itemize}
+\end{example}
+
+\begin{example}[Exemples]\ 
+\begin{enumerate}
+  \item $\GL_n(\R)$ agit transitivement sur $\R^n\-\{0\}$. En
+particulier, il n'y a qu'une seule orbite qui est $\R^n\-\{0\}$.
+  \item On rappelle que $\O(n) := \{M\in \GL_n (\R) \tq \t MM = \Id_n\}$. Les
+orbites de $\O(n)$ sont les sphères centrées en l'origine.
+ \end{enumerate}
+\end{example}
+
+\begin{defi}[Stabilisateur de $x$ dans $G$]\index{groupe!stabilisateur}
+
+ Soient $G$ agissant sur $X$ et $x \in X$. On appelle stabilisateur de $x$ dans
+$G$ l'ensemble :
+\begin{displaymath} \Stab_G(x) := \{g\in G \tq g\cdotp x = x\} \end{displaymath}
+\end{defi}
+
+\begin{prop}[Stabilisateur]
+
+ Le stabilisateur de tout élément de $X$ est un sous-groupe de $G$.
+\end{prop}
+
+\begin{proof}
+ Vérifier chaque axiome.
+\end{proof}
+
+\begin{prop}[Stabilisateur - Orbite]
+
+ L'application suivante est une bijection :
+\begin{displaymath}  \begin{array}{rrcl}
+             \varphi :& G/(\Stab_G(x)) &\longrightarrow& \omega (x) \\
+           &   \overline{g}   &\longmapsto    &g\cdotp x
+             \end{array} \end{displaymath}
+\end{prop}
+
+\begin{proof}\ 
+
+ On commence par montrer que $\varphi$ est bien définie.
+Soient $g,g' \in G$ tels que $g^{-1}g' \in \Stab_G (x)$. Alors $g\Stab_G(x) =
+g'\Stab_G(x)$ donc $(g^{-1}g')\cdotp x = x $ et $ g' \cdotp x = g
+\cdotp x$. Ainsi les éléments d'une même classe modulo le stabilisateur
+agissent de la même manière sur $X$.
+
+La surjectivité étant évidente, il reste à montrer l'injectivité. Soient $g,g'
+\in G$ tels que $g\cdotp x = g' \cdotp x$. Alors $x = (g^{-1}g')\cdotp x$ et
+$(g^{-1}g') \in \Stab_G(x)$. Ainsi si deux éléments agissent de la même manière
+sur $X$, alors ils sont dans la même classe d'équivalence.
+\end{proof}
+
+\begin{example}[Remarque]
+ Si $G$ est fini, on a $|\omega(x)| = |G| / |\Stab_G(x)|$.
+\end{example}
+
+\begin{example}[Exemples]
+\begin{itemize}
+\item Soit $H < G$ tel que $H$ agit sur $G$ par multiplication à gauche. Alors
+$\omega (x) = Hx$ et $\Stab_H(x) = \{e\}$.
+ 
+\item $G$ agit sur $G$ par conjugaison, ie : $g\cdotp x = gxg^{-1}$. Les orbites
+sont alors les classes de conjugaison et $\Stab_G(x) = \Cen_x$ car $(gxg^{-1} =
+x) \Leftrightarrow (gx = xg)$. Le nombre de conjugués est $|\omega(x)| =
+[G:\Cen_x] = |G| / |\Cen_x|$ si $G$ est fini.
+\end{itemize} \end{example}
+
+\begin{theo}[Cayley - 1878]
+\index{Cayley, théorème de}
+
+ Soit $G$ un groupe. Alors :
+\begin{itemize}
+ \item $G$ s'injecte dans $\mathcal{S}_G$.
+ \item Si $G$ est fini, $|G| = n$, alors $G$ est isomorphe à un sous-groupe de
+$\mathcal{S}_n$.
+\end{itemize}
+\end{theo}
+
+\begin{prop}
+
+ Pour $n \geq 5$, les cycles de longueur 3 sont conjugués dans $A_n$.
+\end{prop}
+
+\begin{lemm}
+
+ Le groupe $A_n$ est $(n-2)$ transitif sur $(1,\cdots,n)$.
+
+ Cela signifie que l'on choisit $n-2$ éléments que l'on envoie transitivement
+sur $n$ éléments. Si $a_1, \cdots , a_{n-2}$ sont distincts et $b_1,
+\cdots,b_{n-2}$ aussi, alors : 
+\begin{displaymath} \exists \sigma \in A_n,\ \forall i \in [ 1, n-2],\ \sigma
+(a_i) =
+b_i \end{displaymath}
+\end{lemm}
+
+\begin{proof}
+ Si la permutation $\sigma' \in S_n$ qui envoie chaque $a_i$ sur $b_i$ est dans
+$A_n$ il n'y a rien à montrer. Sinon on considère $\tau = (a_{n-1},a_n)$ et
+ainsi $\sigma' \circ \tau =: \sigma$ convient.
+\end{proof}
+
+\begin{example}[Exemple]
+ Soit $H < G$ et $G/H$ les classes à gauche modulo $H$.
+
+$G$ agit sur $G/H$ par $g\cdotp (aH) = (ga)H$. Cette action est transitive mais
+elle n'est en général pas fidèle. Si $\varphi : G \longrightarrow
+\mathcal{S}_{G/H}$, alors $\Ker (\varphi) = \cup_{a\in G} aHa^{-1}$.
+
+En particulier, $G/\Stab_G(x) \simeq \omega(x)$ par une seule bijection et donc
+l'action de $G$ sur $\omega(x)$ ne peut être que l'action naturelle de $G$ sur
+$G/\Stab_G(x)$.
+\end{example}
+
+\begin{prop}[Application]
+
+ Si $G$ est un groupe infini, $H < G$, $H\neq G$, et $[G:H] = n < \infty$,
+alors $G$ n'est pas simple.
+\end{prop}
+
+\begin{proof}
+ $G$ agit sur $G/H$ d'où un homomorphisme $\varphi : G \longrightarrow
+\mathcal{S}_{G/H} \simeq \mathcal{S}_n$ dont le noyau est un sous-groupe
+distingué de $G$ qui ne peut être $\{e\}$ car $G$ est infini.
+\end{proof}
+
+\begin{example}
+ Si $X$ est l'ensemble des sous-groupes d'un groupe $G$, on peut faire agir $G$
+sur $X$ par automorphisme intérieur (ie : par conjugaison).
+
+Si $H\in X, g \in G, g\cdotp H = ghg^{-1}$. Le stabilisateur de $H$ est alors
+son normalisateur.
+\end{example}
+
+\subsection{Groupe abélien de type fini}
+\vspace{0.5em}
+
+\begin{defi}[Groupe abélien de type fini]\index{groupe!abélien de type fini}
+
+ Un groupe abélien est dit de type fini s'il existe une famille finie
+$(g_1,\cdots,g_n)$ qui l'engendre, ie : $G=\ <g_1, \cdots,g_n >$.
+\end{defi}
+
+\begin{example}[Remarque]
+ On note $\Z^n := \Z \times \cdots \times \Z =: \Z \oplus \cdots \oplus \Z$
+et on définit l'homomorphisme surjectif :
+\begin{displaymath} \begin{array}{rrcl}
+           \varphi :&  \Z^n &\longrightarrow& G \\
+         &   (z_1,\cdots,z_n) &\longmapsto& z_1g_1 + z_2g_2 + \cdots z_ng_n  
+           \end{array}\end{displaymath}
+\end{example}
+
+\begin{theo}[Classification des groupes abéliens de type fini]
+
+ $G$ est un groupe abélien de type fini si et seulement si :
+\begin{displaymath}G \simeq {}^\Z / _{d_1 \Z} \oplus \cdots \oplus
+{}^\Z/_{d_k\Z} \oplus \Z \oplus \cdots
+\oplus \Z \end{displaymath}
+
+Où pour chaque $i$ on a $d_i > 0$ et $d_i \mid d_{i+1}$
+\end{theo}
+
+

@@ -1,0 +1,1397 @@
+\section{Anneaux}
+\vspace{0.5em}
+
+\subsection{Définitons}
+\vspace{0.5em}
+
+\begin{defi}[Anneau]
+\index{anneau}
+
+ Soit $A$ un ensemble et soient $+$ et $\cdotp$ deux lois internes. Le triplet
+$(A,+,\cdotp)$ est un anneau si :
+\begin{description}
+ \item [A1] $(A,+)$ est un groupe commutatif (dont le neutre est noté $0$),
+ \item [A2] $(A,\cdotp)$ est un monoïde, ie :
+       \begin{enumerate}
+        \item $\exists 1 \in A,\ \forall a\in A,\ 1\cdotp a = a = a \cdotp 1$,
+        \item la loi $\cdotp$ est associative. 
+       \end{enumerate}
+ \item [A3] La loi $\cdotp$ est distributive par rapport à la loi $+$, ie :
+$\forall
+a,b,c \in A$ :
+       \begin{enumerate}
+       \item $a \cdotp (b+c) = (a\cdotp b) + (a\cdotp c)$,
+       \item $(b+c) \cdotp a = (b\cdotp a) + (c\cdotp a)$.
+       \end{enumerate}
+\end{description}
+
+Si la loi $\cdotp$ est commutative, on dit que l'anneau est commutatif.
+\index{anneau commutatif}
+
+Si $(A\-\{0\}, \cdotp)$ est un groupe, on dit que c'est un corps.
+\index{corps}
+\end{defi}
+
+\begin{example}[Exemples]\ 
+
+\begin{enumerate}
+ \item L'anneau trivial $(\{0,1\},+,\cdotp)$, qui est même un corps.
+\item $\Z, \R, \mathbb{C}$ sont des anneaux munis des lois habituelles.
+\item $(\Z / n\Z, +,\cdotp)$ sont des anneaux pour $n > 1$, ce sont des corps
+pour $n$ premier.
+\item On peut définir l'anneau des fonctions $\mathcal{A}(X,A) =
+\{f:X\rightarrow A\}$ où $A$ est un
+anneau et $X$ un ensemble.
+\item Les suites à valeurs dans $\R, \Z,$ ou $ \mathbb{C}$.
+\item Les fonctions de $\R$ à valeurs dans $\R, \Z,$ ou $\mathbb{C}$.
+\item Les matrices carrés de taille $n$ à coefficients dans un anneau (ce n'est
+pas un anneau commutatif).
+\item \begin{displaymath}
+       \mathcal{Q} := \left\lbrace \begin{pmatrix}
+                               \alpha & -\overline{\beta} \\
+                               \beta  & \overline{\alpha}
+                              \end{pmatrix} \ \Big|\  \alpha,\beta
+\in\mathbb{C} \right\rbrace \text{ est le corps (non commutatif) des
+quaternions.}
+      \end{displaymath}
+\item Si $A$ et $B$ sont des anneaux, on peut considérer l'anneau produit
+direct $A\times B$.
+\item Si $A$ est un anneau, on définit $A[X]$ :
+ \begin{enumerate}
+  \item comme l'ensemble des suites à  valeurs dans $A$ qui s'annulent à partir
+  d'un certain rang,
+  \item  ou bien comme  l'ensemble des polynômes à une indéterminée
+  $X$ et à coefficients dans $A$.
+  \end{enumerate}
+On identifie alors $X^k$ avec $(\underbrace{0,\cdots,0}_{k},1,0,\cdots)$.
+
+La multiplication suivante garantie la distributivité : $aX^k \cdotp bX^l =
+(ab)X^{k+l}$.
+\item Si $A$ est un anneau, on définit $A\left[\left[X\right]\right]$ :
+ \begin{enumerate}
+  \item comme l'ensemble des suites à  valeurs dans $A$,
+  \item  ou bien comme l'ensemble des séries formelles à coefficients
+dans $A$,
+  
+ie : $A[[X]] := \left\lbrace\sum_{k\in\mathbb{N}}a_kX^k \tq \forall k \in
+\mathbb{N},
+a_k \in A\right\rbrace$.
+  \end{enumerate}
+\end{enumerate}
+\end{example}
+
+\begin{example}[Remarques]
+
+ On montre facilement que $\forall x,y \in A$ :
+\begin{itemize}
+ \item $x\cdotp 0 = 0  = 0\cdotp x$
+ \item $(-1)\cdotp x = -x = x \cdotp (-1)$
+ \item $(-x)\cdotp y  = -(x\cdotp y) = x \cdotp (-y)$
+ \item $(-x) \cdotp (-y) = x\cdotp y$
+\end{itemize}
+\end{example}
+
+\begin{defi}[Inversible - Diviseur de zéro]
+\index{inversible}\index{diviseur de zéro}
+\begin{itemize}
+ \item Un élément d'un anneau sera dit inversible s'il est inversible pour la
+multiplication.
+\item On appelle diviseur de zéro un élément $x \neq 0$ tel qu'il existe $y\neq
+0$ tel que $xy = 0 = yx$.
+\item 
+On notera $A\x$ l'ensemble des éléments inversibles de $A$.
+\end{itemize}
+\end{defi}
+
+\begin{example}[Remarque]
+ $A\x$ est un groupe pour la multiplication. Ainsi, $A$ est un corps si et
+seulement si $A\x = A\-\{0\}$.
+\end{example}
+
+\begin{defi}[Anneau intègre]
+\index{anneau!intègre}
+\index{domaine d'intégrité|see{anneau intègre}}
+
+ Un anneau intègre est un anneau sans diviseur de zéro. Lorsqu'il est de plus
+commutatif, il est parfois appelé domaine d'intégrité.
+\end{defi}
+
+\begin{example}[Notations]\ 
+
+
+\begin{align*}
+&\text{Pour $n \in \Z$ on définit : }& &
+ nx := \left\{
+\begin{array}{rl}
+\underbrace{x + \cdots + x}_{n\text{ fois}} & \text{si } n > 0,\\
+0 & \text{si } n = 0,\\
+\underbrace{(-x) + \cdots + (-x)}_{(-n)\text{ fois}} & \text{si } n < 0.
+\end{array} \right. \\
+&\text{Et pour $n \in \mathbb{N}$ on définit : } & &
+x^n := \left\{
+\begin{array}{rl}
+\underbrace{x \cdots x}_{n\text{ fois}} & \text{si } n > 0,\\
+1 & \text{si } n = 0.
+\end{array} \right.\\
+&\text{Si de plus $x$ est inversible, on définit pour $n\in \mathbb{N}$ :}
+& & x^{-n} := \underbrace{x^{-1} \cdots x^{-1}}_{n\text{ fois}} 
+\end{align*}
+\end{example}
+
+\subsection{Sous-anneaux et idéaux}
+\vspace{0.5em}
+
+\begin{defi}[Sous-anneau]
+\index{anneau!sous-anneau}
+
+ Soient $A$ un anneau, et $B \subset A$. On dit que $B$ est un sous-anneau de
+$A$ si :
+\begin{enumerate}
+ \item $(B,+)$ est un sous-groupe de $(A,+)$,
+ \item $B$ est stable par multiplication,
+ \item $1 \in B$.
+\end{enumerate}
+\end{defi}
+ 
+\begin{defiprop}[Sous-anneau engendré]
+\index{anneau!sous-anneau!engendré}
+ \begin{enumerate}
+  \item Une intersection quelconque de sous-anneaux est un sous-anneau.
+  \item Si $X \subset A$, l'intersection de tous les sous-anneaux de $A$ qui
+contiennent $X$ est un sous-anneau de $A$ appelé anneau engendré par $X$.
+ \end{enumerate}
+\end{defiprop}
+
+\begin{example}[Exemples]
+\begin{enumerate}            
+ \item Le sous-anneau engendré par $\{1,i\} \subset \mathbb{C}$ est $\Z[i] = \{a
++ ib \tq a,b \in \Z \}$.
+\item Si $I$ est un intervalle de $\R$, l'ensemble
+des fonctions continues de $\mathcal{A}(I,\mathbb{C})$ est un sous-anneau de
+$\mathcal{A}(I,\mathbb{C})$.
+\end{enumerate}
+\end{example}
+
+\begin{defi}[Idéal]
+\index{idéal}
+ Une partie $I$ d'un anneau $A$ est appelé idéal à gauche si :
+\begin{enumerate}
+ \item C'est un sous-groupe additif de $A$,
+ \item $\forall a \in A, \forall x \in I, a\cdotp x \in I$.
+\end{enumerate}
+Il est appelé idéal à droite si :
+\begin{enumerate}
+ \item C'est un sous-groupe additif de $A$,
+ \item $\forall a \in A, \forall x \in I, x\cdotp a \in I$.
+\end{enumerate}
+Un idéal à droite et à gauche est dit bilatère.
+\end{defi}
+
+\begin{defiprop}[Idéal engendré]
+\index{idéal!engendré}
+ \begin{itemize}
+  \item Un intersection d'idéaux à gauche (resp. à droite, bilatère) de $A$ est
+un idéal à gauche (resp. à droite, bilatère) de $A$.
+ \item Si $X \subset A$, l'intersection de tous les idéaux à gauche (resp. à
+droite, bilatères) qui contiennent $X$ est un idéal à gauche (resp. à droite,
+bilatère) appelé idéal engendré par $X$ et noté $(X)$. Si $X=\{x\}$ on note
+simplement $(x)$.
+ \end{itemize}
+\end{defiprop}
+
+\begin{example}[Exemples]
+ \begin{enumerate}
+  \item Si $a\in \Z$, les multiples de $a$ forment l'idéal $(a)$ engendré
+par $a$.
+  \item Si $P\in \mathbb{K}[X]$, alors $(P)$ est un idéal de $\mathbb{K}[X]$.
+ \end{enumerate}
+\end{example}
+
+\begin{defi}[Idéal principal - de type fini]
+\index{idéal!principal} \index{idéal!de type fini} \index{anneau!principal}
+
+ Un idéal est dit principal s'il est engendré par un seul élément.
+
+ Un idéal est dit de type fini (ou de génération finie) s'il est engendré par
+une partie finie.
+
+ Un anneau dont tous les idéaux sont principaux est dit principal.
+\end{defi}
+
+\begin{prop}[$\Z$ est principal]
+
+ Les idéaux de $\Z$ sont principaux.
+\end{prop}
+
+\begin{proof}
+
+ Tout sous-groupe de $(\R,+)$ qui n'est pas dense dans $\R$ est de la forme
+$a\Z$.
+\end{proof}
+
+
+\begin{defi}[Idéaux somme et produit]
+\index{idéal!somme} \index{idéal!produit}
+
+ Soient $I$ et $J$ deux idéaux. On définit :
+\begin{enumerate}
+ \item L'idéal somme $I + J := \{i + j \tq i\in I, j
+\in J\}$ engendré par $I\cup J$.
+ \item L'idéal produit $(IJ) := \left\{\sum_{k=1}^{n}i_kj_k \tq i_k \in I, j_k
+\in J, n \in \mathbb{N}^* \right\}  $ engendré par les produits. 
+\end{enumerate}
+\end{defi}
+
+\begin{defi}[Idéaux maximaux]
+\index{idéal!maximal}
+
+ Un idéal $I$ d'un anneau $A$ est dit maximal si :
+\begin{enumerate}
+ \item $I \neq A$.
+ \item Les seuls idéaux contenant $I$ sont $I$ et $A$.
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Remarque]
+On peut donner une définition équivalente :
+\begin{enumerate}
+ \item $1 \notin I$.
+ \item $(B \mbox{ idéal},\ B\supset I) \Rightarrow (B = I \mbox{ ou } B = A)$.
+\end{enumerate}
+\end{example}
+
+\begin{theo}[Existence d'un idéal maximal]
+
+ Tout idéal est inclu dans un idéal maximal.
+\end{theo}
+
+\begin{proof} (C'est une ``Zornette'')
+
+Soit $I$ un idéal d'un anneau $A$ et soit $M$ l'ensemble des idéaux contenant
+$I$ et ne contenant pas $1$.
+\begin{displaymath}  M = \{B \subset A \tq B \mbox{ idéal},\ B \supset I,\ 1
+\notin B\} \end{displaymath}
+
+Soit alors $(I_n)$ une suite croissante (pour l'inclusion) d'idéaux de $M$. On
+pose $J := \bigcup_n I_n$. On a bien $J$ est un idéal, $1 \notin J$, $J\supset
+I$, donc $J \in M$.
+
+Ansi les hypothèses du lemme de Zorn étant vérifiées, on peut conclure sur
+l'existence d'un idéal maximal contenant $I$.
+\end{proof}
+
+\begin{example}[Exemple] 
+  Dans l'anneau $\Z$ : $7\ \Z$, $3\ \Z$, et $2\ \Z$ sont des idéaux maximaux de
+$84\ \Z$ :
+
+\begin{equation*}
+  84\ \Z \subset \left\lbrace
+      \begin{array}{l}
+      21\ \Z \subset \left\lbrace
+         \begin{array}{l}
+         7\ \Z  \\
+         3\ \Z 
+         \end{array}\right.\\
+      12\ \Z \subset 4\ \Z \subset 2\ \Z 
+      \end{array}\right.
+\end{equation*}
+
+
+\end{example}
+
+\begin{defi}[Radical de Jacobson - Anneau local]
+\index{radical de Jacobson} \index{anneau local}
+
+ Soit $A$ un idéal commutatif. On appelle radical de Jacobson, et on note $\Rad
+(A)$ l'intersection de tous les idéaux maximaux de $A$.
+
+Si $A$ n'a qu'un seul idéal maximal, on dit que $A$ est un anneau local.
+\end{defi}
+
+\subsection{Morphismes d'anneaux et quotients}
+\vspace{0.5em}
+
+
+\begin{defi}[Morphisme d'anneaux]
+\index{morphisme!d'anneau} \index{morphisme!de corps}
+
+ Soient $A$ et $B$ deux anneaux. Une application $f : A \rightarrow B$ est un
+morphismes d'anneaux si :
+\begin{enumerate}
+ \item $\forall x,y \in A,\ f(x+y) = f(x) + f(y)$
+ \item $\forall x,y \in A,\ f(xy) = f(x) f(y)$
+ \item $f(1_A) = 1_B$
+\end{enumerate}
+
+En particulier, si $K$ et $L$ sont des corps, on parle de morphismes de corps.
+\end{defi}
+
+\begin{example}[Remarques]
+\begin{enumerate}
+ \item Un morphisme d'anneaux est en particulier un morphisme entre les
+groupes $(A,+)$ et $(B,+)$.
+ \item Si $f : A \rightarrow B$ et $g : B \rightarrow C$ sont des morphismes
+d'anneaux, alors $g\circ f : A \rightarrow C$ est un morphisme d'anneaux.
+ \item Si $f : A \rightarrow B$ est un morphisme d'anneau bijectif, alors
+$f^{-1} : B \rightarrow A$ est aussi un morphisme d'anneau (bijectif).
+ \item En notant $A\x$ (resp. $B\x$) l'ensemble des inversibles de
+$A$ (resp. $B$), et si $f : A \rightarrow B$ est un morphisme d'anneaux, alors
+$f(A\x) \subset B\x$.
+
+Plus précisément, $f$ induit un morphisme de groupes $A\x \rightarrow
+f(A\x)$. En effet si $x, x^{-1} \in A\x$ alors $f(x) f(x^{-1}) =
+f(xx^{-1}) = f(1_A) = 1_B$ d'où $f(x) \in B\x$
+\item Si $f : A \rightarrow B$ est un morphisme d'anneau, et si $A$ est un
+corps, alors $f$ est injectif. 
+
+En effet, si $x,y \in 1$ tels que $f(x) = f(y)$, alors $f(x) - f(y) = f(x-y) =
+0$ d'où $x-y \notin A\x$ or $A\x = A \ \{0\}$ et donc $x-y = 0
+\Rightarrow x = y$.
+\item Soit $A$ un anneau et $B \subset A$ un sous-anneau. Soit $i : B
+\rightarrow A, x \mapsto x$. Il existe une unique structure d'anneau sur $B$
+telle que $i$ soit un morphisme d'anneau.
+\end{enumerate}
+\end{example}
+
+\begin{defi}[Noyau et Image d'un morphisme d'anneau]
+\index{morphisme!d'anneau!noyau et image}
+
+ Soit $f : A \rightarrow B$ un morphisme d'anneau. On définit :
+\begin{itemize}
+ \item L'image $\Ima f = \{y \in B \tq \exists x \in A,\ y = f(x)\}$
+ \item Le noyau $\Ker f = \{x \in A \tq f(x) = 0\}$
+\end{itemize}
+
+On précise bien que le noyau est celui du morphisme de groupe $(A,+)
+\rightarrow (B,+)$.
+\end{defi}
+
+
+\begin{prop}
+ 
+\begin{enumerate}
+ \item L'image d'un morphisme d'anneau est un sous-anneau.
+ \item Le noyau d'un morphisme d'anneau est un idéal bilatère.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+ On rappelle que ce sont des sous-groupes additifs.
+\begin{enumerate}
+ \item $1_B = f(1_A) \in \Ima f$, et $\forall x',y' \in \Ima f,\ \exists x,y
+\in
+A,\ x' = f(x),\ y' = f(y)$ donc $x'y' = f(x)f(y) = f(xy) \in \Ima f$.
+ \item $\forall x \in \Ker f,\ \forall a,b \in A,\ f(axb) =
+f(a)\underbrace{f(x)}_{= 0} f(b) = 0$.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}[Anneau quotient]
+\index{anneau!quotient}
+ 
+Soit $A$ un anneau, $I$ un sous-groupe de $(A,+)$, et $\pi : x \mapsto x + I$.
+Alors $A/I$ possède une structure d'anneau telle que $\pi$ soit un morphisme si
+et seulement si $I$ est un idéal bilatère.
+
+Dans ce cas cette structure d'anneau est unique, et on dit que $A/I$ est
+l'anneau quotient de $A$ par $I$.
+\end{prop}
+
+\begin{proof}
+On a déjà vu que $(A/I,+)$ est un sous-groupe abélien, et que $\pi$ est un
+morphisme de groupe.
+
+$(\Leftarrow)$ : $\Ker(\pi) = I$ donc si $\pi$ est un morphisme d'anneau, alors
+$I$ est un idéal bilatère.
+
+$(\Rightarrow)$ : Soit $I$ un idéal bilatère. Alors on veut que $\pi$ vérifie
+les propriétés suivantes :
+\begin{itemize}
+ \item $\pi (1_A) = 1_{A/I} = 1_A +I,\ \pi(xy) = xy +I,\ \pi(x) = x + I,\
+\pi(y) = y+I$
+ \item On doit avoir la multiplication suivante :
+  $(x + I) (y+I)= (xy+I)$
+ \item  Soient alors $i,j\in I$, on a $(x+i)(y+j) = \underbrace{xy + xj + iy +
+ij}_{\in I} \in (xy + I)$\\ c'est à dire qu'on a bien $\pi(x)\pi(y) = \pi(xy)$
+ \item La distributivité à gauche (et de même à droite) est vérifiée car : \\
+$(x+I)((y+I)+(z+I)) =
+\pi(xy + xz) = (x+I)(y+i) + (x+I)(z+I) $
+\end{itemize}
+Ce raisonnement conduit à construire $\pi$ qui convient d'où l'existence, et ne
+laisse aucun choix d'où l'unicité.
+\end{proof}
+
+
+\begin{prop}[Factorisation d'un morphisme d'anneau]
+\index{morphisme!d'anneau!factorisation}
+
+Soit $f : A \rightarrow B$ un morphisme d'anneau, et $p : A \rightarrow
+A'$ un morphisme d'anneau surjectif.
+
+Il existe un morphisme d'anneau $g : A'\rightarrow B$ tel que $f = g \circ
+p$ si et seulement si $\Ker p \subset \Ker f$.
+\end{prop}
+
+\setlength{\unitlength}{1em}
+\begin{center}
+ \begin{picture}(10,6)
+\put(1,0){$A'$}
+\put(1,5){$A$}
+\put(6,5){$B$}
+
+\put(2.5,1.5){\vector(1,1){3}}
+\put(2.5,5){\vector(1,0){3}}
+\put(1.5,4.5){\vector(0,-1){3}}
+
+\put(3.5,5.5){$f$}
+\put(0.5,3){$p$}
+\put(4.5,2.5){$g$}
+ \end{picture}
+\end{center}
+
+\begin{proof}\ 
+
+S'il existe un tel $g$, on vérifie que si $x \in \Ker p$ alors $f(x) =
+g(p(x)) = g(0) = 0$.
+
+Réciproquement si $\Ker p \subset \Ker f$, alors $\forall a \in A',\ \exists x
+\in A,\ p(x) = a$ (car $p$ surjectif). Ainsi on pose $g(a) = f(x)$ et on vérifie
+que $g$ est bien définie. En effet si $p(x') = p(x) = a$, on a $p(x') - p(x) =
+p(x' - x) = 0$ et $x' - x \in \Ker p \subset \Ker f$. D'où $f(x' - x) =
+f(x') - f(x) = 0$ et $f(x') = f(x)$.
+\end{proof}
+
+\begin{prop}[Propriété universelle du quotient]
+\index{anneau!quotient}
+ 
+Soient $A$ est un anneau, $I$ un idéal bilatère de $A$, et $\pi : A
+\longrightarrow A/I$ est la projection canonique. Si $f : A \longrightarrow B$
+est un morphisme d'anneau tel que $I \subset \Ker(f)$, alors il existe un
+morphisme d'anneau $g : A/I \longrightarrow B$ tel que $g\circ \pi = f$ que
+l'on note généralement $\tilde{f}$. 
+\end{prop}
+\begin{proof}
+ C'est une conséquence de la propriété précédante en prenant $p = \pi$.
+\end{proof}
+
+
+\subsection{Algèbre}
+\vspace{0.5em}
+
+\begin{defi}[$A$-Algèbre]
+\index{algèbre}
+ 
+Soit $A$ un anneau commutatif. On dit qu'un ensemble $B$ est une $A$-algèbre si
+:
+\begin{enumerate}
+ \item $B$ est un anneau,
+ \item $\exists \eta : A \rightarrow B$ un morphisme d'anneau tel que
+$\forall x \in A,\ \forall y \in B,\ \eta(x)y = y\eta(x)$.
+\end{enumerate}
+
+On dit alors que $\eta$ est un morphisme structural.
+\end{defi}
+
+\begin{defi}[Morphisme de $A$-algèbres]
+\index{morphisme!d'algèbre}
+ 
+Si $B$ et $B'$ sont deux $A$-algèbres, on dit que $f : B \rightarrow B'$ est
+un morphisme de $A$-algèbres si :
+\begin{enumerate}
+ \item $f$ est un morphisme d'anneau,
+ \item $g\circ \eta_B = \eta_{B'}$.
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Exemples]
+\begin{itemize}
+ \item $A$ est une $A$-algèbre si $A$ est un anneau commutatif ($\eta =
+\Id_A$).
+ \item Tout anneau $A$ est une $\Z$-algèbre ($\eta : \Z \owns n
+\longmapsto n \cdotp 1_A \in A$).
+ \item Les suites à valeurs dans un anneau $A$ forment un anneau pour les
+opérations terme à terme. Si de plus $A$ est commutatif, c'est une $A$-algèbre
+avec $\eta(a) = (a)_{n\in\N}$ (la suite constante).
+ \item $\M_n(A)$, les matrices carrées de taille $n$ à coefficients dans un
+anneaux $A$ forment un anneau avec les opérations habituelles sur les matrices.
+Si de plus $A$ est commutatif, c'est une $A$-algèbre avec $\eta(a) =
+a\cdotp\Id$. Le lien entre ces matrices et des applications linéaires est à
+définir.
+ \item $A[X]$, les polynômes à coefficients dans $A$ est un anneau. Si de plus
+$A$ est commutatif, c'est une $A$-algèbre avec $\eta(a) = a\cdotp X^0$.
+\end{itemize}
+\end{example}
+
+\begin{prop}[Morphisme d'évaluation]
+\index{morphisme!d'algèbre!morphisme d'évaluation}
+ 
+Soient $A$ un anneau commutatif, $B$ une $A$-algèbre, et $x\in B$. Il existe un
+unique morphisme $e(x) : A[X] \longrightarrow B$ tel que $e(x)(X^1) = x$.
+
+Cela donne un sens aux notions de l'évaluation et de fonction polynômiale.
+\end{prop}
+
+\begin{proof}
+On note $\eta : A \longrightarrow B$ le morphisme structural de $B$.
+\begin{itemize}
+ \item [(unicité)]
+Soit $e(x)$ un tel morphisme et soit $P(X) = \sum_{k=1}^d a_kX^k$.
+
+En remarquant que $e(x)((a+b)X) = \eta(a+b)e(X) = (\eta(a) + \eta(b))x$. On a
+:
+\begin{align*}
+  e(x)(P(X)) & \quad = \quad e(x)(\sum_{k=1}^d a_kX^k)
+             & \quad = \quad & \sum_{k=1}^d e(x)(a_kX^k)\\
+             & \quad = \quad \sum_{k=1}^d \eta(a_k) e(x)(X^k)
+             & \quad = \quad & \sum_{k=1}^d \eta(a_k) (e(x)(X))^k \\
+             & \quad = \quad \sum_{k=1}^d \eta(a_k)x^k
+\end{align*}
+
+\item[(existence)]
+On a vu qu'en fixant $e(x)(X) = x$ on fixe $e(x)(P(X))$ ($\forall P$). Il reste
+à vérifier qu'on a bien un morphisme en posant $e(x)(aX^0) = \eta(a)$.
+\end{itemize} \end{proof}
+
+\begin{example}[Remarque]
+ En prenant $B = A$ on a l'évaluation classique.
+\end{example}
+
+\subsection{Généralité sur les anneaux commutatifs}
+\vspace{0.5em}
+ \boxed{\textbf{Dans toute cette partie les anneaux sont
+commutatifs.}} \hfill
+
+\vspace{0.5em}
+\subsubsection{Formule du binôme de Newton}
+\vspace{0.5em}
+\begin{prop}[Binôme de Newton]
+\index{Newton, formule du binôme}
+
+Soit $A$ un anneau et $x,y\in A$ deux éléments qui commutent. Alors :
+\begin{displaymath} (x+y)^n = \sum_{k=0}^n\ \Com_n^k\: x^ky^{n-k}
+\end{displaymath}
+
+C'est en particulier le cas si $A$ est commutatif ou bien si $y=1$.
+\end{prop}
+
+\begin{defi}[Nilpotence]\index{nilpotent}
+ 
+Un élément $a$ d'un anneau $A$ est dit nilpotent s'il existe $n\in\N$ tel que
+$a^n=0$. On appelle indice de nilpotence le plus petit de ces entiers, et on
+note $\Nil(A)$ l'ensemble des nilpotents.
+\end{defi}
+
+\begin{example}[Remarque]\ 
+
+On remarque que si $a$ est nilpotent de degrés $d$, alors $\forall x\in A$ on a
+: $(ax)^d = a^dx^d = 0$ d'où $ax \in \Nil(A)$.
+
+De même, si $a$ et $b$ sont nilpotents de degrés $d$ et $d'$, alors $\forall
+n\geq d+d', (a+b)=0$ d'où $(a+b) \in \Nil(A)$.
+\end{example}
+
+\begin{prop}
+ 
+$\Nil(A)$ est un idéal de $A$.
+\end{prop}
+
+\begin{example}[Remarque] Ce n'est pas le cas si $A$ n'est pas commutatif.
+\end{example}
+
+\subsubsection{Rappels}
+\vspace{0.5em}
+
+\begin{defi}[Diviseur de zéro - Anneau intègre]
+\index{diviseur de zéro} \index{anneau intègre}
+ 
+$a\in A$ est dit régulier si la multiplication par $a$ est injective. Dans le
+cas contraire, on dit que $a$ est un diviseur de zéro.
+
+Si tous les éléments non nuls de $A$ sont réguliers, alors on dit que c'est un
+anneau intègre.
+\end{defi}
+
+\begin{prop}
+ 
+Si $A$ est un anneau intègre, alors $A[X]$ est également intègre. De plus
+$\deg(PQ) = \deg(P) \deg(Q)$.
+\end{prop}
+
+\begin{proof} Il suffit de montrer que $\deg(PQ) = \deg(P) + \deg(Q)$. Ce qui
+est trivial si $P$ ou $Q$ est nul. Sinon on considère les coefficients (non
+nuls) des termes de plus haut degrès dont le produit sera non nul.
+\end{proof}
+
+\subsubsection{Propriétée des idéaux}
+\vspace{0.5em}
+
+\begin{prop}
+ 
+Si $X=(x_i)_{i\in I}$ est une famille quelconque d'éléments de $A$, alors :
+\begin{displaymath} (X) = \left\lbrace\sum_{i\in F} a_i x_i \tq F \in
+\mathcal{P}_{\text{finies}}(I), a_i \in A\right\rbrace
+\end{displaymath}
+
+En particulier si $I$ est fini, il de considérer la somme sur $i\in I$.
+\end{prop}
+
+\begin{prop}
+
+Soit $f : A \longrightarrow B$ un morphisme d'anneaux.
+\begin{enumerate}
+ \item Si $J\subset B$ est un idéal, alors $f^{-1}(J)$ est un idéal contenant
+$\Ker f$.
+ \item Si de plus $f$ est surjectif, l'image d'un idéal $I\subset A$ est un
+idéal $f(I) \subset B$. De plus l'application $\varphi$ qui associe à un idéal
+$J\subset B$ l'idéal $f^{-1}(J)$ est une bijection :
+\begin{displaymath}
+ \varphi : \{\text{idéaux de } B\} \longrightarrow \{\text{idéaux de }A\text{ 
+contenant }\Ker f\}
+\end{displaymath}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}\ 
+
+ \begin{enumerate}
+  \item Soit $J$ un idéal de $B$. $\Ker f \subset f^{-1}(J)$ car $0 \in J$ et
+$f^{-1}(J)$ est évidemment un sous-groupe de $(A,+)$. \\Soit alors $x\in
+f^{-1}(J)$ et $a\in A$. On a $f(a) \in B$ et $f(x) \in J$ or $J$ est un idéal
+de $B$ donc $f(ax) = f(a)f(x) \in J$ d'où $ax\in f^{-1}(J)$.
+  \item \begin{enumerate}
+  \item Soit $I$ un idéal de $A$ avec $f$ surjective. Alors
+$f(I)$ est un sous-groupe de $B$. Il reste à vérifier que pour $\forall x \in
+f(I)$ et $ \forall b\in B$ on a bien $bx \in f(I)$. Or il existe $y\in I,\
+x=f(y)$ et comme $f$ est surjective, il exsite $a\in A,\ b=f(a)$. Ainsi, $ay \in
+I$ car $I$ est un idéal et : $bx = f(a)f(y) = f(ay) \in f(I)$.
+ \item Soit $\varphi : \{\text{idéaux de } B\} \longrightarrow \{\text{idéaux de
+}A\text { contenant }\Ker (f)$ telle que $\varphi(J) = f^{-1}(J)$.\\
+ Par la théorie des ensembles, on a $\varphi$ injective. Soit alors $I$ un
+idéal de $A$ contenant $\Ker f$. On pose $J = f(I)$, on a clairement $I \subset
+f^{-1}(J)$. Par l'absurde, soit $x\in f^{-1}(J)\- I$ alors il
+exsite $y\in I,\ f(x)=f(y)$ donc $x-y \in \Ker f \subset I$ donc $x\in I$ ce
+qui est absurde et conclut.
+ \end{enumerate} \end{enumerate}
+\end{proof}
+
+\begin{example}[Exemple]\
+
+$I=A$ est un idéal de $A$ tel que $1\in f(A)$. Donc $f(A)$ est un idéal si et
+seulement si $f$ est surjective. \\ Par exemple, soit $i : \Z \hookrightarrow
+\Q$, on a $i(\Z) = \Z $ qui n'est donc pas un idéal de $\Q$.
+\end{example}
+
+
+\subsubsection{Idéaux premiers et maximaux}
+\vspace{0.5em}
+
+\begin{prop}[Caractérisation d'un idéal maximal]
+\index{idéal!maximal}
+ 
+Un idéal $I$ d'un anneau $A$ est maximal si et seulement si $A/I$ est un corps.
+\end{prop}
+
+\begin{proof}
+Soit $\pi : A \longrightarrow A/I$ le morphisme surjectif canonique. D'après la
+proposition précédante, les idéaux de $A/I$ sont en bijection avec les idéaux
+de $A$ contenant $I = \Ker \pi$.
+\begin{align*}
+ I \text{ est maximal } &\Leftrightarrow A  \text{ et } I  \text{ sont les
+seuls idéaux contenant }I\\
+&\Leftrightarrow A/I  \text{ contient exactement deux idéaux (qui sont donc }
+\{0\}  \text{ et } A/I  \text{)}\\
+&\Leftrightarrow A/I  \text{ est un corps} 
+\\& \quad\ \: \text{(tout idéal engendré par } x\neq
+0 \text{ contient alors }1  \text{ et }x  \text{ est donc inversible)}
+\end{align*}
+
+\end{proof}
+
+\begin{defi}[Idéal premier]
+\index{idéal!premier}
+ 
+Un idéal $I$ d'un anneau $A$ est dit premier si $A/I$ est intègre.
+\end{defi}
+
+\begin{example}[Remarque] 
+  C'est en
+particulier le cas si $I$ est maximal.
+\end{example}
+
+\begin{prop}[Caractérisation d'un idéal premier]
+
+Un idéal $I$ d'un anneau $A$ est premier si et seulement si :
+\begin{displaymath}
+ I\neq A \ \text{ et } \ \forall x,y \in A,(xy \in I) \Longrightarrow (x\in I
+\text{ ou } y\in I)
+\end{displaymath}
+\end{prop}
+
+\begin{proof}\
+
+ Soit $I$ un idéal premier différent de $A$. Soient $x,y\in A$ tels que $ xy\in
+I$. Alors
+$\pi(xy) = 0 = \pi(x)\pi(y)$ or $A/I$ intègre donc $\pi(x) = 0$ ou $\pi(y) = 0$
+(ie : $x \in I$ ou $y\in Y$).
+
+Réciproquement, soit $\pi(x)\pi(y) = 0$ alors $xy \in I$ donc par hypothèse
+$x\in I$ ou $y\in I$. Ainsi $\pi(x) = 0$ ou $\pi(y) = 0$ et $A/I$ est intègre.
+\end{proof}
+
+\begin{prop}
+ 
+L'ensemble $A\-\{A\x\}$ des éléments non inversibles de $A$
+est la réunion de tous les idéaux maximaux de $A$.
+\end{prop}
+
+\begin{proof}\
+ 
+Un idéal maximal ne contient pas d'inversible sinon $1$ serait dans l'idéal, et
+il ne serait pas maximal. Donc une première inclusion est satisfaite.
+
+Réciproquement, $x\in A\x \Longleftrightarrow xA=A$, donc si $x$ n'est pas
+inversible, $xA\neq A$ et l'idéal $xA$ est inclu dans un idéal maximal.
+\end{proof}
+
+\begin{prop}[Radical de Jacobson]
+\index{radical de Jacobson}
+ 
+L'intersection des idéaux maximaux de $A$ est l'ensemble des éléments $x\in A$
+tels que $\forall y\in A, 1+xy$ est inversible.
+\end{prop}
+
+\begin{proof} (exo)
+\end{proof}
+
+\begin{prop}
+ 
+L'intersection de tous les idéaux premiers de $A$ est l'ensemble $\Nil(A)$ des
+nilpotents de $A$.
+\end{prop}
+
+\begin{proof} (exo)
+\end{proof}
+
+
+\subsubsection{Anneaux de fractions}
+\vspace{0.5em}
+
+Il s'agit ici de généraliser la construction de $\Q$ à partir de $\Z$.
+
+\vspace{0.5em}
+
+\begin{defi}[Partie multiplicative d'un anneau]
+\index{anneau!partie multiplicative}
+
+Une partie $S\in A$ est une partie multiplicative si : $1\in S$ et $\forall
+x,y\in S, xy\in S$.
+
+On définit une relation $\Rel$ sur $S\times A$ par : 
+\begin{displaymath} (s,x)\Rel(s',x') \Longleftrightarrow \exists \sigma \in
+S,\ \sigma s'x = \sigma s x' \end{displaymath}
+\end{defi}
+
+\begin{example}[Remarque]
+La relation $\Rel$ est une relation d'équivalence. La réflexivité est la
+symétrie sont évidentes. Si $(s,x)\Rel(s'x')$ et $(s',x')\Rel(s'',x'')$ alors
+il existe $\sigma, \rho \in S,\ \sigma s x' = \sigma s' x$ and $\rho s' x'' =
+\rho s''x'$.
+Donc : \begin{displaymath}
+\begin{array}{ccccc}
+\sigma \rho s' s'' x &=& \rho s'' \sigma s' &=& \rho s''\sigma s x'\\
+ &=& \sigma s \rho s'' x' &=& \sigma s \rho s' x'' \\
+(\sigma \rho s') s'' x &=& (\sigma \rho s') s x'' & & \\
+       \end{array}  \end{displaymath}
+\end{example}
+
+\begin{defi}[Fractions]
+\index{anneau!fraction}
+ 
+On définit les fractions à dénominateur dans une partie multiplicative $S$ par
+$S^{-1}A = S\times A/\Rel$ et on note $x/s$ une classe d'équivalence.
+
+On définit les opétions suivantes :
+\begin{displaymath}
+ \dfrac{x}{s} + \frac{x'}{s'} := \dfrac{s'x + sx'}{ss'} \quad \text{ et } \quad
+ \dfrac{x}{s} \times \frac{x'}{s'} := \dfrac{xx'}{ss'}
+\end{displaymath}
+On pose $\eta : A \longrightarrow S^{-1}A$ tel que $\eta(a) = {a/1}$.
+\end{defi}
+
+\begin{defiprop}[Algèbre des fractions]
+\index{anneau!algèbre des fractions}
+
+L'ensemble $(S^{-1}A,+,\times)$ est un anneau commutatif et $\eta$ est un
+morphisme d'anneau de sorte que $S^{-1}A$ soit une $A$-algèbre.
+
+On l'appelle
+l'aglèbre des fractions de $A$ à dénominateur dans $S$.
+\end{defiprop}
+
+\begin{example}[Remarque]
+ Si $s\in S$, alors $\eta(s)$ est inversible d'inverse $1/s$.
+\end{example}
+
+\begin{prop}
+ 
+Soient $A$ un anneau, $S$ une partie multiplicative de $A$, $B$ une $A$-algèbre
+de morphisme structural $\eta' : A\longrightarrow B$ telle que l'image de tout
+élément de $S$ est inversible dans $B$. 
+
+Alors il exsite un unique isomorphisme de $A$-algèbres $f : S^{-1}A
+\longrightarrow B$.
+\end{prop}
+
+\begin{proof}
+On veut que $f : S^{-1}A \longrightarrow B$ soit un isomorphisme :
+\begin{itemize}
+ \item $f(\eta(a)) = f(1/a) = \eta'(a)$
+ \item $\forall s \in S,\ f(1/s) = f(\eta(s)^{-1}) = f(\eta(s))^{-1} =
+(\eta'(s))^{-1}$
+\end{itemize}
+Donc $\forall a\in A,\ \forall s \in S, f(a/s) = (f(a/1\times 1/s)) =
+\eta'(a)\times(\eta'(s))^{-1}$. Ceci prouve l'unicité d'un tel morphisme s'il
+existe. Il reste à vérifier qu'on a bien un ismorphisme $S^{-1}A \longrightarrow
+B$.
+\end{proof}
+
+\begin{example}[Remarque]
+ Si $A$ est un anneau intègre, alors $A\-\{0\}$ est une partie
+multiplicative de $A$.
+\end{example}
+
+\begin{defiprop}[Corps des fractions d'un anneau intègre]
+\index{anneau!corps des fractions}
+
+On suppose que $A$ est un anneau intègre.
+\begin{enumerate}
+ \item L'anneau $\Frac A := (A\-\{0\})^{-1}A$ est un corps appelé
+corps des fractions. De plus, $A$ s'identifie à sous-anneau de
+$A\-\{0\}A$ par $a \mapsto a/1$.
+ \item Si $S$ est une partie multiplicative ne contenant pas $0$, alors :\\
+$S^{-1}A \simeq \{a/s \tq a\in A,\ s\in S\} \subset \Frac A$.
+ \item Pour tout corps $K$ et $f : A  \hookrightarrow K$ injectif, il existe un
+unique morphisme d'anneau $\Frac A \longrightarrow K$ qui prolonge $f$.
+\end{enumerate}
+\end{defiprop}
+
+\begin{proof}\
+
+ \begin{enumerate}
+  \item Par construction, tous les éléments de $A$ sont inversibles.
+  \item (exo, évident)
+  \item Par la proposition précédante avec $S = A\-\{0\}A$, et en
+remarquant que $K$ et $\Frac A$ sont des $A$-algèbres ($f(a/b) =
+f(a)f(b)^{-1}$).
+ \end{enumerate}
+\end{proof}
+
+\begin{example}{Exemples}
+ $\Frac \Z = \Q$.\\
+Si $K$ est un corps (ou un anneau intègre), alors $K[X]$ est également un
+anneau intègre. On définit $K(X) := \Frac K[X]$ l'ensemble des fractions
+rationnelles à coefficients dans $K$. 
+\end{example}
+
+
+\subsection{Anneaux euclidiens, principaux, et factoriels}
+\vspace{0.5em}
+
+\subsubsection{Divisibilité}
+\vspace{0.5em}
+
+\begin{defi}[Divisibilité]
+\index{divisibilité}
+
+ Soient $x,y \in A\-\{0\}$. On dit que $x$ divise (ou est un
+diviseur de) $y$ s'il exsite $z\in A\-\{0\}$ tel que $y=xz$. On
+note alors $x\mid y$.
+ \begin{displaymath}
+  x \mid y\ \Longleftrightarrow\ (y) \subset (x)
+ \end{displaymath}
+\end{defi}
+
+\begin{example}[Remarque]
+ La relation de divisibilité est un préordre (réflexivité et transitivité).
+\end{example}
+
+\begin{prop}
+ 
+Soient $x,y \in A\-\{0\}$. Alors pour tout $a\in
+A\-\{0\}$ : 
+\begin{displaymath}
+ ax \mid ay\ \Longleftrightarrow\ x \mid y
+\end{displaymath}
+\end{prop}
+
+\begin{proof} $(\Rightarrow)$ est évident.
+
+$(\Leftarrow)$ : $\exists t \in A\-\{0\} ay = tax$ donc $a(y-tx) =
+0$ or $A$ est intègre et $a \neq 0$ donc $y = tx$.
+\end{proof}
+
+\begin{defi}
+
+On définit la relation d'équivalence $\sim$ par :
+\begin{displaymath}
+ x\sim y\ \Longleftrightarrow\ x\mid y \text{ et } y\mid x
+\end{displaymath}
+\end{defi}
+
+\begin{prop}
+
+\begin{displaymath}
+ x\sim y\ \Longleftrightarrow\ (x) = (y)\ \Longleftrightarrow\ \exists u\in
+A\x,\ x = uy
+\end{displaymath}
+
+En particulier, comme pour tout $x \in A\-\{0\},\ 1\mid x$, on a
+: \begin{displaymath}
+ x \mid 1\ \Longleftrightarrow\ x \sim 1 \ \Longleftrightarrow\ x \in
+A\x
+\end{displaymath} 
+\end{prop}
+
+\begin{defi}[Irréductibilité]
+  
+Un élément $p \in A\-\{0\}$ est dit irréductible si :
+\begin{enumerate}
+ \item $p\notin A\x$,
+ \item $\forall x,y\in A\-\{0\},\ (p = xy)\ \Longrightarrow\ (x\in
+A\x$ ou $y\in A\x)$.
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Example]
+ 
+$\Z$, $\Z\x = \{-1,1\}$, les irréductibles sont les premiers $\Prem \cup
+-\Prem$.
+\end{example}
+
+\subsubsection{Anneaux Noethériens}
+Commentaire : Noether est une femme.
+\vspace{0.5em}
+
+\begin{defiprop}[Anneau Noethérien]
+\index{anneau!Noethérien}
+
+Soit $A$ un anneau commutatif. Les assertions suivantes sont équivalentes :
+\begin{enumerate}
+ \item Toute suite croissante d'idéaux est stationnaire.
+ \item Tout idéal de $A$ est de type fini (ie : engendré par une partie finie).
+\end{enumerate}
+
+Dans ce cas on dira que $A$ est Noethérien
+\end{defiprop}
+
+\begin{proof}\
+
+$(1\Rightarrow2)$ : Soit $I$ un idéal de $A$.
+\begin{itemize}
+ \item $I_1 := (x_1)$ avec $x_1\in I$, si $I = I_1$ on a fini, sinon :
+ \item $I_2 := (x_1,x_2)$ avec $x_2 \in I\- I_1$, si $I = I_1$ on a
+fini, sinon :
+ \item $\cdots$
+\end{itemize}
+On cosntruit ainsi une suite croissante d'idéaux $I_1\subsetneq I_2 \subsetneq
+\cdots \subsetneq I_n \subset I$. Donc $(I_n)_n$ est stationnaire ainsi il
+existe $N\in\N,\ \forall n \geq N,\ I_n = I_N$. On vérifie aisément que $I_N =
+(x_1,\cdots,x_N) = I$.
+
+$(2\Rightarrow1)$ : Soit $(I_n)_{n\in\N}$ une suite croissante d'idéaux. On
+pose $I := \cup_{n\in\N} I_n$ qui est donc un idéal de type fini par hypothèse.
+Donc $I = (x_1,\cdots,x_k)$ et $\forall i \in[1,k],\ \exists j_i \in\N,\ x_i
+\in I_{j_i}$. On montre ainsi que la suite est stationnaire à partir du rang $N
+:= \Sup \{j_i\tq i\in[1,k]\}$.
+\end{proof}
+
+\begin{defi}[Anneau principal (rappel)]
+
+Un anneau est dit principal s'il est intègre et que tous ses idéaux sont
+principaux (ie : engendré par un seul élément). En particulier un anneau
+principal est Noethérien.
+\end{defi}
+
+\begin{defi}[Elément décomposable]\index{element decomposable@élément
+décomposable}
+
+Un élément d'un anneau est dit décomposable s'il est associé à un produit fini
+d'irréductible.
+\end{defi}
+
+
+\begin{defi}[Anneau factoriel]\index{anneau!factoriel}
+ 
+Soit $A$ un anneau intègre. On dit que $A$ est factoriel si :
+\begin{description}
+ \item[F1] Tout élément non nul de $A$ est décomposable.
+ \item[F2] $\forall m,n\in \N,\ \forall p_1, \cdots, p_n$ et $\forall
+q_1,\ \cdots q_m$ irréductibles de $A$ tels que les produits des $p_i$ et des
+$q_j$ sont associés. Alors $m=n$ et il existe $\sigma$ bijective telle
+que : $\forall i,\ p_i\sim q_{\sigma(j)}$.
+\end{description}
+\end{defi}
+
+\begin{defiprop}[Valuation p-adique]
+\index{valuation p-adique}
+ 
+Soit $A$ un anneau factoriel. 
+\begin{enumerate}
+ \item Soit $p$ un irréductible de $A$ et $a\in A\-\{0\}$, alors il
+existe un unique entier $n$ tel que $a=\alpha p^n$ avec $\alpha \in
+A\-(p)$. On l'appelle la valuation p-adique de $a$ et on le note
+$\nu_p(a)$ (on pose $\nu_p(0) := -\infty$).
+ \item Soit $p$ irréductible, $a,b \in A$, alors $\nu_p(ab) = \nu_p(a) +
+\nu_p(b)$.
+ \item Soit $\mathcal{P}$ un système de représentants d'irréductibles de $A$
+(ie : tout irréductible de $A$ est associé à un élément de $\mathcal{P}$).\\
+Alors pour tout $a \in A\-\{0\}$, la famille
+$(\nu_p(a))_{p\in\mathcal{P}}$ est presque nulle (ie : sauf sur un nombre fini
+d'éléments). De plus $a$ s'écrit :
+\begin{displaymath}
+ a = u\prod_{p\in\mathcal{P}}p^{\nu_p(a)} \text{ (pour } u\in A\x\text{ )}
+\end{displaymath}
+\end{enumerate}
+\end{defiprop}
+
+\begin{proof}\
+ \begin{enumerate}
+  \item Supposons que $a = \alpha p^n = \beta p^m$ avec $\alpha,\beta\in
+A\-(p)$ et $n < m$. Alors :
+\begin{displaymath}
+ \alpha p^n - \beta p^m = 0 \Longleftrightarrow (\alpha + \beta p^{m-n})
+\Longleftrightarrow \alpha \in (p) \text{ par intégrité de } A
+\end{displaymath}
+\item Soient $a=\alpha p^n$ et $b = \beta p^m$ avec $\alpha,\beta\in
+A\-(p)$. Alors $ab = \alpha \beta p^{m+n}$ et on a toujours $\alpha
+\beta \in A \- (p)$.
+\item Soit $a$ un élément non nul de l'anneau factoriel $A$. On sait que $a$
+est associé à un produit fini d'iiréductibles de $A$. Ainsi il existe
+$p_1,\cdots,p_r$ irréductibles et $u$ inversible tels que : 
+\begin{displaymath}
+ a = u\prod_{i=1}^r p_i^{n_i} \quad \text{ on pose alors } x_r =
+u\prod_{i=1}^{r-1} p_i^{n_i} \quad \text{ (ie : } a = x p_r^{n_r}\text{)}
+\end{displaymath}
+Comme $\nu_{p_r}(p_r^{n_r}) = p^{n_r}$ et $\nu_{p_r}(x) = 0$ d'après la
+propriété précédante on a $\nu_{p_r}(a) = n_r$. On obtient le résultat souhaité
+par récurrence.
+ \end{enumerate}
+\end{proof}
+
+\begin{defiprop}[Elément premier]\index{premier!élément}
+ 
+Soit $A$ un anneau intègre et $p$ un élément non nul. On dit que $p$ est
+premier si l'idéal engendré par $p$ est premier (ie : $A/(p)$ est intègre).
+
+Cette définition est équivalente aux deux conditions suivantes :
+\begin{enumerate}
+ \item $p$ n'est pas inversible.
+ \item Pour tous éléments $a,b \in A$, si $p$ divise le produit alors $p$
+divise $a$ ou $b$ :
+\begin{displaymath}
+ p\mid ab \Longrightarrow p\mid a \text{ ou } p\mid b
+\end{displaymath}
+\end{enumerate}
+\end{defiprop}
+
+\begin{prop}
+ 
+Dans un anneau $A$ intègre, tout élément premier est irréductible.
+\end{prop}
+
+\begin{proof}
+Soit $p$ premier. En particulier $(p)\neq A$ donc $p\notin A\x$.
+
+Supposons $p=xy$. Par la caractérisation des idéeaux premiers, on en déduit que
+$x\in (p)$ ou $y\in (p)$. Par exemple $x\in(p)$ donc $p\mid x$ et $x\mid
+p$ d'où $x = up$ avec $u \in A\x$. Donc $y$ inversible.
+\end{proof}
+
+\begin{prop}[Définition équivalente d'un anneau factoriel]
+\index{anneau!factoriel}
+\begin{description}
+ \item [F'1] Toute suite croissante d'idéaux principaux est stationnaire.
+ \item [F'2] Tout élément irréductible est premier.
+\end{description}
+\end{prop}
+
+\begin{proof}\
+ \begin{itemize}
+  \item [(F'1 $\Rightarrow$ F1)] Soit $p_0$ un élément non décomposable (ie :
+n'est pas associé à un produits fini d'éléments irréductibles). $p_0 = xy$ avec
+$x$ et $y$ non inversibles et $x$ ou $y$ non décomposable. Supposons que $x$
+n'est pas décomposable alors :    
+$I_0 := (p_0) \subsetneq (x) =: I_1 \subsetneq \cdots$ (récurrence)
+
+  \item [(F'2 $\Rightarrow$ F2)] Soit $\Pi_{i=1}^n p_i \sim \Pi_{j=1}^m q_j$
+deux produits d'irréductibles associé. Par hypothèse tous les irréductibles
+sont premiers. On va montrer par récurrence sur $n$ que $n=m$ et $p_i \sim
+q_{\sigma(j)}$ :
+\begin{itemize}
+ \item [($n=0)$] Tous les $q_j$ sont inversibles donc $m = 0$.
+ \item [(hérédité)] On suppose la propriété vraie pour $k = n-1 \geq 0$. Si 
+ $\Pi_{i=1}^n p_i \sim \Pi_{j=1}^m q_j$, comme $p_n$ est premier il divise
+l'un des $q_j$, par exemple $q_m$ et $p_n\mid q_m \Rightarrow p_n\sim q_m$.
+On a encore $\Pi_{i=1}^{n-1} p_i \sim \Pi_{j=1}^{m-1} q_j$ et par hypothèse
+de récurrence $m-1 = n-1$ et il existe $\sigma$ tel que $\forall (1\leq i\leq
+n-1),\ p_i \sim q_{\sigma (j)}$. \\ Il suffit alors de poser $\sigma(n) = m$
+pour obtenir le résultat souhaité.
+\end{itemize}
+\item[(Factoriel $\Rightarrow$ F'1)] Soit $\mathcal{P}$ un système de
+représentants d'irréductibles de $A$ et $a, b$ deux éléments non nuls de $A$.
+On a toujours : $b\mid a \Rightarrow \forall p \in \mathcal{P},\ \nu_p(b)
+\leq \nu_p(a)$ avec les $\nu_p(a)$ presque tous nuls.\\ Donc en particulier il
+exsite un nombre fini de diviseurs de $a$, pour tout $a$ non nul.\\ Ainsi $a$
+appartient à un nombre fini d'idéaux principaux et toute suite croissante
+d'idéaux principaux contenant $a$ est stationnaire.
+\item[(Factoriel $\Rightarrow$ F'2)] Soit $p$ un irréductible et $x,y \in
+A\-{0}$. Alors si $p\nmid x$ et $p\nmid y$ on a $\nu_p(x) = \nu_p(y) = 0$ et
+donc $\nu_p(xy) = 0$ ainsi $p\nmid xy$.\\
+On a montré par contraposition la caractérisation d'un éléments premier.
+\end{itemize}
+\end{proof}
+
+\begin{coro}\index{anneau!principal}\index{anneau!factoriel}
+ 
+Tout anneau principal est factoriel.
+\end{coro}
+
+\begin{proof}\
+\begin{itemize}
+ \item [(F'1)] Principal $\Rightarrow$ Noethérien $\Rightarrow$ F'1.
+ \item [(F'2)] Soient $p$ un irréductible et $x,y\in A$ tels que $p\mid xy$. On
+a $(p) \neq A$.\\ On pose $I := \{u\in A \tq p \mid uy\}$ et on vérifie que
+c'est un idéal de $A$ donc il est principal par hypothèse et il existe $a\in A$
+tel que $I = (a)$. Mais $p\in I$ donc $p\mid a$ or $p$ irréductible. Deux cas
+sont possibles :
+\begin{itemize}
+ \item [($a\sim 1$)] $I=A$ et $p\mid y$.
+ \item [($a\sim p$)] $I=(p)$ or $x\in I$ donc $p\mid x$.
+\end{itemize}
+\end{itemize}
+\end{proof}
+
+\begin{coro}\index{anneau!principal}
+ 
+Soit $A$ un anneau principal.
+\begin{enumerate}
+ \item Les idéaux de $A$ sont l'idéal nul et ceux engendrés par les
+irréductibles de $A$.
+ \item Si $A$ n'est pas un corps, les idéaux maximaux de $A$ sont ceux
+engendrés par les éléments irréductibles.
+\end{enumerate}
+\end{coro}
+
+\subsubsection{Pgcd, ppcm, élements premiers entre eux}
+\vspace{0.5em}
+
+\begin{defi}[Eléments premiers entre eux]
+\index{premier!éléments premiers entre eux}
+
+Soient $x_1,\cdots,x_n \in A$. On dit que les $x_i$ sont premiers entre eux si
+$A$ est le plus petit idéal qui les contient tous.
+\end{defi}
+
+\begin{defi}[pgcd - ppcm]\index{pgcd}\index{ppcm}
+
+On appelle $\pgcd$ de $x,y\in A$ tout élément $c \in A$ tel que $c$ soit le
+plus petit idéal principal contenant $(x)+(y) = (x,y)$. On note $c =
+\pgcd(x,y)$ ou $c=x\vee y$.
+
+On appelle $\ppcm$ de $x,y\in A$ tout élément $d\in A$ tel que $(d) =
+(x)\cap(y)$. On note $d=\ppcm(x,y)$ ou $d = x\wedge y$.
+\end{defi}
+
+\begin{example}[Remarques]
+Il n'y a pas toujours existence, mais dans ce cas il y a unicité à association
+près.
+
+On a : $1=x\vee y \Leftrightarrow x$ et $y$ sont premiers entre eux.
+\end{example}
+
+\begin{theo}[Bézout]\index{Bézout, théorème de}
+ 
+Soient $A$ un anneau principal et $x,y\in A$. Alors il existe $u,v \in A$ tels
+que : $ux + vy = x\vee y$.
+
+En particulier si $x$ et $y$ sont premiers entre eux il existe $u,v \in A$ tels
+que : $ux + vy = 1$.
+\end{theo}
+
+\begin{proof}
+ 
+$(x)+(y) = (x,y)$ est principal donc engendré par l'élément $(x\vee y)$. \\  
+Par définition $x\vee y \in (x,y) \Rightarrow \exists u,v \in A,\ ux + vy =
+x\vee y$.
+\end{proof}
+
+
+\begin{prop}\index{anneau!factoriel}
+
+Soit $A$ un anneau factoriel.
+\begin{enumerate}
+ \item $\pgcd$ et $\ppcm$ existent toujours.
+ \item Soient $x,y\in A\-\{0\}$ et $\delta = x\vee y$ alors :\\
+       $x = \delta x_0,\ y = \delta y_0$ avec $x_0\vee y_0 = 1$. De plus
+$x\wedge y = \delta x_0 y_0$.
+ \item Soient $x,y,z\in A \-\{0\}$ tels que $x\mid yz$ et $x\wedge z = 1$ alors
+$x\mid y$.
+\end{enumerate}
+\end{prop}
+
+\begin{lemm}[Lemme chinois]
+\index{lemme chinois}
+ 
+Soit $A$ un anneau et soient $I,J$ deux idéaux de $A$ tels que $I+J = A$. Alors
+: \begin{displaymath}
+   A/(I\cap J) \simeq A/I \times A/J
+  \end{displaymath}
+En particulier si $A$ est principal, $p,q \in A$ premiers entre eux, alors :
+\begin{displaymath}
+ A/(pq) \simeq A/(p) \times A/(q)
+\end{displaymath}
+\end{lemm}
+
+\begin{proof} On considère les projections canoniques $\pi : A \rightarrow A/I$
+et $\pi' : A \rightarrow A/J$, et on pose :
+\begin{displaymath} \begin{array}{rrcl}
+ \varphi : &A &\longrightarrow & A/I \times A/J \\
+           &x &\longmapsto     & (\pi(x),\pi'(x))
+\end{array} \end{displaymath}
+
+En remarquant que $\Ker \varphi = I\cap J$, on applique le premier théorème
+d'isomorphisme :
+\begin{displaymath}
+ A/(I\cap J) \simeq \Ima \varphi
+\end{displaymath}
+
+Il reste à montrer que $\Ima \varphi = A/I\times A/J$. Or $I+J = A$ donc il
+existe $u\in I$ et $v\in J$ tels que $u+v = 1$.
+Soit alors $x, y\in A$ et $z=ux+vy$ on a $ux\in I$ et $vy\in J$
+\begin{displaymath}u+v=1 \Rightarrow 
+\left\lbrace\begin{array}{rcl}
+u \equiv 1 (J) &\Rightarrow& \pi(z) = \pi(vy) = \pi(y) \\
+v \equiv 1 (I) &\Rightarrow& \pi'(z) = \pi'(ux) = \pi'(x)\\
+\end{array}\right. \end{displaymath}
+
+Ainsi $(\pi(y),\pi(x)) = \varphi(z) \in \Ima \varphi$ d'où $\Ima \varphi \simeq
+ A/I\times A/J$.
+\end{proof}
+
+\begin{defi}[Anneau euclidien]\index{anneau!euclidien}
+ 
+On dit qu'un anneau intègre $A$ est euclidien s'il existe une application $N :
+A\rightarrow \N$ telle que :
+\begin{description}
+ \item [E1] $\forall x \in A,\ (N(x) = 0 \Leftrightarrow x=0)$,
+ \item [E2] $\forall x \in A,\ \forall y \in A\-\{0\},\ \exists q,r\in A,\ x =
+qy+r$ avec $N(r) < N(y)$.
+\end{description}
+\end{defi}
+
+\begin{example}[Exemples]\
+ \begin{enumerate}
+  \item Soit $\Z[i] = \{a +ib \tq a,b\in\Z\}$ et $N : (a+ib) \mapsto
+|a+ib|^2=a^2+b^2$.
+\begin{itemize}
+ \item [(E1)] Assez clair,
+ \item [(E2)] Soit $\xi = x+iy \in \C$, alors il existe $z = a+ib\in \Z[i]$ tel
+que $N(\xi-z) < \frac{1}{2}$. En effet, il suffit de prendre
+$a=E(x-\frac{1}{2})$ et $b=E(y-\frac{1}{2})$.\\
+Soient alors $x,y\in\Z[i]$ avec $y\neq 0$. Soit $\xi = \frac{x}{y}$ et $q$ tel
+que $N(\xi-q) < \frac{1}{2}$. On a $x = qy +r$ avec :\\
+$N(r) = |x-qy|^2=|y|^2|\xi-q|^2 < \frac{1}{2}|y|^2 < N(y)$.
+\end{itemize}
+\item Soit $K$ un corps et $N : K[X] \rightarrow \N$ définit comme suit :
+\begin{displaymath}
+ N(P) = \left\lbrace\begin{array}{ll}
+\deg P & \text{ si } P \neq 0\\
+0      &\text{ si } P = 0   \end{array}\right.
+\end{displaymath}
+\begin{itemize}
+ \item [(E1)] Assez clair,
+ \item [(E2)] On vérifie que la division des polynômes convient.
+\end{itemize}
+\end{enumerate}
+\end{example}
+
+\begin{prop}
+ 
+Soit $A$ un anneau non nul et soient $P,T \in K[X]$ avec $T\neq 0$ et tels que
+leurs coefficients directeurs soient inversibles.
+
+Alors il existe un unique couple $(Q,R)\in K[X]\times K[X]$ tel que $P = QT+R$
+avec $N(R) < N(T$.
+\end{prop}
+
+\begin{theo}
+ 
+Tout anneau eclidien est principal.
+\end{theo}
+
+\begin{example}[Remarque] Ainsi $K[X]$ est principal mais en général $A[X]$ ne
+l'est pas.
+\end{example}
+
+\begin{proof}
+ Soit $I$ un idéal non nul de $A$. Il existe $y\in I\-\{0\}$ qui minimise $N$.\\
+$\forall x \in I,\ x=qy +r \Rightarrow N(r) < N(y) \Rightarrow r=0$. Ainsi
+$x\in (y)$ donc $I = (y)$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,815 @@
+\section{Modules}
+\vspace{0.5em}
+\hfill \boxed{\boxed{\textbf{Dans toute cette partie les anneaux sont
+commutatifs.}}} \hfill
+\vspace{0.5em}
+
+\subsection{Définitions}
+\vspace{0.5em}
+
+\subsubsection{Modules}
+\vspace{0.5em}
+
+\begin{defi}[Module]\index{module}
+ 
+ Soit $A$ un anneau. Un ensemble $M$ est un $A$-module s'il est muni d'une loi
+de composition interne ``$\,+$'' et d'une loi externe ``$\:\cdotp$'' telles que
+:
+\begin{description}
+ \item [M1\:] $(M,+)$ est un groupe abélien,
+ \item [M2\:] $\forall a\in A,\ \forall x,y \in M,\ a(x+y) = (ax)+(ay)$, 
+ \item [M2']  $\forall x\in M,\ \forall a,b\in A,\ (a+b)x = (ax)+(bx)$,
+ \item [M3\:] $\forall x\in M,\ \forall a,b\in A,\ (ab)x = a(bx)$,
+ \item [M3']   $\forall x \in M,\ 1_A x= x$.
+\end{description}
+\end{defi}
+
+\begin{example}[Attention]\
+
+ Ne pas confondre les lois additive de l'anneau et du module.\\ Ne pas confondre
+la loi multiplication de la l'anneau et la loi externe.\\ Ne pas inventer de loi
+multiplicative interne dans le module.
+\end{example}
+
+\begin{example}[Remarque]
+ Si $K$ est un corps, tout $K$-module est un $K$-espace vectoriel.
+\end{example}
+
+\begin{example}[Autre point de vue]
+ On remarque que comme $(M,+)$ est un groupe abélien, l'ensemble $\End M$ est
+un anneau (non commutatif en général). On montre alors que la donnée d'une loi
+externe de module revient à se donner un morphisme d'anneau $\rho : A\rightarrow
+\End M$.\\
+En effet, si $M$ est un module, on définit $\rho(a)(x) = ax$ qui est bien un
+morphisme d'anneau.\\
+Réciproquement, si $\rho : A \rightarrow \End M$ est un morphisme d'anneau
+alors on vérifie que $M$ est bien un module.
+\end{example}
+
+\begin{example}[Exemples]\
+\begin{enumerate}
+ \item Un $\Z$-module est simplement un groupe abélien, et tout groupe abélien
+peut être vu comme un $\Z$-module.
+ \item $A$ est un $A$-module.
+ \item $(0)$ est un $A$-module.
+ \item Tout idéal d'un anneau $A$ est un $A$-module.
+ \item Si $B$ est une $A$-algèbre, et $M$ un $A$-module, alors en considérant
+les morphismes :\\
+$\eta : A \rightarrow B$ et $\rho : B \rightarrow \End M$ on construit $\rho'
+=\rho\circ \eta : A\rightarrow \End M$ qui est aussi un morphisme.\\ Donc $M$
+est un $A$-module et en particulier, $B$ et ses idéaux sont des $A$-modules.
+\item Si $I$ est un ensemble quelconque on note $A^I$ l'ensemble des fonctions
+de $I$ dans $A$ que l'on appelle aussi suites indexées par $I$. On a déjà vu
+que $A^I$ est une $A$-algèbre.\\
+On définit également $A^{(I)}$ l'ensemble des suites presque nulles. On vérifie
+aisémént que $A^{(I)}$ est un idéal bilatère de $A^I$. Donc $A^I$ et $A^{(I)}$
+sont des $A$-modules.\\
+Pour $i\in I$ on définit $e_i\in A^{(I)}$ tel que $(e_i)j = \delta_{ij}$. Ainsi
+pour tout $a = (a_i)_{i\in I} \in A^{(I)}$ on a :
+\begin{displaymath}
+ a = \sum_{i\in I} a_ie_i \text{ et cette somme est finie. }
+\end{displaymath}
+On appellera $(e_i)_{i\in I}$ la base canonique.
+\end{enumerate}
+\end{example}
+
+\subsection{Sous-modules et applications linéaires}
+\vspace{0.5em}
+
+\begin{defi}[Sous-module]\index{module!sous-module}
+ 
+ Soient $M$ un $A$-module et $N \subset M$. On dit que $N$ est un sous-module
+de $M$ si :
+\begin{enumerate}
+ \item $N$ est un sous-groupe de $(M,+)$,
+ \item $N$ est stable pour la loi externe $A\times N \rightarrow N\subset M$.
+\end{enumerate}
+\end{defi}
+\begin{example}[Remarque]
+  Cette notion généralise celle d'idéal. En effet $A$ est un $A$-module dont les
+sous-modules sont ses idéaux.
+\end{example}
+
+\begin{defiprop}[Sous-module engendré]\index{module!sous-module!sous-module
+engendré}
+ 
+ Toute intersection de sous-modules est un sous-module. En particulier, pour
+toute partie $X\subset M$ il existe un plus petit sous-module de $M$ qui
+contient $X$.
+
+On le définit comme le sous-module engendré par $X$ et on le note $<X>$.
+\end{defiprop}
+
+\begin{defi}[Combinaison linéaire]\index{combinaison linéaire}
+ 
+ On appelle combinaison linéaire d'éléments de $X\subset M$ à coefficients dans
+$A$ tout élément $x$ de la forme :
+\begin{displaymath}
+ x = \sum_{i\in F} a_ix_i \text{ où } F \text{ est fini, et pour tout }
+i\in F \text{ et } a_i\in A,\ x_i\in X
+\end{displaymath}
+\end{defi}
+
+\begin{prop}[Description du sous-module engendré]
+ 
+ $<X>$ est l'ensemble des combinaisons linéaires d'éléments de $X$.
+\end{prop}
+
+\begin{defi}[Module de type fini et cyclique]\index{module!de type fini}
+ \index{module!cyclique}
+ 
+ On dit qu'une partie $X$ d'un module $M$ l'engendre si $<X>\ = M$.
+ \begin{enumerate}
+  \item On dit qu'un module est de type fini s'il est engendré par une partie
+finie,
+\item On dit qu'il est cyclique s'il est engendré par un seul élément.
+ \end{enumerate}
+\end{defi}
+
+\begin{defi}[Application linéaire]\index{application linéaire}
+\index{module!morphisme|see{application linéaire}}
+
+Soient $M$ et $N$ deux $A$-modules. Un application $f : M \rightarrow N$ est
+dite $A$-linéaire si :
+\begin{enumerate}
+ \item $f$ est un morphisme de groupe $(M,+)\rightarrow(N,+)$,
+ \item $\forall a \in A,\ \forall x \in M,\ f(ax) = af(x)$.
+\end{enumerate}
+
+On dit aussi que $f$ est alors un morphisme de $A$-modules.
+\end{defi}
+
+\begin{example}[Remarque]
+ \begin{enumerate}
+  \item La composée de deux applications $A$-linéaires est encore une
+application $A$-linéaire.
+\item Si $f$ est linéaire bijective alors $f^{-1}$ est aussi linéaire. On dit
+alors que $f$ est un ismorphisme de $A$-modules.
+\item Soient $M$ un module et $M'$ un sous-module. Soit $i : M'\hookrightarrow
+M$. Alors il existe une unique structure de $A$-module sur $M'$ telle que $i$
+soit linéaire.
+ \end{enumerate}
+\end{example}
+
+\begin{prop}[Noyau et image d'une application linéaire]
+\index{application linéaire!noyau}
+\index{application linéaire!image}
+ 
+ Soit $f : M \rightarrow N$ une application linéaire. Alors :
+ \begin{enumerate}
+  \item $\Ker f$ est un sous-module de $M$,
+  \item $\Ima f$ est un sous-module de $N$.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof}
+ Ce sont des sous-groupes car $f$ est en particulier un morphisme de groupe.\\
+ De plus, si $x\in \Ker f$ et $a\in A$ alors $f(ax)=f(a)f(x)=0$ donc $ax\in
+\Ker f$.\\ De même si $y=f(x) \in\Ima f$ alors $ay = af(x) = f(ax)\in\Ima f$.
+\end{proof}
+
+\subsection{Produit et somme directe de modules}
+\vspace{0.5em}
+
+\begin{defi}[Module produit]\index{module!produit}
+ 
+ Soient $A$ un anneau, $I$ un ensemble, et $(M_i)_{i\in i}$ une famille de
+$A$-modules indexée par $I$. On définit le produit $\prod_{i\in I}M_i$
+(éventuellement via l'axiome du choix) que l'on muni des lois suivantes :
+\begin{enumerate}
+ \item Pour $X = (x_i)_{i\in I},\ Y = (y_i)_{i\in I},\ \in \prod_{i\in I}M_i$
+on pose $X+Y = (x_i + y_i)_{i\in I} \in \prod_{i\in I}M_i$.
+\item Et pour $a\in a$ on pose $aX = (ax_i)_{i\in I} \in \prod_{i\in I}M_i$.
+\end{enumerate}
+
+On appelle ce $A$-module le $A$-module produit des $M_i$.
+\end{defi}
+
+\begin{defi}[Projection canonique]
+\index{module!produit!projection canonique}
+
+Pour chaque $j\in I$ on définit l'application linéaire $j^{\text{ème}}$
+projection canonique :
+\begin{displaymath} \begin{array}{rrcl}
+p_j : &\Prod_{i\in I}M_i &\longrightarrow& M_j \\
+      &(x_i)_{i\in I} & \longmapsto & x_j
+\end{array} \end{displaymath}
+\end{defi}
+
+
+\begin{prop}
+ 
+ Soit $M'$ un module. On se donne pour tout $i\in I$ une application linéaire
+$f_i : M' \rightarrow M_i$.
+
+Alors il existe une unique application linéaire $f : M' \rightarrow \prod_{i\in
+I}M_i$ telle que :
+\begin{displaymath}
+ f_i = p_i \circ f \text{ pour tout }i
+\end{displaymath}
+\end{prop}
+
+\begin{proof} 
+ On prend $f(x) = (f_i(x))_{i\in I}$ qui est linéaire. Il reste à
+vérifier l'unicité.
+\end{proof}
+
+\begin{example}[Remarque]
+ $A^I = \prod_{i\in I} A_i$ en prenant $A_i = A$ pour chaque $i$.
+\end{example}
+
+\begin{defi}[Somme directe]\index{module!some directe}
+ 
+ Le sous ensemble du produit constitué des familles presques nulles est un
+sous-module appelé somme directe des $M_i$ et noté $\bigoplus_{i\in I} M_i$.
+\end{defi}
+
+\begin{defi}[Injection canonique]
+ \index{module!somme directe!injection canonique}
+
+Pour chaque $j\in I$ on définit l'application linéaire
+$j^{\text{ème}}$ injection canonique :
+\begin{displaymath} \begin{array}{rrcl}
+i_j : &M_j &\longrightarrow& \Bigoplus_{i\in I} M_i \\
+      & x  &\longmapsto    & (y_i)_{i\in I} \text{ avec }y_j = x \text{ et }
+y_i = 0 \text{ pour } i\neq j
+\end{array} \end{displaymath}
+\end{defi}
+
+\begin{prop}
+ 
+ Soit $M'$ un module. On se donne pour tout $i\in I$ une application linéaire
+$f_i : M_i \rightarrow M'$.
+
+Alors il existe une unique application linéaire $f : \bigoplus_{i\in I} M_i
+\rightarrow M'$ telle que :
+\begin{displaymath}
+ f\circ i_j = f_j \text{ pour tout }j
+\end{displaymath}
+\end{prop}
+
+\begin{proof}
+ Soit $(x_i)_{i\in I} \in \bigoplus_{i\in I}$ alors $f((x_i)_{i\in I}) =
+\sum_{i\in I} f_i (x_i)$.
+\end{proof}
+
+\begin{example}[Remarque]
+ $A^{(I)} = \bigoplus_{i\in I} A_i$ en prenant $A_i = A$ pour chaque $i$.
+\end{example}
+
+
+\begin{prop}[Caractérisation de la somme directe]
+ \index{module!somme directe}
+
+Soient $M$ un module et $I$ un ensemble. Soit $(M_i)_{i\in I}$ une famille de
+sous-modules telle que :
+\begin{enumerate}
+ \item $\sum_{i\in I} M_i = M$ en tant que sous-module engendré par l'union,
+ \item $\forall j\in I,\ M_j\cap \sum_{i\neq j} M_i = \{0\}$.
+ 
+ Alors $M$ est isomorphe à la somme directe $\bigoplus_{i\in I} M_i$.
+ On dit dans ce cas que $M$ est somme directe des sous-modules $M_i$ et on note
+: \begin{displaymath}
+   M=\Bigoplus_{i\in I} M_i
+  \end{displaymath}
+\end{enumerate}
+\end{prop}
+
+\begin{defi}[Supplémentaire]\index{module!supplémentaire}
+ 
+ Soit $M$ un module et soient $M',M''$ deux sous-modules. On dit que $M'$ et
+$M''$ sont supplémentaires si $M=M'\oplus M''$.
+\end{defi}
+
+\subsection{Module quotient}
+\vspace{0.5em}
+
+\begin{defiprop}[Module quotient]
+\index{module!quotient}\index{module!sous-module}
+ 
+ Soient $M$ un module et $M'$ un sous-groupe de $(M,+)$. $M'$ est un
+sous-module de $M$ si et seulement si il existe sur le sous-groupe quotient
+$M/M'$ une structure de module telle que la projection canonique $\pi : M
+\rightarrow M/M'$ soit linéaire.
+
+Dans ce cas, cette structure est unique et $M/M'$ est alors le module quotient.
+\end{defiprop}
+
+\begin{proof} \
+\begin{description}\item[(rappel)] On considère la congruence modulo $M'$ telle
+que $x\equiv y \Leftrightarrow (x-y)\in M'$.
+
+$M/M'$ sont les classes d'équivalence, et $\pi : x\mapsto \overline{x}$ associe
+la classe d'un élément. On sait qu'il existe sur $M/M'$ une unique loi de
+composition telle que : $M/M'$ soit un groupe abélien, $\pi$ soit un morphisme
+de groupe et $\Ker \pi = M'$.
+
+\item[(sous-module)] On suppose l'existe de la
+projection canonique linéaire sur le module $M/M'$. Alors soient $a\in A,\ x\in
+M'$ on a $\pi(ax) = a\pi(x) = 0$ donc $ax\in M'$ et ainsi $M'$ est un
+sous-module. 
+
+\item[(module quotient)] Réciproquement, on suppose que $M'$ est un sous-module
+de $M$.
+\begin{description}
+ \item [($\pi$ linéaire)] Soient $\xi \in M/M'$ et $a\in A$. Il existe $x\in M$
+tel que $\pi(x) = \xi$.  TODO
+ \item [(M1)] $M/M'$ est en particulier un groupe abélien.
+ \item [(M2)] TODO ...
+\end{description}
+\end{description}
+\end{proof}
+
+\begin{prop}[Factorisation]
+
+\begin{tabular}{rl}
+ Soient &$f : M\rightarrow N\ $ un morphisme de modules \\
+  et &         $p : M\rightarrow M'$ un morphisme de modules surjectif.
+\end{tabular}
+
+\setlength{\unitlength}{1em}
+\begin{picture}(10,7.5)
+\put(3.5,5.5){$M$}
+\put(5,6){\vector(1,0){3}}
+\put(6,6.5){$f$}
+\put(8.5,5.5){$N$}
+\put(3.5,0.5){$M''$}
+\put(5,2){\vector(1,1){3}}
+\put(4,5){\vector(0,-1){3}}
+\put(3,3.5){$p$}
+\put(7.3,3.5){$g$}
+\put(11,5.5){Alors les deux assertions suivantes sont équivalentes :}
+\put(11,4){1. $\Ker p \subset \Ker f$}
+\put(11,2.5){2. Il existe un morphisme de modules $g : M''\rightarrow N$ tel que
+$f =g\circ p$}
+\end{picture}
+
+Dans ce cas, un tel $g$ est unique.
+\end{prop}
+\begin{proof} Soit $M' = \ker p$.
+\begin{description}
+ \item [(2 $\Rightarrow$ 1)] On suppose que $g$ existe. Soit alors $x\in
+\ker p$. On a bien $g\circ p (x) = 0 = f(x)$ d'où l'inclusion demandée.
+\item [(1 $\Rightarrow$ 2)] On suppose que $\Ker p \subset \Ker f$. 
+\begin{itemize}
+ \item [(définition de $g$)] 
+ Soit $y \in M''$ alors il existe $x\in M$ tel que $p(x) = y$ par surjectivité
+de $p$. On pose $g(y) = f(x)$ et on vérifie que pour tout $x'\in M''$ tel que
+$p(x) = p(x')$ on a bien $f(x) = f(x')$. En effet $p(x-x')=0$ donc $f(x-x')=0$.
+ \item [(linéarité)] Avec les mêmes notations $g(ay) = f(ax) = af(x)=ag(y)$, et
+si $p(x) = y$ alors $p(ax) = ap(x) = ay$.
+ \item [(additivité)] Soit $y'=p(y)$ et $x' = p(x)$. Alors $p(x+y)=x'+y'$ donc
+$g(x'+y') = f(x+y) = f(x) + f(y) = g(x') + g(y')$.
+ \end{itemize}
+\end{description}
+\end{proof}
+
+\begin{theo}[Propriété universelle du quotient]
+
+Soient $N$ un $A$-module, $M$ un $A$-module, $M'$ un sous module de $M$ et $\pi
+: M\rightarrow M/M'$ la projection canonique. Alors il y a une équivalence
+entre :
+\begin{enumerate}
+ \item La donnée d'un morphisme de $A$-modules $g:M/M'\rightarrow N$.
+ \item La donnée d'un morphisme de $A$-modules $f : M\rightarrow N$ tel que
+$M'\subset \Ker f$.
+\end{enumerate}
+
+De plus, étant donné un tel morphisme $f$ il existe une unique application
+$A$-linéaire $\tilde{f} : M/M'\rightarrow N$ tel que $\tilde{f}\circ\pi = f$ et
+$\Ima \tilde{f} = \Ima f$ et $\Ker\tilde{f} = \pi(\Ker  f)$.
+
+On dit alors qu'on obtient $\tilde{f}$ par passage au quotient.
+\end{theo}
+
+\begin{proof}
+ C'est un corollaire de la proposition précédante en prenant $M'' = M/M'$ et $p
+= \pi$.
+\end{proof}
+
+\begin{prop}[Factorisation canonique d'un morphisme de A-module]
+ 
+Soit $f:M\rightarrow N$ une application linéaire. Alors il existe un unique
+isomorphisme de $A$-module $\tilde{f}: M/\Ker f \rightarrow \Ima f$ tel que le
+diagramme suivant commute :
+\begin{center}
+\setlength{\unitlength}{1em}
+\begin{picture}(15,7)
+\put(3.5,5.5){$M$}
+\put(5,6){\vector(1,0){3}}
+\put(6,6.5){$f$}
+\put(8.5,5.5){$N$}
+
+\put(0,0.5){$M/\Ker f$}
+\put(5,0.5){\vector(1,0){3}}
+\put(6,1){$\tilde{f}$}
+\put(8.5,0.5){$\Ima f$}
+
+\put(4,5){\vector(0,-1){3}}
+\put(3,3){$\pi$}
+
+\put(9,2){\vector(0,1){3}}
+\put(9.5,3){$i$}
+\end{picture}
+\end{center}
+En particulier on a :
+\begin{displaymath}
+ M/\Ker f \simeq \Ima f
+\end{displaymath}
+
+\end{prop}
+
+\begin{proof}
+ La propriété universelle du quotient, en prenant $M'=\Ker f$, nous assure
+l'existence d'un unique $\tilde{f} : M/\Ker f \rightarrow N$ tel que
+$\tilde{f}\circ \pi = f$. De plus on a $\Ima\tilde{f} = \Ima f$ et
+$\Ker\tilde{f} = \pi(\Ker f) = \{0\}$. Donc $\tilde{f}$ est un isomorphisme.
+\end{proof}
+
+\subsection{Suites exactes}
+\vspace{0.5em}
+
+\begin{defi}
+ 
+ Soient $M,M',M''$ des $A$-modules, $f : M' \rightarrow M$ et $g : M\rightarrow
+M''$ deux applications $A$-linéaires. On dit que la suite suivante est exacte
+si $\ker g = \Ima f$ :
+\begin{displaymath}\begin{array}{ccccc}
+   & f             &   & g              &    \\
+ M'&\longrightarrow& M &\longrightarrow &M''
+ \end{array} \end{displaymath}
+
+Plus généralement, si $I$ est un intervalle de $\Z$ et pour tout $i\in I,\ M_i$
+est un $A$-module et $f_i : M_i \rightarrow M_{i+1}$ est une application
+linéaire, on dit que la suite suivante est exacte si $\Ker f_{i+1} = \Ima
+f_i$ :
+\begin{displaymath}\begin{array}{ccccccc}
+                &       & f_{i-1}       &     & f_i            &       & \\
+ \dashrightarrow&M_{i-1}&\longrightarrow& M_i &\longrightarrow &M_{i+1}&
+\dashrightarrow
+ \end{array} \end{displaymath}
+\end{defi}
+
+\begin{example}[Exemples] \
+ 
+ \begin{enumerate}
+  \item Les suites suivantes sont exactes si et seulement si $f$ est surjective,
+$g$ est injective, et $h$ est bijective :
+  \vspace{-0.5em}\begin{displaymath}\begin{array}{ccccc}
+    &               &   & f              &    \\
+ (0)&\longrightarrow& M &\longrightarrow &N
+ \end{array} \end{displaymath}
+   \begin{displaymath}\begin{array}{ccccc}
+    & g              &   &               &    \\
+ M&\longrightarrow& N &\longrightarrow &(0)
+ \end{array} \end{displaymath}
+   \begin{displaymath}\begin{array}{ccccccc}
+    &               &   & h              & &               & \\
+ (0)&\longrightarrow& M &\longrightarrow &N&\longrightarrow&(0)
+ \end{array} \end{displaymath} \vspace{0.5em}
+ 
+  \item La suite suivante est une suite exacte courte si $g$ est surjective,
+$f$ injective et $\Ker g = \Ima f$ : 
+\vspace{-0.5em}\begin{displaymath}\begin{array}{ccccccccc}
+    &               &   & f          &               & g &   & &\\
+ (0)&\longrightarrow&M'&\longrightarrow& M &\longrightarrow
+&M''& \longrightarrow &(0)
+ \end{array} \end{displaymath} \vspace{0.5em}
+ 
+  \item Soient $M_1$ et $M_2$ deux $A$-modules. $i_1 : M_1 \rightarrow
+M_1\oplus M_2$ l'injection canonique et $p_2 : M_1\oplus M_2 \rightarrow M_2$
+la projection canonique. Alors on a la suite exacte courte :
+\vspace{-0.5em}\begin{displaymath}\begin{array}{ccccccccc}
+    &               &   & i_1           &               & p_2                  
+&   & &\\
+ (0)&\longrightarrow&M_1&\longrightarrow& M_1\oplus M_2 &\longrightarrow
+&M_2& \longrightarrow &(0)
+ \end{array} \end{displaymath}
+ \end{enumerate}
+\end{example}
+
+\subsection{Modules de type fini}
+\vspace{0.5em}
+
+\begin{prop}[Caractérisation des modules de type fini]
+ Un $A$-module est de type fini si et seulement si il existe $n\in\N$ et une
+application linéaire $\sigma : A^n \rightarrow M$ surjective.
+\end{prop}
+
+\begin{proof}\
+\begin{description}
+ \item [($\Rightarrow$)] Soit $M$ un $A$-module de type fini. Alors il est
+engendré par une famille finie $\{x_1,\cdots,x_n\} \subset M$. Ainsi $M =
+\left\lbrace\sum_{i=1}^n a_ix_i \tq a_i\in A\right\rbrace$, il suffit donc de
+prendre $\sigma (a_1,\cdots,a_n) = \sum_{i=1}^n a_ix_i$.
+\item [($\Leftarrow$)] En considérant la famille des $x_i =
+(0,\cdots,0,1,0,\cdots,0)$ avec un $1$ en $i^\text{ème}$ position, par
+linéarité et surjectivité de $\sigma$ on obtient que $M =
+\left\lbrace\sum_{i=1}^n a_ix_i \tq a_i\in A\right\rbrace$ est de type fini.
+\end{description}
+\end{proof}
+
+\begin{theo}[Sur les modules de type fini]
+
+\begin{enumerate}
+ \item Soient $M$ et $M'$ deux $A$-modules et $f:M\rightarrow M'$ une
+application linéaire. Si $M$ est de type fini, alors $M'$ est aussi de type
+fini.
+ \item Soit la suite exacte :
+ \begin{displaymath}\begin{array}{ccccccc}
+   & f          &               & g &   & &\\
+M'&\longrightarrow& M &\longrightarrow
+&M''& \longrightarrow &(0)
+ \end{array} \end{displaymath} \vspace{0.5em}
+ Si $M'$ et $M''$ sont de type fini alors $M$ est de type fini.
+ \item Soient $M$ et $M'$ deux $A$-modules et $f : M'\rightarrow M$ une
+application linéaire injective. Si de plus $A$ est N\oe{}thérien et $M$ est de
+type fini, alors $M'$ est de type fini.
+\end{enumerate}
+\end{theo}
+
+\begin{proof}\ 
+ \begin{enumerate}
+  \item On a $\sigma : A^n\rightarrow M$ et $f : M\rightarrow M'$ avec $\sigma$
+et $f$ deux applications linéaires surjectives. On peut donc considérer
+l'application linéaire surjective $\sigma'= f\circ \sigma : A^n\rightarrow M'$
+donc $M'$ est de type fini.
+\item TODO
+\item TODO
+ \end{enumerate}
+\end{proof}
+
+\begin{theo}[Théorème de Hilbert]
+ 
+Si $A$ est un anneau N\oe{}thérien, alors l'anneau $A[X]$ est N\oe{}thérien.
+\end{theo}
+
+\begin{proof}
+ TODO
+\end{proof}
+
+\subsection{Algèbre de type finie}
+\begin{center}
+-- Dans cette partie $A$ est un anneau et $B$ une $A$-algèbre -- 
+\end{center}
+
+\begin{defi}[Algèbre de type finie]
+\begin{enumerate}
+\item Une partie $X\subset B$ engendre $B$ comme $A$-algèbre si le sous-anneau
+de $B$ engendré par $\eta_B(A) \cup X$ est $B$.
+\item On dit que $B$ est une $A$-algèbre de type finie si $B$ est engendré
+comme $A$-algèbre par une partie finie de $B$.
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Remarque]
+ Soient $x_1,\cdots,x_n \in B$ et $\phi : A[X_1,\cdots,X_n]\rightarrow B$ le
+morphisme de $A$-algèbre défini par $\phi(X_i) = x_i$. Alors l'image de $\phi$
+est le sous-anneau engendré par $\eta_B(A)\cup\{c_1,\cdots,x_n\}$. Ainsi $B$
+est engendré comme $A$-algèbre par les $x_i$ si et seulement si $\phi$ est
+surjective.
+
+En particulier pour toute $A$-algèbre $B$ de type finie, il existe $n\in\N$ un
+idéal $I$ de $A[X_1,\cdots,x_n]$ tel que :
+\begin{displaymath}
+ B \simeq A[X_1,\cdots,x_n]
+\end{displaymath}
+\end{example}
+
+\begin{example}[Rappel] Si $B$ est une $A$-algèbre alors $B$ est naturellement
+muni d'une structure de $A$-module.
+\end{example}
+\begin{example}[Proposition]
+Si $B$ est de type fini comme $A$-module, alors c'est une $A$-algèbre de type
+fini. Mais il n'y a pas de réciproque.
+\end{example}
+\begin{example}[Contre exemple]
+ $\Q[X]$ est une $\Q$-algèbre de type finie (car engendré par $X$). Mais c'est
+un $\Q$-espace vectoriel de dimension infinie (donc un $\Q$-module qui n'est
+pas de type fini).
+\end{example}
+
+\begin{lemm}
+ 
+ Soit $f : A \rightarrow B$ un morphisme d'anneaux. Alors :
+ \begin{enumerate}
+  \item L'application qui à un idéal $J$ de $B$ associe l'idéal $f^{-1}(J)$ de
+$A$ est injective.
+\item Si $A$ est N\oe{}thérien, alors $B$ aussi.
+ \end{enumerate}
+\end{lemm}
+
+\begin{proof}\
+\begin{itemize}
+ \item C'est un rappel du chapitre sur les anneaux.
+ \item Soit $(J_n)_{n\in\N}$ une suite croissante d'idéaux de $B$. On pose
+$(I_n = f^{-1}(J_n))_{n\in\N}$ qui est une suite croissante d'idéaux de $A$
+donc stationnaire. Il existe donc $N\in\N$ tel que pour tout $n\geq N$ on a
+$I_n=I_N$. Par injectivité de $J\mapsto f^{-1}(J)$ on obtient également que
+$J_n = J_N$ ce qui montre que $B$ est N\oe{}thérien.
+\end{itemize}
+\end{proof}
+
+
+\begin{prop}[Quotient d'anneau N\oe{}thérien]
+ 
+ Si $A$ est un anneau N\oe{}thérien, alors pour tout idéal $I$ de $A$ le
+quotient $A/I$ est N\oe{}thérien.
+\end{prop}
+\begin{proof}
+ C'est une conséquence du lemme en prenant $f = \pi : A \rightarrow A/I$.
+\end{proof}
+
+
+\begin{prop}[Algèbre de type finie et anneau N\oe{}thérien]
+
+ Soit $A$ un anneau N\oe{}thérien et $B$ une $A$-algèbre de type fini. Alors $B$
+est un anneau N\oe{}thérien.
+\end{prop}
+
+\begin{proof} Le théorème de Hilbert nous assure que $A[X_1,\cdots,X_n]$ est
+N\oe{}thérien et que \\$B\simeq A[X_1,\cdots,X_n]/I$ qui est N\oe{}thérien
+d'après la propriété précédante.
+\end{proof}
+
+\subsection{Modules libres et modules de torsion}
+\subsubsection{Modules libres}
+\vspace{0.5em}
+
+\begin{defi}[Famille libre, génératrice, et base]
+ 
+ Soient $A$ un anneau, $M$ un $A$-module et $(x_i)_{i\in I}$ une famille
+d'éléments de $M$.
+
+Soit $\phi : A^{(I)}\owns e_i \longrightarrow x_i \in M$ une application
+linéaire. On rappele que les $e_i$ forment la base canonique de $A^{(I)}$.
+
+\begin{enumerate}
+ \item On dit que la famille des $x_i$ est libre si $\phi$ est injective. On
+dit aussi que les $x_i$ sont linéairement indépendants.
+\item On dit qu'elle est génératrice si $\phi$ est surjective.
+\item On dit que c'est une base si $\phi$ est bijective. C'est à dire qu'elle
+est libre et génératrice.
+\end{enumerate}
+\end{defi}
+
+\begin{example}[Remarque]\ 
+\begin{enumerate}
+ \item Une famille est génératrice si et seulement si elle engendre $M$ comme
+module.\\ En particulier tout module admet une famille génératrice : $(x)_{x\in
+M}$.
+\item Si $K$ est un corps alors un $K$ module est un espace vectoriel et admet
+une base, mais ce n'est pas le cas pour un anneau en général.
+\end{enumerate}
+\end{example}
+\vspace{0.5em}
+
+\begin{defi}[Module libre]
+ 
+Un $A$ module $M$ est dit libre s'il admet un base.
+
+Cela revient à dire qu'il
+existe un ensemble $I$ tel que $M\simeq A^{(I)}$.
+\end{defi}
+
+\begin{example}[Exemples]
+ $A$, $A^{(I)}$, $A[X]$.
+\end{example}
+
+\vspace{0.5em}
+\begin{defi}[Annulateur d'un module]
+
+L'annulateur d'un module $M$ est :
+\begin{displaymath}
+ \Ann M = \{a\in A \mid \forall x\in M,\ ax = 0\}
+\end{displaymath}
+\end{defi}
+
+\begin{example}[Remarques]\
+
+\begin{enumerate}
+ \item En considérant le morphisme $\rho : A \rightarrow \End(M,+)$ définissant
+la structure de $A$-module de $M$ on remarque que $\Ann(M) = \Ker\rho$ est un
+idéal de $A$.
+\item Si $I$ est un idéal de $M$ contenu dans $\Ker\rho = \Ann M$ alors par
+passage au quotient, il existe un morphisme d'anneau $\tilde{\rho} :
+\quo{A}{I} \rightarrow \End(M,+)$. Donc $M$ hérite d'une structure de
+$\quo{A}{I}$ module.
+\item Si $M$ est un $A$-module et $I$ un idéal de $A$ alors $IM$ est un
+sous-module de $M$. On a alors $\Ann \quo{M}{IM} \subset I$ donc le $A$-module
+$\quo{M}{IM}$ hérite d'une structure de $\quo{A}{I}$-module.
+\end{enumerate}
+\end{example}
+
+\begin{defiprop}[Rang d'un module libre]
+
+Soit $A$ un anneau non nul et soit $L$ un $A$-module libre.
+
+Alors toutes les
+bases de $L$ ont le même cardinal appelé rang de $L$ et noté $\rang L$.
+\end{defiprop}
+
+\begin{proof} Comme $L$ est libre on a $L\simeq A^{(I)}$ pour un certain
+ensemble $I$.
+
+Soit $m$ un idéal maximal de $A$. Par définition $\quo{A}{m}$ est un corps donc
+d'après la troisième remarque $\quo{L}{mL}$ est un $\quo{A}{m}$-module donc un
+$K$-espace vectoriel admettant une base de cardinal $C$ (on rappelle qu'un
+cardinal est une classe d'équivalence sur les ensembles définie par la relation
+d'être en bijection).
+
+Comme $\quo{L}{mL} \simeq 
+\quo{A^{(I)}}{mA^{(I)}} $ on déduit que $I\in C$.
+\end{proof}
+
+\subsubsection{Torsion}
+\vspace{0.5em}
+
+\begin{defi}[Elément de torsion]
+ 
+Un élément $x$ d'un $A$-module $M$ est un élément de torsion s'il existe un
+$a\in A$ non nul tel que $ax = 0$.
+
+Un module est dit de torsion si tous ses éléments sont de torsion.
+
+Un module est dit sans torsion si le seul élément de torsion est $0$.
+\end{defi}
+
+\begin{example}[Remarques]\
+ 
+ \begin{enumerate}
+  \item Un module libre est sans torsion car isomorphe à $A^{(I)}$ avec $A$
+intègre.
+\item Si $\Ann M \neq 0$ alors $M$ est de torsion. Réciproquement, si $M$ est
+de type fini et de torsion alors $\Ann M \neq 0$.
+\item Si $I$ est un idéal de $A$ alors l'annulateur de $\quo{A}{I}$ est $I$.
+Donc mour $I$ non nul, $\quo{A}{I}$ est un module de torision. Anisi si $A$
+n'est pas un corps, il existe des modules de torsion non nuls, et ils ne sont
+pas libres.
+ \end{enumerate}
+\end{example}
+
+\begin{defiprop}[Sous-module de torsion]
+ 
+ Soit $M$ un $A$-module. L'ensemble des éléments de torsion de $M$ est un
+sous-module de $M$ noté $\textnormal {T}(M)$ ou $M\tors$.
+\end{defiprop}
+
+\begin{example}[Remarque] On a la suite exacte courte :
+\vspace{-1em}
+ \begin{displaymath}
+\begin{array}{ccccccccc}
+  &                &        & i             & & \pi & & & \\
+0 &\longrightarrow & M\tors &\longrightarrow&M&\longrightarrow
+&\quo{M}{M\tors}&\longrightarrow& 0
+ \end{array} \end{displaymath}
+
+Donc $\quo{M}{M\tors}$ est sans torsion.
+\end{example}
+
+\subsubsection{Module de fraction}
+\vspace{0.5em}
+
+Soit $A$ un anneau et $S$ une partie multiplicative de $A$. On construit, comme
+dans la section précédante l'algèbre $S^{-1}A$. Alors un $S^{-1}A$-module est
+naturellement muni d'une structure de $A$-module.
+
+Réciproquement, étant donnée un $A$-module $M$ on va construire un $S^{-1}A$
+module noté $S^{-1}M$.
+
+\begin{enumerate}
+ \item On muni $S\times M$ de la relation d'équivalence $\Rel$ définie par :
+\begin{displaymath}
+ (s,x) \Rel (s',x') \Longleftrightarrow \exists \sigma \in S,\ 
+ \sigma s' x = \sigma s x'
+\end{displaymath}
+\item On pose $S^{-1}M = \quo{S\times M}{\Rel}$ dont les éléments seront notés
+$\quo{x}{s}$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

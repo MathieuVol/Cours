@@ -1,0 +1,220 @@
+\documentclass[a4paper,10pt,makeidx]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{fullpage}
+\usepackage[cut=false]{thmbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\usepackage{makeidx}
+\usepackage[pdftex,colorlinks,linkcolor=black]{hyperref}
+
+%\newtheorem{defi}{Définition}[section]
+%\newtheorem{prop}{Proposition}[section]
+%\newtheorem{coro}[prop]{Corollaire}
+%\newtheorem{lemm}[prop]{Lemme}
+%\newtheorem{theo}[prop]{Théorème}
+%\newtheorem{defiprop}[defi]{Définition - Proposition}
+%\newtheorem{defitheo}[defi]{Définition - Théorème}
+
+
+%\newtheorem{resdefi}{Définition}[section]
+%\newtheorem{resprop}{Proposition}[section]
+%\newtheorem{rescoro}[resprop]{Corollaire}
+%\newtheorem{reslemm}[resprop]{Lemme}
+%\newtheorem{restheo}[resprop]{Théorème}
+%\newtheorem{resdefiprop}[resdefi]{Définition - Proposition}
+%\newtheorem{resdefitheo}[resdefi]{Définition - Théorème}
+
+\newtheorem[style=S]{defi}{Définition}[section]
+\newtheorem[style=M]{prop}{Proposition}[section]
+\newtheorem[style=M]{coro}[prop]{Corollaire}
+\newtheorem[style=M]{lemm}[prop]{Lemme}
+\newtheorem[style=L]{theo}[prop]{Théorème}
+\newtheorem[style=S]{defiprop}[defi]{Définition - Proposition}
+\newtheorem[style=S]{defitheo}[defi]{Définition - Théorème}
+
+
+\newtheorem[style=S]{resdefi}{Définition}[section]
+\newtheorem[style=S]{resprop}{Proposition}[section]
+\newtheorem[style=S]{rescoro}[resprop]{Corollaire}
+\newtheorem[style=S]{reslemm}[resprop]{Lemme}
+\newtheorem[style=S]{restheo}[resprop]{Théorème}
+\newtheorem[style=S]{resdefiprop}[resdefi]{Définition - Proposition}
+\newtheorem[style=S]{resdefitheo}[resdefi]{Définition - Théorème}
+
+
+
+\author{Notes de Cours}
+\title{Algèbre Approfondie}
+\date{2011}
+
+
+
+
+% OPERATEURS :
+% ------------
+
+% Boules
+\DeclareMathOperator{\Boule}{B}
+\DeclareMathOperator{\adh}{adh}
+
+% Image / Noyau / ...
+\DeclareMathOperator{\Ima}{Im\,}
+\DeclareMathOperator{\Ker}{Ker\,}
+\DeclareMathOperator{\Nil}{Nil\,}
+
+% Fonctions classiques
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator*{\Sup}{Sup}
+\DeclareMathOperator*{\Inf}{Inf}
+\DeclareMathOperator*{\Max}{Max}
+\DeclareMathOperator*{\Min}{Min}
+\DeclareMathOperator{\Zen}{Z} % Zentrum (centre)
+\DeclareMathOperator{\Cen}{C} % Centralisateur
+\DeclareMathOperator{\Com}{C} % Combinatoire
+\DeclareMathOperator{\Nor}{N} % Normalisateur
+\DeclareMathOperator{\Rad}{Rad} % Radical (de Jacobson)
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Spectre}{Sp}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\rang}{rg}
+
+
+% Fonction classiques (Actions)
+\DeclareMathOperator{\Stab}{Stab\,}
+
+% Fonctions classiques (Matrices)
+\DeclareMathOperator{\Mat}{Mat\,}
+\DeclareMathOperator{\Tr}{Tr\,}
+\DeclareMathOperator{\Diag}{Diag\,}
+
+\makeindex
+
+\begin{document}
+
+\newcommand{\quo}[2]{\raisebox{0.25em}{\ensuremath{#1}}\hspace{0.05em}/\hspace{
+0.1em}
+\raisebox{-0.1em}{\ensuremath{#2} } }
+
+\newcommand{\Quo}[2]{\raisebox{0.25em}{\ensuremath{#1}}\hspace{0.05em}/\hspace{
+0.em}
+\raisebox{-0.25em}{\ensuremath{#2} } }
+
+% Topologie 
+
+\newcommand{\XO}{$(X,\mathcal{O})$}
+\newcommand{\XOX}{$(X,\mathcal{O}_X)$}
+\newcommand{\YOY}{$(Y,\mathcal{O}_Y)$}
+
+% ``Tel que`` dans une definition ensembliste {x \tq p(x)}
+
+\newcommand{\tq}{ \: | \: }
+\newcommand{\btq}{ \: \big| \: }
+\newcommand{\Btq}{ \: \Big| \: }
+\renewcommand{\|}{|\negthinspace\hspace{0.07em}|} % norme ||.||
+\newcommand{\f}{\|_{{}_F}} % norme ||.||
+\renewcommand{\*}{^*\!{}} % conjuguée
+\renewcommand{\t}{{}^t\!} % transposée
+
+% Ensembles classiques de nombres (mathbb)
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Prem}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\UU}{\mathbb{U}}
+
+% Ensembles classiques (Matrices)
+% --------- ---------- ----------
+
+% hermitienne (positive, def positive)
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\Hp}{\mathcal{H}^{+}}
+\newcommand{\Hpp}{\mathcal{H}^{++}}
+
+% symétrique (positive, def positive)
+
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\Sp}{\mathcal{S}^{+}}
+\newcommand{\Spp}{\mathcal{S}^{++}}
+
+% sous-groupes
+
+\newcommand{\GL}{\mathcal{GL}}
+\newcommand{\SO}{\mathcal{SO}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\SU}{\S\U}
+\newcommand{\Spl}{\mathcal{S}\textnormal{p}}
+\newcommand{\USp}{\mathcal{US}\textnormal{p}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\SL}{\mathcal{SL}}
+
+% Autres
+% ------
+
+
+\newcommand{\tors}{_{\hspace{-0.05em}\textnormal{tors}}}
+
+% < et > triangle
+
+\newcommand{\<}{\vartriangleleft}
+\renewcommand{\>}{\vartriangleright}
+
+% Divise : ''a | b``
+\newcommand{\divise}{\: |\: }
+
+\newcommand{\x}{^{\hspace{-0.1em}\times}}
+\renewcommand{\-}{\!\smallsetminus\!{}}
+
+\newcommand{\Rel}{\mathcal{R}}
+\newcommand{\Bigoplus}{\displaystyle\bigoplus}
+\newcommand{\Prod}{\displaystyle\prod}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEBUT DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Page de titre
+
+\maketitle
+\tableofcontents
+
+\pagebreak
+\include{partieGroupes}
+
+\pagebreak
+\include{partieAnneaux}
+
+\pagebreak
+\include{partieModules}
+
+
+\pagebreak
+\printindex
+
+\pagebreak
+\include{coursResume}
+
+
+%% FIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
